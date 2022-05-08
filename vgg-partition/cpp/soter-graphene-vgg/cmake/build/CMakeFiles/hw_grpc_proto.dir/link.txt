@@ -1,0 +1,2 @@
+/usr/bin/ar qc libhw_grpc_proto.a CMakeFiles/hw_grpc_proto.dir/helloworld.grpc.pb.cc.o CMakeFiles/hw_grpc_proto.dir/helloworld.pb.cc.o
+/usr/bin/ranlib libhw_grpc_proto.a
