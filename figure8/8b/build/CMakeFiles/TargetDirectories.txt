@@ -1,3 +1,0 @@
-/home/xian/atc22-artifact/SOTER/figure8/8b/build/CMakeFiles/main.dir
-/home/xian/atc22-artifact/SOTER/figure8/8b/build/CMakeFiles/edit_cache.dir
-/home/xian/atc22-artifact/SOTER/figure8/8b/build/CMakeFiles/rebuild_cache.dir
