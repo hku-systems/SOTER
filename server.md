@@ -25,7 +25,7 @@ For security reasons, our department only allow access to the gatekeeper using S
 
     ssh [server_account_2]@10.22.1.16
 
-     ssh ubuntu@192.168.122.158
+    ssh ubuntu@192.168.122.158
 
 `server_account_1`, `server_account_2` and their corresponding passwords are
 listed in our HotCRP response. Step 3 does not need a password.
