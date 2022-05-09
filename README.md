@@ -80,7 +80,8 @@ Time consuming: 43.286 ms per instance.
 Completed successfully !!!
 ```
 
-If you see the the above logs, the artifact runs perfectly.
+If you see the the above logs (the latency may
+fluctuate within -5 ~ +5 ms owing to the nature of inference), the artifact runs perfectly. 
  
 
 
