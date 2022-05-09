@@ -46,7 +46,7 @@ experiments before you run the artifact.
 
 ### Kick-off Functional
 
-#### SOTER-VGG - A Kick-off Functional Experiment
+#### SOTER-VGG: A Kick-off Functional Experiment
 
 **Step 1:**
 Login to the SGX VM and GPU machine with two terminals in our cluster. 
