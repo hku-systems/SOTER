@@ -15,11 +15,11 @@ For security reasons, our department only allow access to the gatekeeper using S
 
 ### Step 2: Connect to our cluster
 
-#### Connect to the GPU server
+#### How to connect to the GPU server
 
     ssh [server_account_1]@202.45.128.185
 
-#### Connect to the SGX virtual machine (using 3 commands below)
+#### How to connect to the SGX virtual machine (using 3 commands below)
 
     ssh [server_account_1]@202.45.128.185
 
