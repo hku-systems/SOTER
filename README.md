@@ -71,7 +71,7 @@ cd /home/ubuntu/atc22-artifact/SOTER/graphene-vgg-partition
 bash runclient.sh
 ```
 
-**Output:**
+**Output in SGX VM:**
 
 ```shell
 For 1000 inferences ...
