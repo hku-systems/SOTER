@@ -24,7 +24,7 @@ machine and a GPU machine. Each experiment runs 1000 inferences by default.
 
 ### Prepare
 
-1. Please login to our cluster following [this page](https://github.com/hku-systems/SOTER/blob/main/servers.md).
+1. Please login to our cluster following [this page](https://github.com/hku-systems/SOTER/blob/main/server.md).
 
 2. Please open two terminals (`T1` and `T2`). Use
    `T1` to login to the SGX VM (ubuntu@192.168.122.158) and go to
@@ -80,10 +80,12 @@ Time consuming: 43.286 ms per instance.
 Completed successfully !!!
 ```
 
-If you see the the above logs (the "**Time consuming**" is normal to fluctuate within -5 ~ +5 ms owing to the nature of inference), the artifact runs perfectly. 
+If you see the the above logs (the "**Time consuming**" is normal to fluctuate
+within -5 ~ +5 ms owing to the nature of inference tasks), the artifact runs
+perfectly. 
 
 
-### Experiment X: SOTER's fingerprint pattern and fixed fingerprint (baseline) pattern
+### Experiment X: The pattern between SOTER's fingerprint protocol and fixed fingerprint (baseline)
 
 This experiment runs two VGG inference programs (i.e., one for SOTER's
 fingerprint protocol, one for a fixed fingerprint protocol as a
