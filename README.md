@@ -76,7 +76,7 @@ bash runclient.sh
 ```shell
 For 1000 inferences ...
 Time elapsed: 42286 ms.
-Time consuming: 43.286 ms per instance.
+Time consuming: 42.286 ms per instance.
 Completed successfully !!!
 ```
 
