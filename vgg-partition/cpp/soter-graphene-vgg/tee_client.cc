@@ -692,10 +692,10 @@ int main(int argc, char** argv) {
     }
     gettimeofday(&tve, 0);
     float ms_time = (tve.tv_sec - tvs.tv_sec) * 1000 + (tve.tv_usec - tvs.tv_usec) / 1000;
-    std::cout << "For " << count << " inferences..." << std::endl;
+    std::cout << "For " << count << " inferences ..." << std::endl;
     std::cout << "Time elapsed: " << ms_time << " ms." << std::endl;
     std::cout << "Time consuming: " << ms_time/count << " ms per instance." << std::endl;
-    std::cout << "completed." << std::endl;
+    std::cout << "Completed successfully !!!" << std::endl;
 
     return 0;
 }

@@ -12,5 +12,6 @@ sudo cp ./tee_client /bin/tee_client
 
 popd
 
+make clean
 SGX=1 make
 graphene-sgx ./tee_client --target=10.22.1.26:50051

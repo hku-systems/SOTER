@@ -19,3 +19,4 @@ make
 cd ..
 
 python3 obli_dist.py
+cp ./figure8a-oblifp.pdf /home/xian/atc22-artifact/SOTER/figure/

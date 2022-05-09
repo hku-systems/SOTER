@@ -19,3 +19,5 @@ make
 cd ..
 
 python3 fixed_dist.py
+cp ./figure8b-fixedfp.pdf /home/xian/atc22-artifact/SOTER/figure/
+
