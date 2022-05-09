@@ -111,4 +111,4 @@ bash run-fpcheck.sh
 - SOTER's fingerprint l2 distance distribution (i.e., `figure8a-oblifp.pdf`) is close to a
   normal distribution.
 - Baseline's fingerprint l2 distance distribution (i.e., `figure8b-fixedfp.pdf`)
-  does not share the form of normal distribution and has spikes at a small distance.
+  has spikes at a small distance and does not share the form of normal distribution.
