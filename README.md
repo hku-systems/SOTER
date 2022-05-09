@@ -3,7 +3,7 @@
 ## Artifact summary
 
 SOTER is a TEE-based secure inference system that protects model
-providers' private models to depoy and run on top of untrusted third-party
+providers' private models to deploy and run on top of untrusted third-party
 devices. SOTER embraces several key features: model confidentiality,
 integrity, low inference latency and high accuracy simultaneously. This artifact contains the implementation of SOTER and scripts for reproducing the main results of this work.
 
