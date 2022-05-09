@@ -63,7 +63,7 @@ bash runserver.sh
 
 **Step 3:**
 In the SGX VM terminal, run the following commands to compile and start the
-client in SGX hardware mode:
+SGX client:
 
 ```shell
 cd /home/ubuntu/atc22-artifact/SOTER/graphene-vgg-partition
@@ -81,23 +81,32 @@ Completed successfully !!!
 ```
 
 If you see the the above logs (the "**Time consuming**" is normal to fluctuate within -5 ~ +5 ms owing to the nature of inference), the artifact runs perfectly. 
- 
 
 
-### Experiment 1: End-to-end performance
+### Experiment X: SOTER's fingerprint pattern and fixed fingerprint (baseline) pattern
 
-#### Experiment 1-1: Performance of 
+This experiment runs two VGG inference programs (i.e., one for SOTER's
+fingerprint protocol, one for a fixed fingerprint protocol as a
+baseline), calculates and compares the l2 distance between fingerprints and
+reports the pattern from an attacker's perspective.
 
 **Command to run:**
 
 ```shell
-bash run.sh performance
+bash run-fpcheck.sh
 ```
 
 **Output:**
 
-- 
+- Two pdf files named `figure8a-oblifp.pdf` and `figure8b-fixedfp.pdf`,
+  containing the l2 distance distribution of SOTER and baseline.
+- You can also find the log files for generating figures in
+  `/home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a(or
+  8b)/l2_dist_obli_fp.dat (or l2_dist_fixed_fp.dat)`
 
 **Expected results:**
 
-- 
+- SOTER's fingerprint l2 distance distribution (i.e., `figure8a-oblifp.pdf`) is close to a
+  normal distribution.
+- Baseline's fingerprint l2 distance distribution (i.e., `figure8b-fixedfp.pdf`)
+  does not share the form of normal distribution and has spikes at a small distance.
