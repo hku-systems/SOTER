@@ -350,7 +350,7 @@ class GreeterServiceImpl final : public Greeter::Service {
         torch::save(output.to(at::kCPU), so);
         reply->set_message(so.str());
     } else if (tag == query_flag) {
-        output = models[0]->forward(torch::rand({1, 3, 224, 224},torch::dtype(torch::kFloat32)).to(at::kCUDA));
+        output = models[0]->forward(input);
         std::stringstream so;
         torch::save(output.to(at::kCPU), so);
         reply->set_message(so.str());

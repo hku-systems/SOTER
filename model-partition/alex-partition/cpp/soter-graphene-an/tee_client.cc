@@ -251,9 +251,9 @@ struct alexnet:  public torch::nn::Module
             torch::load(tmp, is);             
             x = tmp/scalar; // restore 
             // send fingerprints to untrusted GPU for integrity checking，
-            // alexnet apply less fp (200:1 at this time), which is flexible to
+            // alexnet apply less fp (400:1 at this time), which is flexible to
             // be decided by the user
-            if (record_flag % 200 == 0){
+            if (record_flag % 400 == 0){
                 int idx;
                 fp_check = pass_fingerprint_withindex(&idx, 1);
                 std::stringstream ssfp;
