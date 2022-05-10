@@ -56,7 +56,7 @@ In the GPU terminal, run the following commands to compile and start the
 GPU server:
 
 ```shell
-cd /home/xian/atc22-artifact/SOTER/vgg-partition/cpp/soter-graphene-vgg
+cd /home/xian/atc22-artifact/SOTER/model-partition/vgg-partition/cpp/soter-graphene-vgg
 
 bash runserver.sh
 ```
@@ -66,7 +66,7 @@ In the SGX VM terminal, run the following commands to compile and start the
 SGX client:
 
 ```shell
-cd /home/ubuntu/atc22-artifact/SOTER/graphene-vgg-partition
+cd /home/ubuntu/atc22-artifact/SOTER/teeruntime/graphene-vgg-partition
 
 bash runclient.sh
 ```
