@@ -474,7 +474,7 @@ public:
     }
 
     void morphpara(){
-        int scalar = 1;
+        int scalar = 4;
         fc0->weight = fc0->weight * scalar;
         fc0->bias = fc0->bias * scalar;
         fc1->weight = fc1->weight * scalar;
