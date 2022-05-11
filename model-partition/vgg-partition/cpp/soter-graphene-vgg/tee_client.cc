@@ -683,7 +683,7 @@ int main(int argc, char** argv) {
 
     // GPU warm up
     reply = greeter->SayHello(msg, 0);
-    std::cout << "[Preprocessing phase (1/2)] Model partitioned & Parameter morphed!" <<std::endl;
+    std::cout << "[Preprocessing phase (1/3)] Model partitioned & Parameter morphed!" <<std::endl;
 
     int prepare = 2;
     for (size_t i = 0; i < prepare; i++){
