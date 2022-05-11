@@ -19,8 +19,8 @@ integrity, low inference latency and high accuracy simultaneously. This artifact
 
 ## Experiments
 
-If otherwise specified, all SOTER's experiments run on top of an SGX virtual
-machine and a GPU machine. Each experiment runs 1000 inferences by default.
+If otherwise specified, all SOTER's experiments run on top of a GrapheneSGX-equipped TEE virtual
+machine and a 2080 Ti GPU machine. Each experiment runs 1000 inferences by default.
 
 ### Prepare
 
