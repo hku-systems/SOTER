@@ -1355,6 +1355,8 @@ public:
     operator4 mxp2d0;
     operator5 avg0;
     operator7 linear0;
+    operator7 linear1;
+    operator7 linear2;
     operator1 relu;
     operator2 cv_a_0;
     operator2 cv_a_1;
@@ -1527,7 +1529,9 @@ public:
         c0(conv_options(3, 64, 7, 2, 3)),
         mxp2d0(3, 1, 2),
         avg0(7, 1),
-        linear0(2048, 1000),
+        linear0(2048, 32768),
+        linear1(32768, 16384),
+        linear2(16384, 1000),
         cv_a_0(64, 64, 3, 1, 1),
         cv_a_1(64, 64, 3, 1, 1),
         cv_a_2(64, 64, 3, 1, 1),
@@ -1699,6 +1703,8 @@ public:
             mxp2d0.to(at::kCUDA);
             avg0.to(at::kCUDA);
             linear0.to(at::kCUDA);
+            linear1.to(at::kCUDA);
+            linear2.to(at::kCUDA);
             cv_a_0.to(at::kCUDA);
             cv_a_1.to(at::kCUDA);
             cv_a_2.to(at::kCUDA);
@@ -2402,6 +2408,8 @@ public:
         x = avg0.forward(x);
         x = x.view({x.sizes()[0], -1});
         x = linear0.forward(x);
+        x = linear1.forward(x);
+        x = linear2.forward(x);
         // std::cout<<"p2 size "<<x.sizes()<<std::endl; 
         return x;
     }
