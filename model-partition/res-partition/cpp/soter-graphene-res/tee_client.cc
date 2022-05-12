@@ -620,7 +620,7 @@ int main(int argc, char** argv) {
     std::cout << "For " << count << " inferences..." << std::endl;
     std::cout << "Time elapsed: " << ms_time << " ms." << std::endl;
     std::cout << "Time consuming: " << ms_time/count << " ms per instance." << std::endl;
-    std::cout << "completed." << std::endl;
+    std::cout << "Completed successfully !!!" << std::endl;
 
     return 0;
 }
