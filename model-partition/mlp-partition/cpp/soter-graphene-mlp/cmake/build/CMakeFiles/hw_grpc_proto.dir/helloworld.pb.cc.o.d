@@ -1,7 +1,7 @@
 CMakeFiles/hw_grpc_proto.dir/helloworld.pb.cc.o: \
- /home/xian/atc22-artifact/backup/soter-graphene/mlp/cpp/helloworld/cmake/build/helloworld.pb.cc \
+ /home/xian/atc22-artifact/SOTER/model-partition/mlp-partition/cpp/soter-graphene-mlp/cmake/build/helloworld.pb.cc \
  /usr/include/stdc-predef.h \
- /home/xian/atc22-artifact/backup/soter-graphene/mlp/cpp/helloworld/cmake/build/helloworld.pb.h \
+ /home/xian/atc22-artifact/SOTER/model-partition/mlp-partition/cpp/soter-graphene-mlp/cmake/build/helloworld.pb.h \
  /usr/include/c++/7/limits \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
