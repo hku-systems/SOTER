@@ -1,0 +1,3 @@
+/home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/alexnet/build/CMakeFiles/main.dir
+/home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/alexnet/build/CMakeFiles/edit_cache.dir
+/home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/alexnet/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,3 @@
+/home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/build/CMakeFiles/main.dir
+/home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/build/CMakeFiles/edit_cache.dir
+/home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/build/CMakeFiles/rebuild_cache.dir
