@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/densenet121_80outsourced.cpp" "CMakeFiles/main.dir/densenet121_80outsourced.cpp.o" "gcc" "CMakeFiles/main.dir/densenet121_80outsourced.cpp.o.d"
+  "/home/xian/atc22-artifact/SOTER/shieldmodel/models/src/densenet121/densenet121.cpp" "CMakeFiles/main.dir/densenet121.cpp.o" "gcc" "CMakeFiles/main.dir/densenet121.cpp.o.d"
   )
 
 # Targets to which this target links.

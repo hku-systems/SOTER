@@ -57,10 +57,10 @@ RM = /snap/cmake/1082/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121
+CMAKE_SOURCE_DIR = /home/xian/atc22-artifact/SOTER/shieldmodel/models/src/densenet121
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/build
+CMAKE_BINARY_DIR = /home/xian/atc22-artifact/SOTER/shieldmodel/models/src/densenet121/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/build/CMakeFiles /home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/shieldmodel/models/src/densenet121/build/CMakeFiles /home/xian/atc22-artifact/SOTER/shieldmodel/models/src/densenet121/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/backup/soter-graphene/libtorch-inference-with-different-partition/densenet121/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/shieldmodel/models/src/densenet121/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,29 +129,29 @@ main/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
-densenet121_80outsourced.o: densenet121_80outsourced.cpp.o
-.PHONY : densenet121_80outsourced.o
+densenet121.o: densenet121.cpp.o
+.PHONY : densenet121.o
 
 # target to build an object file
-densenet121_80outsourced.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/densenet121_80outsourced.cpp.o
-.PHONY : densenet121_80outsourced.cpp.o
+densenet121.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/densenet121.cpp.o
+.PHONY : densenet121.cpp.o
 
-densenet121_80outsourced.i: densenet121_80outsourced.cpp.i
-.PHONY : densenet121_80outsourced.i
+densenet121.i: densenet121.cpp.i
+.PHONY : densenet121.i
 
 # target to preprocess a source file
-densenet121_80outsourced.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/densenet121_80outsourced.cpp.i
-.PHONY : densenet121_80outsourced.cpp.i
+densenet121.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/densenet121.cpp.i
+.PHONY : densenet121.cpp.i
 
-densenet121_80outsourced.s: densenet121_80outsourced.cpp.s
-.PHONY : densenet121_80outsourced.s
+densenet121.s: densenet121.cpp.s
+.PHONY : densenet121.s
 
 # target to generate assembly for a file
-densenet121_80outsourced.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/densenet121_80outsourced.cpp.s
-.PHONY : densenet121_80outsourced.cpp.s
+densenet121.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/densenet121.cpp.s
+.PHONY : densenet121.cpp.s
 
 # Help Target
 help:
@@ -162,9 +162,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... main"
-	@echo "... densenet121_80outsourced.o"
-	@echo "... densenet121_80outsourced.i"
-	@echo "... densenet121_80outsourced.s"
+	@echo "... densenet121.o"
+	@echo "... densenet121.i"
+	@echo "... densenet121.s"
 .PHONY : help
 
 

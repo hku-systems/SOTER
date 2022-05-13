@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/main.dir/densenet121_80outsourced.cpp.o"
-  "CMakeFiles/main.dir/densenet121_80outsourced.cpp.o.d"
+  "CMakeFiles/main.dir/densenet121.cpp.o"
+  "CMakeFiles/main.dir/densenet121.cpp.o.d"
   "main"
   "main.pdb"
 )

@@ -7,6 +7,6 @@ project(main)
 set(Torch_DIR /home/xian/libtorch17/libtorch/share/cmake/Torch)
 find_package(Torch REQUIRED)
 
-add_executable(main densenet121_80outsourced.cpp)
+add_executable(main densenet121.cpp)
 target_link_libraries(main "${TORCH_LIBRARIES}")
 set_property(TARGET main PROPERTY CXX_STANDARD 14)

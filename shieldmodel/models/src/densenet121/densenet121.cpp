@@ -113,7 +113,9 @@ public:
         network->push_back(torch::nn::ReLU());
         network->push_back(torch::nn::AdaptiveMaxPool2d(torch::nn::AdaptiveMaxPool2dOptions({1, 1})));
         network->push_back(flatten());
-        network->push_back(torch::nn::Linear(num_channels, 1000));
+        network->push_back(torch::nn::Linear(num_channels, 32768));
+        network->push_back(torch::nn::Linear(32768, 4096));
+        network->push_back(torch::nn::Linear(4096, 1000));
 
         register_module("network", network);
     }
@@ -132,7 +134,7 @@ private:
 int main()
 {
     densenet121 model;
-    std::cout << "DenseNet121 - CPU version" << std::endl;
+    std::cout << "DenseNet121 - Graphene version" << std::endl;
     
     int count = 1000;
     auto input = torch::ones({1, 3, 224, 224});

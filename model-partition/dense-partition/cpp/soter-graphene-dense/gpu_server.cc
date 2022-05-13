@@ -1783,19 +1783,33 @@ class dense_gpu_part2 : public dense_part
 {
 public:
     torch::nn::Conv2d c0;
+    operator7 linear0;
+    operator7 linear1;
+    operator7 linear2;
     dense_gpu_part2():
-        c0(torch::nn::Conv2d(torch::nn::Conv2dOptions(3, 64, 7).padding(3).stride(2)))
+        c0(torch::nn::Conv2d(torch::nn::Conv2dOptions(3, 64, 7).padding(3).stride(2))),
+        linear0(1024, 32768),
+        linear1(32768, 4096),
+        linear2(4096, 1000)
         {
             c0->to(at::kCUDA);
+            linear0.to(at::kCUDA);
+            linear1.to(at::kCUDA);
+            linear2.to(at::kCUDA);
         }
     torch::Tensor forward(torch::Tensor x)
     {
+        x = linear0.forward(x);
+        x = linear1.forward(x);
+        x = linear2.forward(x);
         return x;
     }
     void morphpara(){
         // nothing to do, inherit from virtual func
     }
 };
+
+
 
 dense_part* models[] = {
     new dense_warmup(),

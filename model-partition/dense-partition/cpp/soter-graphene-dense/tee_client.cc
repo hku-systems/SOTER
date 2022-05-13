@@ -253,7 +253,9 @@ struct densenet : public torch::nn::Module
         x = relu.forward(x);
         x = admaxp2d0.forward(x);
         x = x.view({x.sizes()[0], -1});
-        x = linear0.forward(x);
+        // std::cout<<"forward2_new x size "<<x.sizes()<<std::endl;
+        // std::cout<<"forward2_new here"<<std::endl;
+        // x = linear0.forward(x);
         return x;
     }
     torch::Tensor forward(torch::Tensor x) {
@@ -268,7 +270,7 @@ struct densenet : public torch::nn::Module
             intermedia = torch::rand({1, 3, 224, 224});
             cfp11 = pass_fingerprint(intermedia, record_flag); 
             cfp12 = pass_fingerprint(intermedia, record_flag); 
-            intermedia = torch::rand({1, 1000});
+            intermedia = torch::rand({1, 1024});
             cfp21 = pass_fingerprint(intermedia, record_flag); 
             cfp22 = pass_fingerprint(intermedia, record_flag); 
             record_flag ++;
@@ -359,10 +361,10 @@ struct densenet : public torch::nn::Module
                     }
                 }
             }
-            
+
             record_flag ++;
             return x;
-        }  
+        } 
     }
 
     torch::Tensor pass_fingerprint_withindex(int *idx, int fp_flag){
