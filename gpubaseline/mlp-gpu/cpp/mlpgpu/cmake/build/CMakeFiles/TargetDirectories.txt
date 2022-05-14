@@ -1,0 +1,5 @@
+/home/xian/atc22-artifact/SOTER/gpubaseline/mlp-gpu/cpp/mlpgpu/cmake/build/CMakeFiles/hw_grpc_proto.dir
+/home/xian/atc22-artifact/SOTER/gpubaseline/mlp-gpu/cpp/mlpgpu/cmake/build/CMakeFiles/tee_client.dir
+/home/xian/atc22-artifact/SOTER/gpubaseline/mlp-gpu/cpp/mlpgpu/cmake/build/CMakeFiles/gpu_server.dir
+/home/xian/atc22-artifact/SOTER/gpubaseline/mlp-gpu/cpp/mlpgpu/cmake/build/CMakeFiles/edit_cache.dir
+/home/xian/atc22-artifact/SOTER/gpubaseline/mlp-gpu/cpp/mlpgpu/cmake/build/CMakeFiles/rebuild_cache.dir
