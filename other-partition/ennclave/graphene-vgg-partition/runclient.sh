@@ -1,4 +1,4 @@
-pushd ./vgg-partition/cpp/ennclave-vgg/
+pushd ../vgg-partition/cpp/ennclave-vgg/
 sed -i "s/xian/ubuntu/g" ./CMakeLists.txt
 
 rm -rf cmake

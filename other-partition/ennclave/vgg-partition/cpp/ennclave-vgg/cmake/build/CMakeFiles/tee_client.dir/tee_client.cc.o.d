@@ -1,5 +1,5 @@
 CMakeFiles/tee_client.dir/tee_client.cc.o: \
- /home/xian/atc22-artifact/backup/soter-graphene/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/tee_client.cc \
+ /home/xian/atc22-artifact/SOTER/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/tee_client.cc \
  /usr/include/stdc-predef.h /usr/include/c++/7/stdlib.h \
  /usr/include/c++/7/cstdlib \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
@@ -670,8 +670,8 @@ CMakeFiles/tee_client.dir/tee_client.cc.o: \
  /include/grpcpp/impl/server_builder_plugin.h \
  /include/grpcpp/security/authorization_policy_provider.h \
  /include/grpcpp/server_context.h /include/grpcpp/server_posix.h \
- /home/xian/atc22-artifact/backup/soter-graphene/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/cmake/build/helloworld.grpc.pb.h \
- /home/xian/atc22-artifact/backup/soter-graphene/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/cmake/build/helloworld.pb.h \
+ /home/xian/atc22-artifact/SOTER/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/cmake/build/helloworld.grpc.pb.h \
+ /home/xian/atc22-artifact/SOTER/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/cmake/build/helloworld.pb.h \
  /include/google/protobuf/port_def.inc \
  /include/google/protobuf/port_undef.inc \
  /include/google/protobuf/io/coded_stream.h \
