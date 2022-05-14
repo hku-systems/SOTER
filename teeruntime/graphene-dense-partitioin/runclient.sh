@@ -1,4 +1,4 @@
-pushd ../../model-partition/dense-partition/cpp/soter-graphene-dense/
+pushd ../../mtr-partition/dense-partition/cpp/soter-graphene-dense/
 sed -i "s/xian/ubuntu/g" ./CMakeLists.txt
 
 rm -rf cmake

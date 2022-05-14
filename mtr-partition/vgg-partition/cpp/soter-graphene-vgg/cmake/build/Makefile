@@ -57,10 +57,10 @@ RM = /snap/cmake/1082/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xian/atc22-artifact/SOTER/model-partition/vgg-partition/cpp/soter-graphene-vgg
+CMAKE_SOURCE_DIR = /home/xian/atc22-artifact/SOTER/mtr-partition/vgg-partition/cpp/soter-graphene-vgg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xian/atc22-artifact/SOTER/model-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build
+CMAKE_BINARY_DIR = /home/xian/atc22-artifact/SOTER/mtr-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/model-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles /home/xian/atc22-artifact/SOTER/model-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles /home/xian/atc22-artifact/SOTER/mtr-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/model-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
