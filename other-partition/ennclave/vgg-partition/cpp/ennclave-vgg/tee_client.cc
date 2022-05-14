@@ -268,6 +268,9 @@ struct vgg19 : public torch::nn::Module
 	        register_module("cv14", cv14);
             forwards.push_back(std::bind(&vgg19::forward1_new, this, std::placeholders::_1));
             forwards.push_back(std::bind(&vgg19::forward2_new, this, std::placeholders::_1));
+            forwards.push_back(std::bind(&vgg19::forward3_new, this, std::placeholders::_1));
+            forwards.push_back(std::bind(&vgg19::forward4_new, this, std::placeholders::_1));
+
         }
 
     torch::Tensor forward1_new(torch::Tensor x) {
@@ -275,13 +278,17 @@ struct vgg19 : public torch::nn::Module
         return x;
     }
     torch::Tensor forward2_new(torch::Tensor x) {
-        // std::cout<<"forward2_new"<<std::endl;
+        // x = F::relu(x);
         x = torch::max_pool2d(x, 2, 2, 0);
+        return x;
+    }
+    torch::Tensor forward3_new(torch::Tensor x) {
+        
         x = x.view({ -1, num_flat_features(x)});
-        x = fc0.forward(x);
-        x = F::relu(x);
-        x = fc1.forward(x);
-        x = F::relu(x);
+        return x;
+    }
+
+    torch::Tensor forward4_new(torch::Tensor x) { 
         x = fc2.forward(x);
         return x;
     }
@@ -290,8 +297,8 @@ struct vgg19 : public torch::nn::Module
         torch::Tensor intermedia;
         torch::Tensor tmp;
         // online inference & fp check 
-        std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag-1) << "/"<<count<<")" <<std::endl; 
-        for (int i = 0; i < 2;i++) {
+        std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag+1) << "/"<<count<<")" <<std::endl; 
+        for (int i = 0; i < 4;i++) {
             // intercat = torch::cat({fp_check, intermedia},0);
             intermedia = forwards[i](x);
             std::stringstream ss;
@@ -352,7 +359,7 @@ int main(int argc, char** argv) {
 
     // GPU warm up
     reply = greeter->SayHello(msg, 0);
-    std::cout << "[Preprocessing phase (1/3)] Model partitioned & Parameter morphed!" <<std::endl;
+    // std::cout << "[Preprocessing phase (1/3)] Model partitioned & Parameter morphed!" <<std::endl;
 
     int prepare = 2;
     for (size_t i = 0; i < prepare; i++){

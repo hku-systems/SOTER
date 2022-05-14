@@ -331,6 +331,9 @@ public:
     torch::nn::Conv2d cv12;
     torch::nn::Conv2d cv13;
     torch::nn::Conv2d cv14;
+    torch::nn::Linear fc0;
+    // torch::nn::Linear fc1;
+    torch::nn::Linear fc2;
 
     vgg19_gpu_part1_new():
         mxp2d0(2, 2, 0),
@@ -349,7 +352,10 @@ public:
         cv11(conv_options(512, 512, 3, 1, 1)),
         cv12(conv_options(512, 512, 3, 1, 1)),
         cv13(conv_options(512, 512, 3, 1, 1)),
-        cv14(conv_options(512, 512, 3, 1, 1))
+        cv14(conv_options(512, 512, 3, 1, 1)),
+        fc0(25088, 4096),
+        // fc1(4096, 4096),
+        fc2(4096, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -370,6 +376,9 @@ public:
             cv12->to(at::kCUDA);
             cv13->to(at::kCUDA);
             cv14->to(at::kCUDA);
+            fc0->to(at::kCUDA);
+            // fc1->to(at::kCUDA);
+            fc2->to(at::kCUDA);
         }
     
     torch::Tensor forward(torch::Tensor x)
@@ -411,27 +420,26 @@ public:
         x = F::relu(x);
         x = cv14(x);
         x = F::relu(x);
+        // x = torch::max_pool2d(x, 2, 2, 0);
+        // x = x.view({ -1, num_flat_features(x)});
+        // x = fc0->forward(x);
+        // x = F::relu(x);
         return x;
     }
 
     void morphpara(){
-        int scalar = 4;
-        c->weight = c->weight * scalar;
-        cv0->weight = cv0->weight * scalar;
-        cv1->weight = cv1->weight * scalar;
-        cv2->weight = cv2->weight * scalar;
-        cv3->weight = cv3->weight * scalar;
-        cv4->weight = cv4->weight * scalar;
-        cv5->weight = cv5->weight * scalar;
-        cv6->weight = cv6->weight * scalar;
-        cv7->weight = cv7->weight * scalar;
-        cv8->weight = cv8->weight * scalar;
-        cv9->weight = cv9->weight * scalar;
-        cv10->weight = cv10->weight * scalar;
-        cv11->weight = cv11->weight * scalar;
-        cv12->weight = cv12->weight * scalar;
-        cv13->weight = cv13->weight * scalar;
-        cv14->weight = cv14->weight * scalar;
+        //nothing to do
+    }
+    long num_flat_features(torch::Tensor x)
+    {
+        auto size = x.sizes();
+        auto num_features = 1;
+        for (auto s : size)
+        {
+            num_features *= s;
+        }
+        num_features /= nbatches;
+        return num_features;
     }
 
 };
@@ -441,42 +449,91 @@ class vgg19_gpu_part2_new : public vgg19_part
 public:
     operator1 relu;
     operator4 mxp2d0;
-    torch::nn::Linear fc0;
-    torch::nn::Linear fc2;
 
     vgg19_gpu_part2_new():
+        mxp2d0(2, 2, 0)
+        {
+            relu.to(at::kCUDA);
+            mxp2d0.to(at::kCUDA);
+        }
+    torch::Tensor forward(torch::Tensor x)
+    {  
+        
+        return x;
+    }
+    void morphpara(){}
+    
+};
+
+class vgg19_gpu_part3_new : public vgg19_part
+{
+public:
+    operator1 relu;
+    operator4 mxp2d0;
+    torch::nn::Linear fc0;
+    // torch::nn::Linear fc1;
+    torch::nn::Linear fc2;
+
+    vgg19_gpu_part3_new():
         mxp2d0(2, 2, 0),
         fc0(25088, 4096),
+        // fc1(4096, 4096),
         fc2(4096, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
             fc0->to(at::kCUDA);
+            // fc1->to(at::kCUDA);
             fc2->to(at::kCUDA);
         }
-    
     torch::Tensor forward(torch::Tensor x)
     {  
-        // x = fc0(x);
-        // x = F::relu(x);
-        // x = fc2(x);
+        // x = torch::max_pool2d(x, 2, 2, 0);
+        // x = x.view({ -1, num_flat_features(x)});
+        x = fc0->forward(x);
+        x = F::relu(x);
+        // x = fc2->forward(x);
         return x;
     }
-
-    void morphpara(){
-        int scalar = 4;
-        fc0->weight = fc0->weight * scalar;
-        fc0->bias = fc0->bias * scalar;
-        fc2->weight = fc2->weight * scalar;
-        fc2->bias = fc2->bias * scalar;        
+    void morphpara(){}
+    long num_flat_features(torch::Tensor x)
+    {
+        auto size = x.sizes();
+        auto num_features = 1;
+        for (auto s : size)
+        {
+            num_features *= s;
+        }
+        num_features /= nbatches;
+        return num_features;
     }
+};
 
+class vgg19_gpu_part4_new : public vgg19_part
+{
+public:
+    operator1 relu;
+    operator4 mxp2d0;
+
+    vgg19_gpu_part4_new():
+        mxp2d0(2, 2, 0)
+        {
+            relu.to(at::kCUDA);
+            mxp2d0.to(at::kCUDA);
+        }
+    torch::Tensor forward(torch::Tensor x)
+    {  
+        return x;
+    }
+    void morphpara(){}
 };
 
 vgg19_part* models[] = {
     new vgg19_warmup(),
     new vgg19_gpu_part1_new(),
-    new vgg19_gpu_part2_new()
+    new vgg19_gpu_part2_new(),
+    new vgg19_gpu_part3_new(),
+    new vgg19_gpu_part4_new()
 };
 
 // Logic and data behind the server's behavior.
@@ -496,8 +553,7 @@ class GreeterServiceImpl final : public Greeter::Service {
         torch::Tensor inter_active;
         std::istringstream ss(request->name());
         torch::load(inter_active, ss);
-        output = models[tag]->forward(inter_active.to(at::kCUDA)); //56ms
-        // output = torch::rand({1, 3, 224, 224}).to(at::kCUDA); //23ms
+        output = models[tag]->forward(inter_active.to(at::kCUDA)); 
         std::stringstream so;
         torch::save(output.to(at::kCPU), so);
         reply->set_message(so.str());
@@ -509,7 +565,7 @@ class GreeterServiceImpl final : public Greeter::Service {
 void RunServer() {
     for (auto &m : models) {
         m->eval();
-        m->morphpara();
+        // m->morphpara();
         m->to(at::kCUDA);
     }
 

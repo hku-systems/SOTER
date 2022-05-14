@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCARES_STATICLIB
 
-CXX_INCLUDES = -I/home/xian/atc22-artifact/SOTER/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/cmake/build -isystem /include
+CXX_INCLUDES = -I/home/xian/atc22-artifact/backup/soter-graphene/other-partition/ennclave/vgg-partition/cpp/ennclave-vgg/cmake/build -isystem /include
 
 CXX_FLAGS =  -g -std=gnu++11
 
