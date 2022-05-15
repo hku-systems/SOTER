@@ -414,9 +414,7 @@ public:
         x = cv13(x);
         x = F::relu(x);
         x = cv14(x);
-        // x = F::relu(x);
-        // x = torch::max_pool2d(x, 2, 2, 0);
-        // x = x.view({ -1, num_flat_features(x)});
+        x = F::relu(x);
         return x;
     }
     long num_flat_features(torch::Tensor x)
@@ -495,7 +493,6 @@ public:
         x = x.view({ -1, num_flat_features(x)});
         x = fc0(x);
         x = F::relu(x);
-        // x = fc2(x);
         return x;
     }
 
@@ -540,9 +537,6 @@ public:
     
     torch::Tensor forward(torch::Tensor x)
     {  
-        // x = fc0(x);
-        // x = F::relu(x);
-        // x = fc2(x);
         return x;
     }
 
