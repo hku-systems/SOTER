@@ -1,5 +1,5 @@
 CMakeFiles/gpu_server.dir/gpu_server.cc.o: \
- /home/xian/atc22-artifact/backup/soter-graphene/other-partition/aegisdnn/ag-partition/alex-partition/cpp/ag-graphene-an/gpu_server.cc \
+ /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/alex-partition/cpp/ag-graphene-an/gpu_server.cc \
  /usr/include/stdc-predef.h \
  /home/xian/libtorch17/libtorch/include/torch/script.h \
  /home/xian/libtorch17/libtorch/include/torch/csrc/api/include/torch/types.h \
@@ -674,8 +674,8 @@ CMakeFiles/gpu_server.dir/gpu_server.cc.o: \
  /include/grpcpp/impl/server_builder_option.h \
  /include/grpcpp/security/authorization_policy_provider.h \
  /include/grpcpp/server_context.h /include/grpcpp/server_posix.h \
- /home/xian/atc22-artifact/backup/soter-graphene/other-partition/aegisdnn/ag-partition/alex-partition/cpp/ag-graphene-an/cmake/build/helloworld.grpc.pb.h \
- /home/xian/atc22-artifact/backup/soter-graphene/other-partition/aegisdnn/ag-partition/alex-partition/cpp/ag-graphene-an/cmake/build/helloworld.pb.h \
+ /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/alex-partition/cpp/ag-graphene-an/cmake/build/helloworld.grpc.pb.h \
+ /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/alex-partition/cpp/ag-graphene-an/cmake/build/helloworld.pb.h \
  /include/google/protobuf/port_def.inc \
  /include/google/protobuf/port_undef.inc \
  /include/google/protobuf/io/coded_stream.h \

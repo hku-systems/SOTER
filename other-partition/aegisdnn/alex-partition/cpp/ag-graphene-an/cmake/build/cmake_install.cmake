@@ -1,4 +1,4 @@
-# Install script for directory: /home/xian/atc22-artifact/backup/soter-graphene/other-partition/aegisdnn/ag-partition/alex-partition/cpp/ag-graphene-an
+# Install script for directory: /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/alex-partition/cpp/ag-graphene-an
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xian/atc22-artifact/backup/soter-graphene/other-partition/aegisdnn/ag-partition/alex-partition/cpp/ag-graphene-an/cmake/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/alex-partition/cpp/ag-graphene-an/cmake/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

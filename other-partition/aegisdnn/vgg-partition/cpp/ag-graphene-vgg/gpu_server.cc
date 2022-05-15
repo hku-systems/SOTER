@@ -414,7 +414,9 @@ public:
         x = cv13(x);
         x = F::relu(x);
         x = cv14(x);
-        x = F::relu(x);
+        // x = F::relu(x);
+        // x = torch::max_pool2d(x, 2, 2, 0);
+        // x = x.view({ -1, num_flat_features(x)});
         return x;
     }
     long num_flat_features(torch::Tensor x)
@@ -459,10 +461,8 @@ public:
     {  
         return x;
     }
-
     void morphpara(){      
     }
-
 };
 
 class vgg19_gpu_part3_new : public vgg19_part
@@ -489,28 +489,10 @@ public:
     
     torch::Tensor forward(torch::Tensor x)
     {  
-        x = torch::max_pool2d(x, 2, 2, 0);
-        x = x.view({ -1, num_flat_features(x)});
-        x = fc0(x);
-        x = F::relu(x);
         return x;
     }
-
     void morphpara(){      
     }
-
-    long num_flat_features(torch::Tensor x)
-    {
-        auto size = x.sizes();
-        auto num_features = 1;
-        for (auto s : size)
-        {
-            num_features *= s;
-        }
-        num_features /= nbatches;
-        return num_features;
-    }
-
 };
 
 class vgg19_gpu_part4_new : public vgg19_part
@@ -545,12 +527,95 @@ public:
 
 };
 
+class vgg19_gpu_part5_new : public vgg19_part
+{
+public:
+    operator1 relu;
+    operator4 mxp2d0;
+    torch::nn::Linear fc0;
+    torch::nn::Linear fc1;
+    torch::nn::Linear fc2;
+
+    vgg19_gpu_part5_new():
+        mxp2d0(2, 2, 0),
+        fc0(25088, 4096),
+        fc1(4096, 4096),
+        fc2(4096, 1000)
+        {
+            relu.to(at::kCUDA);
+            mxp2d0.to(at::kCUDA);
+            fc0->to(at::kCUDA);
+            fc1->to(at::kCUDA);
+            fc2->to(at::kCUDA);
+        }
+    
+    torch::Tensor forward(torch::Tensor x)
+    {  
+        // x = torch::max_pool2d(x, 2, 2, 0);
+        // x = x.view({ -1, num_flat_features(x)});
+        x = fc0(x);
+        // x = F::relu(x);
+        // x = fc2(x);
+        return x;
+    }
+
+    void morphpara(){      
+    }
+
+    long num_flat_features(torch::Tensor x)
+    {
+        auto size = x.sizes();
+        auto num_features = 1;
+        for (auto s : size)
+        {
+            num_features *= s;
+        }
+        num_features /= nbatches;
+        return num_features;
+    }
+
+};
+
+class vgg19_gpu_part6_new : public vgg19_part
+{
+public:
+    operator1 relu;
+    operator4 mxp2d0;
+    torch::nn::Linear fc0;
+    torch::nn::Linear fc1;
+    torch::nn::Linear fc2;
+
+    vgg19_gpu_part6_new():
+        mxp2d0(2, 2, 0),
+        fc0(25088, 4096),
+        fc1(4096, 4096),
+        fc2(4096, 1000)
+        {
+            relu.to(at::kCUDA);
+            mxp2d0.to(at::kCUDA);
+            fc0->to(at::kCUDA);
+            fc1->to(at::kCUDA);
+            fc2->to(at::kCUDA);
+        }
+    
+    torch::Tensor forward(torch::Tensor x)
+    {  
+        return x;
+    }
+
+    void morphpara(){      
+    }
+
+};
+
 vgg19_part* models[] = {
     new vgg19_warmup(),
     new vgg19_gpu_part1_new(),
     new vgg19_gpu_part2_new(),
     new vgg19_gpu_part3_new(),
-    new vgg19_gpu_part4_new()
+    new vgg19_gpu_part4_new(),
+    new vgg19_gpu_part5_new(),
+    new vgg19_gpu_part6_new()
 };
 
 // Logic and data behind the server's behavior.
