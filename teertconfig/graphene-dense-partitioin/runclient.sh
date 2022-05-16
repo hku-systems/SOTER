@@ -13,5 +13,5 @@ sudo cp ./tee_client /bin/tee_client
 popd
 
 make clean
-SGX=1 make
-graphene-sgx ./tee_client --target=10.22.1.26:50051
+SGX=1 make 
+graphene-sgx ./tee_client --target=10.22.1.26:50051 > ~/atc22-artifact/SOTER/script/data/soterdense.txt

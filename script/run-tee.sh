@@ -36,3 +36,21 @@ if [ "$1" == "alexag" ];then
     echo '** Alexnet-ag inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
+if [ "$1" == "ressoter" ];then
+    cd ~/atc22-artifact/SOTER/teertconfig/graphene-res-partition
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "densesoter" ];then
+    cd ~/atc22-artifact/SOTER/teertconfig/graphene-dense-partition
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "mlpsoter" ];then
+    cd ~/atc22-artifact/SOTER/teertconfig/graphene-mlp-partition
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
