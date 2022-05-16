@@ -1,0 +1,36 @@
+terminate called after throwing an instance of 'c10::Error'
+  what():  CUDA error: out of memory
+Exception raised from malloc at ../c10/cuda/CUDACachingAllocator.cpp:243 (most recent call first):
+frame #0: c10::Error::Error(c10::SourceLocation, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) + 0x69 (0x7faf52c11b89 in /home/xian/libtorch17/libtorch/lib/libc10.so)
+frame #1: <unknown function> + 0x26347 (0x7faf03c42347 in /home/xian/libtorch17/libtorch/lib/libc10_cuda.so)
+frame #2: <unknown function> + 0x27227 (0x7faf03c43227 in /home/xian/libtorch17/libtorch/lib/libc10_cuda.so)
+frame #3: <unknown function> + 0x2788a (0x7faf03c4388a in /home/xian/libtorch17/libtorch/lib/libc10_cuda.so)
+frame #4: THCStorage_resizeBytes(THCState*, c10::StorageImpl*, long) + 0xa2 (0x7faf08faec02 in /home/xian/libtorch17/libtorch/lib/libtorch_cuda.so)
+frame #5: at::native::empty_strided_cuda(c10::ArrayRef<long>, c10::ArrayRef<long>, c10::TensorOptions const&) + 0x496 (0x7faf08d3e0d6 in /home/xian/libtorch17/libtorch/lib/libtorch_cuda.so)
+frame #6: <unknown function> + 0x3274093 (0x7faf08eee093 in /home/xian/libtorch17/libtorch/lib/libtorch_cuda.so)
+frame #7: <unknown function> + 0x32a79c0 (0x7faf08f219c0 in /home/xian/libtorch17/libtorch/lib/libtorch_cuda.so)
+frame #8: <unknown function> + 0x32a62f6 (0x7faf08f202f6 in /home/xian/libtorch17/libtorch/lib/libtorch_cuda.so)
+frame #9: <unknown function> + 0x1328500 (0x7faf431b1500 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #10: <unknown function> + 0x130181e (0x7faf4318a81e in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #11: <unknown function> + 0x1306ed6 (0x7faf4318fed6 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #12: <unknown function> + 0x1328500 (0x7faf431b1500 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #13: at::empty_strided(c10::ArrayRef<long>, c10::ArrayRef<long>, c10::TensorOptions const&) + 0x295 (0x7faf43290ce5 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #14: <unknown function> + 0x29681f6 (0x7faf447f11f6 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #15: <unknown function> + 0x1306ed6 (0x7faf4318fed6 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #16: <unknown function> + 0x1328500 (0x7faf431b1500 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #17: <unknown function> + 0x130181e (0x7faf4318a81e in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #18: <unknown function> + 0x1306ed6 (0x7faf4318fed6 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #19: <unknown function> + 0x1328500 (0x7faf431b1500 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #20: at::empty_strided(c10::ArrayRef<long>, c10::ArrayRef<long>, c10::TensorOptions const&) + 0x295 (0x7faf43290ce5 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #21: at::native::to(at::Tensor const&, c10::TensorOptions const&, bool, bool, c10::optional<c10::MemoryFormat>) + 0x17dd (0x7faf42e738ed in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #22: <unknown function> + 0x158d5e6 (0x7faf434165e6 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #23: <unknown function> + 0x15eb7b3 (0x7faf434747b3 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #24: <unknown function> + 0xaf2d7f (0x7faf4297bd7f in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #25: <unknown function> + 0x133045a (0x7faf431b945a in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #26: at::Tensor::to(c10::TensorOptions const&, bool, bool, c10::optional<c10::MemoryFormat>) const + 0x315 (0x7faf434f7045 in /home/xian/libtorch17/libtorch/lib/libtorch_cpu.so)
+frame #27: ./gpu_server() [0x41ac5a]
+frame #28: ./gpu_server() [0x41ad54]
+frame #29: ./gpu_server() [0xd247bd]
+frame #30: __libc_start_main + 0x7f (0x7faf0451f7cf in /lib/x86_64-linux-gnu/libc.so.6)
+frame #31: ./gpu_server() [0x419969]
+

@@ -13,7 +13,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.23.1/CMakeSystem.cmake"
   "detect_cuda_compute_capabilities.cpp"
   "detect_cuda_version.cc"
-  "/home/xian/atc22-artifact/backup/soter-graphene/other-partition/aegisdnn/ag-partition/dense-partition/cpp/cmake/common.cmake"
+  "/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/cmake/common.cmake"
   "/home/xian/libtorch17/libtorch/share/cmake/Caffe2/Caffe2Config.cmake"
   "/home/xian/libtorch17/libtorch/share/cmake/Caffe2/Caffe2ConfigVersion.cmake"
   "/home/xian/libtorch17/libtorch/share/cmake/Caffe2/Caffe2Targets-release.cmake"

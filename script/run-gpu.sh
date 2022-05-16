@@ -269,7 +269,7 @@ do
         bash runserver.sh
         popd
         ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
-        while :tt
+        while :
         do
             sleep 1s
             var=$(head -n +1 signal)
@@ -298,7 +298,7 @@ do
         bash runserver.sh
         popd
         ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
-        while :tt
+        while :
         do
             sleep 1s
             var=$(head -n +1 signal)
@@ -327,7 +327,7 @@ do
         bash runserver.sh
         popd
         ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
-        while :tt
+        while :
         do
             sleep 1s
             var=$(head -n +1 signal)
