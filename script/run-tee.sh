@@ -24,9 +24,15 @@ if [ "$1" == "mlcapsule" ];then
     echo '** MLcapsule inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
-if [ "$1" == "vggalex" ];then
+if [ "$1" == "alexsoter" ];then
     cd ~/atc22-artifact/SOTER/teertconfig/graphene-alex-partition
     bash runclient.sh
     echo '** Alexnet-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "alexag" ];then
+    cd ~/atc22-artifact/SOTER/other-partition/aegisdnn/alex-partition/graphene-an-partition
+    bash runclient.sh
+    echo '** Alexnet-ag inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 

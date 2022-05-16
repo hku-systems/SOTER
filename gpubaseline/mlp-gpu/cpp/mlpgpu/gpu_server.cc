@@ -40,11 +40,13 @@ using helloworld::HelloRequest;
 namespace F = torch::nn::functional;
 int server_fd, new_socket, valread;
 struct sockaddr_in address;
+int count = 1000;
 torch::Tensor input = torch::rand({1, 1, 80, 80}, torch::dtype(torch::kFloat32)).to(at::kCUDA);
 torch::Tensor output;
 int challenge_flag = 8888;
 int query_flag = 8889;
 int scalar = 4;
+int count_ = count*2; //use for test
 
 class mlp_part : public torch::nn::Module {
     public:
@@ -181,7 +183,7 @@ class GreeterServiceImpl final : public Greeter::Service {
     int tag = request->tag();
     if (tag == 0) {
         std::cout << "[Preprocessing phase] Receive TEE signal, GPU is now warming up ..."<< std::endl;
-        for (size_t i = 0; i < 1000; i++) {
+        for (size_t i = 0; i < count_; i++) {
             output = models[tag]->forward(input);
         }
         std::cout << "[Inference phase] GPU is serving ..." << std::endl;

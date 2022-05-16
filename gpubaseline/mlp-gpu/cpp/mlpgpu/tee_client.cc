@@ -39,7 +39,7 @@ std::string msg = "w";
 std::string msg_start = "s";
 std::string reply = "0";
 int scalar = 4;
-int count = 1000; // number of inference tests
+int count = 1000;
 int challenge_flag = 8888;
 int query_flag = 8889;
 
@@ -428,7 +428,7 @@ int main(int argc, char** argv) {
     } else {
     target_str = "localhost:50051";
     }
-
+    
     mlp model;
     model.eval();
 
@@ -445,7 +445,7 @@ int main(int argc, char** argv) {
     reply = greeter->SayHello(msg, 0);
     gettimeofday(&tve, 0);
     float ms_time = (tve.tv_sec - tvs.tv_sec) * 1000 + (tve.tv_usec - tvs.tv_usec) / 1000;
-    std::cout << "For " << count << " gpu inferences ..." << std::endl;
+    
     std::cout << "Time elapsed: " << ms_time << " ms." << std::endl;
     std::cout << "Time consuming: " << ms_time/count << " ms per inference." << std::endl;
     std::cout << "Completed successfully !!!" << std::endl;
