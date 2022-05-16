@@ -12,3 +12,9 @@ if [ "$1" == "vggennclave" ];then
     echo '** VGG-ennclave inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
+if [ "$1" == "vggag" ];then
+    cd ~/atc22-artifact/SOTER/other-partition/aegisdnn/vgg-partition/graphene-vgg-partition
+    bash runclient.sh
+    echo '** VGG-ag inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
