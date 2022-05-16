@@ -17,7 +17,7 @@ do
         bash runserver.sh
         popd
 
-        ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay.sh ${model[$i]}"
+        ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
 
         while :
         do
