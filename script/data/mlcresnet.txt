@@ -1,0 +1,4 @@
+ResNet152 - Graphene version
+For 1000 inferences...
+Time elapsed: 229672 ms.
+Fetch here. Time consuming: 229.672 ms per inference.
