@@ -107,7 +107,7 @@ int main()
     double latency = duration / ((double)count);
     std::cout << "For " << count << " inferences..." << std::endl;
     std::cout << "Time elapsed: " << duration << " ms." << std::endl;
-    std::cout << "Time consuming: " << latency << " ms per instance." << std::endl;
+    std::cout << "Fetch here. Time consuming: " <<latency << " ms per inference." << std::endl;
 
     std::cout << "Completed." << std::endl;
 

@@ -18,3 +18,9 @@ if [ "$1" == "vggag" ];then
     echo '** VGG-ag inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
+if [ "$1" == "mlcapsule" ];then
+    cd ~/atc22-artifact/SOTER/shieldmodel/MLCapsule
+    bash run.sh
+    echo '** MLcapsule inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 

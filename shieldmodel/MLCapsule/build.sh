@@ -6,3 +6,4 @@ cmake ../ && make -j4 && sudo make install
 cd ..
 make clean
 SGX=1 make
+
