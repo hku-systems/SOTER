@@ -54,3 +54,21 @@ if [ "$1" == "mlpsoter" ];then
     echo '** MLP-soter inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
+if [ "$1" == "resag" ];then
+    cd ~/atc22-artifact/SOTER/other-partition/aegisdnn/res-partition/graphene-res-partition
+    bash runclient.sh
+    echo '** VGG-ag inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi
+if [ "$1" == "denseag" ];then
+    cd ~/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/graphene-dense-partition
+    bash runclient.sh
+    echo '** VGG-ag inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi
+if [ "$1" == "mlpag" ];then
+    cd ~/atc22-artifact/SOTER/other-partition/aegisdnn/mlp-partition/graphene-mlp-partition
+    bash runclient.sh
+    echo '** VGG-ag inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi
