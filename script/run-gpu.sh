@@ -25,11 +25,14 @@ do
             var=$(head -n +1 signal)
             if [ "$var" == "1" ]
             then
-                echo "[After running] Signal = 1 by relay script"  
+                echo "[After running] Signal reset to 1 by relay script"
+                proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
+                kill -9 $proc  
+                echo "[After running] VGG completed. Process killed. Exit"
                 sed -i 's/1/0/g' signal
                 var=$(head -n +1 signal)
                 if [ "$var" == "0" ];then
-                    echo "[After running] Signal = 0 by gpu script"  
+                    echo "[After running] Signal reset to 0 by gpu script"  
                 fi
                 break
             else 
