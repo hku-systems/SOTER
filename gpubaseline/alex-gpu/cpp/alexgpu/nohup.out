@@ -1,0 +1,122 @@
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+CMake Warning (dev) at /lib/cmake/protobuf/protobuf-options.cmake:6 (option):
+  Policy CMP0077 is not set: option() honors normal variables.  Run "cmake
+  --help-policy CMP0077" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+  For compatibility with older versions of CMake, option is clearing the
+  normal variable 'protobuf_MODULE_COMPATIBLE'.
+Call Stack (most recent call first):
+  /lib/cmake/protobuf/protobuf-config.cmake:2 (include)
+  /home/xian/atc22-artifact/SOTER/gpubaseline/alex-gpu/cpp/cmake/common.cmake:101 (find_package)
+  CMakeLists.txt:7 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Using protobuf 3.19.4.0
+-- Using gRPC 1.45.0
+-- Found CUDA: /usr/local/cuda-10.1 (found version "10.1") 
+-- Caffe2: CUDA detected: 10.1
+-- Caffe2: CUDA nvcc is: /usr/local/cuda-10.1/bin/nvcc
+-- Caffe2: CUDA toolkit directory: /usr/local/cuda-10.1
+-- Caffe2: Header version is: 10.1
+-- Found CUDNN: /usr/local/cuda-10.1/lib64/libcudnn.so  
+-- Found cuDNN: v8.0.3  (include: /usr/local/cuda-10.1/include, library: /usr/local/cuda-10.1/lib64/libcudnn.so)
+-- Autodetected CUDA architecture(s):  7.5 7.5 7.5 7.5
+-- Added CUDA NVCC flags for: -gencode;arch=compute_75,code=sm_75
+-- Found Torch: /home/xian/libtorch17/libtorch/lib/libtorch.so  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/xian/atc22-artifact/SOTER/gpubaseline/alex-gpu/cpp/alexgpu/cmake/build
+[ 12%] Generating helloworld.pb.cc, helloworld.pb.h, helloworld.grpc.pb.cc, helloworld.grpc.pb.h
+[ 25%] Building CXX object CMakeFiles/hw_grpc_proto.dir/helloworld.grpc.pb.cc.o
+[ 37%] Building CXX object CMakeFiles/hw_grpc_proto.dir/helloworld.pb.cc.o
+[ 50%] Linking CXX static library libhw_grpc_proto.a
+[ 50%] Built target hw_grpc_proto
+[ 62%] Building CXX object CMakeFiles/tee_client.dir/tee_client.cc.o
+[ 75%] Building CXX object CMakeFiles/gpu_server.dir/gpu_server.cc.o
+[ 87%] Linking CXX executable tee_client
+[100%] Linking CXX executable gpu_server
+[100%] Built target tee_client
+[100%] Built target gpu_server
+[Preprocessing phase] GPU is listening on 0.0.0.0:50051
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+-- Looking for pthread_create in pthreads
+-- Looking for pthread_create in pthreads - not found
+-- Looking for pthread_create in pthread
+-- Looking for pthread_create in pthread - found
+-- Found Threads: TRUE  
+CMake Warning (dev) at /lib/cmake/protobuf/protobuf-options.cmake:6 (option):
+  Policy CMP0077 is not set: option() honors normal variables.  Run "cmake
+  --help-policy CMP0077" for policy details.  Use the cmake_policy command to
+  set the policy and suppress this warning.
+
+  For compatibility with older versions of CMake, option is clearing the
+  normal variable 'protobuf_MODULE_COMPATIBLE'.
+Call Stack (most recent call first):
+  /lib/cmake/protobuf/protobuf-config.cmake:2 (include)
+  /home/xian/atc22-artifact/SOTER/gpubaseline/alex-gpu/cpp/cmake/common.cmake:101 (find_package)
+  CMakeLists.txt:7 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Using protobuf 3.19.4.0
+-- Using gRPC 1.45.0
+-- Found CUDA: /usr/local/cuda-10.1 (found version "10.1") 
+-- Caffe2: CUDA detected: 10.1
+-- Caffe2: CUDA nvcc is: /usr/local/cuda-10.1/bin/nvcc
+-- Caffe2: CUDA toolkit directory: /usr/local/cuda-10.1
+-- Caffe2: Header version is: 10.1
+-- Found CUDNN: /usr/local/cuda-10.1/lib64/libcudnn.so  
+-- Found cuDNN: v8.0.3  (include: /usr/local/cuda-10.1/include, library: /usr/local/cuda-10.1/lib64/libcudnn.so)
+-- Autodetected CUDA architecture(s):  7.5 7.5 7.5 7.5
+-- Added CUDA NVCC flags for: -gencode;arch=compute_75,code=sm_75
+-- Found Torch: /home/xian/libtorch17/libtorch/lib/libtorch.so  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/xian/atc22-artifact/SOTER/gpubaseline/alex-gpu/cpp/alexgpu/cmake/build
+[ 12%] Generating helloworld.pb.cc, helloworld.pb.h, helloworld.grpc.pb.cc, helloworld.grpc.pb.h
+[ 25%] Building CXX object CMakeFiles/hw_grpc_proto.dir/helloworld.grpc.pb.cc.o
+[ 37%] Building CXX object CMakeFiles/hw_grpc_proto.dir/helloworld.pb.cc.o
+[ 50%] Linking CXX static library libhw_grpc_proto.a
+[ 50%] Built target hw_grpc_proto
+[ 62%] Building CXX object CMakeFiles/tee_client.dir/tee_client.cc.o
+[ 75%] Building CXX object CMakeFiles/gpu_server.dir/gpu_server.cc.o
+[ 87%] Linking CXX executable tee_client
+[100%] Linking CXX executable gpu_server
+[100%] Built target tee_client
+[100%] Built target gpu_server
+[Preprocessing phase] GPU is listening on 0.0.0.0:50051

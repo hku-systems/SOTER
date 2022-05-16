@@ -1,7 +1,8 @@
 echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
-# model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag" "ressoter" "densesoter" "mlpsoter")
-model=("resag" "denseag" "mlpag")
+# model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag"
+# "ressoter" "densesoter" "mlpsoter" "resag" "denseag" "mlpag")
+model=("gpubaseline")
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
     if [ "${model[$i]}" == "vggsoter" ];then
@@ -347,6 +348,47 @@ do
                 echo "[After running] Signal = 0 "  
             fi
         done
+    fi
+    if [ "${model[$i]}" == "gpubaseline" ];then
+        cd /home/xian/atc22-artifact/SOTER/gpubaseline/alex-gpu/cpp/alexgpu/cmake/build
+        nohup ./gpu_server &
+        sleep 7
+        ./tee_client > ~/atc22-artifact/SOTER/script/data/gpualex.txt
+        sleep 5
+        proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
+        kill -9 $proc
+
+        cd /home/xian/atc22-artifact/SOTER/gpubaseline/dense-gpu/cpp/densegpu/cmake/build
+        nohup ./gpu_server &
+        sleep 7
+        ./tee_client > ~/atc22-artifact/SOTER/script/data/gpudense.txt
+        sleep 15
+        proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
+        kill -9 $proc
+
+        cd /home/xian/atc22-artifact/SOTER/gpubaseline/mlp-gpu/cpp/mlpgpu/cmake/build
+        nohup ./gpu_server &
+        sleep 7
+        ./tee_client > ~/atc22-artifact/SOTER/script/data/gpumlp.txt
+        sleep 5
+        proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
+        kill -9 $proc
+
+        cd /home/xian/atc22-artifact/SOTER/gpubaseline/res-gpu/cpp/resnetgpu/cmake/build
+        nohup ./gpu_server &
+        sleep 12
+        ./tee_client > ~/atc22-artifact/SOTER/script/data/gpures.txt
+        sleep 60
+        proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
+        kill -9 $proc
+
+        cd /home/xian/atc22-artifact/SOTER/gpubaseline/vgg-gpu/cpp/vgggpu/cmake/build
+        nohup ./gpu_server &
+        sleep 7
+        ./tee_client > ~/atc22-artifact/SOTER/script/data/gpuvgg.txt
+        sleep 8
+        proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
+        kill -9 $proc
     fi
 done
 
