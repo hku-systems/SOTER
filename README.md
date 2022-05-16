@@ -58,7 +58,7 @@ GPU server:
 ```shell
 cd /home/xian/atc22-artifact/SOTER/model-partition/vgg-partition/cpp/soter-graphene-vgg
 
-bash runserver.sh
+bash runserver_func.sh
 ```
 
 **Step 3:**
@@ -68,7 +68,7 @@ SGX client:
 ```shell
 cd /home/ubuntu/atc22-artifact/SOTER/teeruntime/graphene-vgg-partition
 
-bash runclient.sh
+bash runclient_func.sh
 ```
 
 **Output in SGX VM:**

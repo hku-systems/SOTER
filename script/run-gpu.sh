@@ -1,6 +1,6 @@
 echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
-# model=("vggsoter" "vggennclave" "vggag")
+# model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "vggalex")
 model=("vggalex")
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
@@ -130,6 +130,7 @@ do
             if [ "$var" == "1" ]
             then
                 echo "[After running] Signal reset to 1 by relay script"
+                ps aux | grep gpu_server | awk 'NR==1{print $2}'
                 proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
                 kill -9 $proc  
                 echo "[After running] VGG completed. Process killed. Exit"
