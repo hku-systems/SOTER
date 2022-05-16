@@ -1,7 +1,7 @@
 echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
-# model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag")
-model=("ressoter" "densesoter" "mlpsoter")
+# model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag" "ressoter" "densesoter" "mlpsoter")
+model=("densesoter")
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
     if [ "${model[$i]}" == "vggsoter" ];then

@@ -1,4 +1,4 @@
-# Install script for directory: /home/xian/atc22-artifact/SOTER/model-partition/mlp-partition/cpp/soter-graphene-mlp
+# Install script for directory: /home/xian/atc22-artifact/SOTER/mtr-partition/mlp-partition/cpp/soter-graphene-mlp
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xian/atc22-artifact/SOTER/model-partition/mlp-partition/cpp/soter-graphene-mlp/cmake/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xian/atc22-artifact/SOTER/mtr-partition/mlp-partition/cpp/soter-graphene-mlp/cmake/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

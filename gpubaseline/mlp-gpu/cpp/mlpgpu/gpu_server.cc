@@ -46,7 +46,7 @@ torch::Tensor output;
 int challenge_flag = 8888;
 int query_flag = 8889;
 int scalar = 4;
-int count_ = count*2; //use for test
+int count_ = count*4; //use for test
 
 class mlp_part : public torch::nn::Module {
     public:
