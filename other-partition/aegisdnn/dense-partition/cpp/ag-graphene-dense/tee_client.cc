@@ -222,7 +222,7 @@ struct densenet : public torch::nn::Module
     densenet():
         admaxp2d0(1, 1),
         linear0(1024, 1000),
-        linear2(6214, 1000)
+        linear2(7500, 1000)
         {
             forwards.push_back(std::bind(&densenet::forward1_new, this, std::placeholders::_1));
             forwards.push_back(std::bind(&densenet::forward2_new, this, std::placeholders::_1));

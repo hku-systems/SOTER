@@ -1,25 +1,25 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_5a154/fast && /usr/bin/make  -f CMakeFiles/cmTC_5a154.dir/build.make CMakeFiles/cmTC_5a154.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_109d1/fast && /usr/bin/make  -f CMakeFiles/cmTC_109d1.dir/build.make CMakeFiles/cmTC_109d1.dir/build
 make[1]: Entering directory '/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5a154.dir/src.c.o
-/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_5a154.dir/src.c.o -c /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_5a154
-/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a154.dir/link.txt --verbose=1
-/usr/bin/cc CMakeFiles/cmTC_5a154.dir/src.c.o -o cmTC_5a154 
-CMakeFiles/cmTC_5a154.dir/src.c.o: In function `main':
+Building C object CMakeFiles/cmTC_109d1.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_109d1.dir/src.c.o -c /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_109d1
+/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_109d1.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_109d1.dir/src.c.o -o cmTC_109d1 
+CMakeFiles/cmTC_109d1.dir/src.c.o: In function `main':
 src.c:(.text+0x3c): undefined reference to `pthread_create'
 src.c:(.text+0x48): undefined reference to `pthread_detach'
 src.c:(.text+0x54): undefined reference to `pthread_cancel'
 src.c:(.text+0x65): undefined reference to `pthread_join'
 src.c:(.text+0x79): undefined reference to `pthread_atfork'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_5a154.dir/build.make:98: recipe for target 'cmTC_5a154' failed
-make[1]: *** [cmTC_5a154] Error 1
+CMakeFiles/cmTC_109d1.dir/build.make:98: recipe for target 'cmTC_109d1' failed
+make[1]: *** [cmTC_109d1] Error 1
 make[1]: Leaving directory '/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_5a154/fast' failed
-make: *** [cmTC_5a154/fast] Error 2
+Makefile:127: recipe for target 'cmTC_109d1/fast' failed
+make: *** [cmTC_109d1/fast] Error 2
 
 
 Source file was:
@@ -46,20 +46,20 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_66b6a/fast && /usr/bin/make  -f CMakeFiles/cmTC_66b6a.dir/build.make CMakeFiles/cmTC_66b6a.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_9c0ae/fast && /usr/bin/make  -f CMakeFiles/cmTC_9c0ae.dir/build.make CMakeFiles/cmTC_9c0ae.dir/build
 make[1]: Entering directory '/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_66b6a.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_66b6a.dir/CheckFunctionExists.c.o -c /snap/cmake/1082/share/cmake-3.23/Modules/CheckFunctionExists.c
-Linking C executable cmTC_66b6a
-/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66b6a.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_66b6a.dir/CheckFunctionExists.c.o -o cmTC_66b6a  -lpthreads 
+Building C object CMakeFiles/cmTC_9c0ae.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_9c0ae.dir/CheckFunctionExists.c.o -c /snap/cmake/1082/share/cmake-3.23/Modules/CheckFunctionExists.c
+Linking C executable cmTC_9c0ae
+/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c0ae.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_9c0ae.dir/CheckFunctionExists.c.o -o cmTC_9c0ae  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_66b6a.dir/build.make:98: recipe for target 'cmTC_66b6a' failed
-make[1]: *** [cmTC_66b6a] Error 1
+CMakeFiles/cmTC_9c0ae.dir/build.make:98: recipe for target 'cmTC_9c0ae' failed
+make[1]: *** [cmTC_9c0ae] Error 1
 make[1]: Leaving directory '/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/dense-partition/cpp/ag-graphene-dense/cmake/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_66b6a/fast' failed
-make: *** [cmTC_66b6a/fast] Error 2
+Makefile:127: recipe for target 'cmTC_9c0ae/fast' failed
+make: *** [cmTC_9c0ae/fast] Error 2
 
 
 
