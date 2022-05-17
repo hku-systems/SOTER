@@ -92,10 +92,10 @@ fingerprint protocol, one for a fixed fingerprint protocol as a
 baseline), calculates and compares the l2 distance between fingerprints and
 reports the pattern from an attacker's perspective.
 
-**Command to run:**
+**Command to run (in the GPU terminal):**
 
 ```shell
-bash run-fpcheck.sh
+bash /home/xian/atc22-artifact/SOTER/script/run-fpcheck.sh
 ```
 
 **Output:**
