@@ -1,7 +1,7 @@
 echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
 model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag" "ressoter" "densesoter" "mlpsoter" "resag" "denseag" "mlpag" "gpubaseline" "scp")
-# model=()
+# model=("scp")
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
     if [ "${model[$i]}" == "vggsoter" ];then
@@ -393,5 +393,3 @@ do
          ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
     fi
 done
-
-bash run-latency.sh
