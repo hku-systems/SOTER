@@ -12,6 +12,6 @@ do
     echo $str_filter >> $target
 done
 # produce new experimental figures
-python3 normalized_latency_vgg.py
+python3 normalized_latency.py
 touch ./data/tmp
 

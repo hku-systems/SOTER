@@ -1,8 +1,7 @@
 echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
-# model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag"
-# "ressoter" "densesoter" "mlpsoter" "resag" "denseag" "mlpag" "gpubaseline")
-model=("scp")
+model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag" "ressoter" "densesoter" "mlpsoter" "resag" "denseag" "mlpag" "gpubaseline" "scp")
+# model=()
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
     if [ "${model[$i]}" == "vggsoter" ];then
@@ -395,3 +394,4 @@ do
     fi
 done
 
+bash run-latency.sh

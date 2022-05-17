@@ -1,4 +1,0 @@
-For 1000 gpu inferences ...
-Time elapsed: 818 ms.
-Fetch here. Time consuming: 0.818 ms per inference.
-Completed successfully !!!
