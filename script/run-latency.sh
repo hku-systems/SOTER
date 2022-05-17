@@ -1,7 +1,7 @@
 # clean up old data and old figures
 rm -rf ./latency.txt
 rm -rf *.pdf
-
+rm -rf ./data/tmp
 target=./latency.txt
 
 for file in ./data/*
