@@ -13,5 +13,6 @@ do
 done
 # produce new experimental figures
 python3 normalized_latency.py
+mv ./normalized_latency.pdf /home/xian/atc22-artifact/SOTER/figure/
 touch ./data/tmp
 
