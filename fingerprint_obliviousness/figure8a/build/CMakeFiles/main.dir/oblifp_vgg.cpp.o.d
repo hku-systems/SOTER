@@ -1,5 +1,5 @@
 CMakeFiles/main.dir/oblifp_vgg.cpp.o: \
- /home/xian/soter-graphene/figure8/8a/oblifp_vgg.cpp \
+ /home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a/oblifp_vgg.cpp \
  /usr/include/stdc-predef.h /usr/local/cuda-10.1/include/cuda_runtime.h \
  /usr/local/cuda-10.1/include/crt/host_config.h \
  /usr/local/cuda-10.1/include/builtin_types.h \

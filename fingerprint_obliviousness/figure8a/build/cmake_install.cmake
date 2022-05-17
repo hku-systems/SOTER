@@ -1,4 +1,4 @@
-# Install script for directory: /home/xian/soter-graphene/figure8/8a
+# Install script for directory: /home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xian/soter-graphene/figure8/8a/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
