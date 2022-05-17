@@ -1,3 +1,0 @@
-For 1000 inferences...
-Time elapsed: 4401 ms.
-Fetch here. Time consuming: 4.401 ms per inference.
