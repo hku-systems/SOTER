@@ -1,3 +1,4 @@
+echo "** Running MLcapsule baseline, DO NOT interrupt**"
 graphene-direct vgg > ~/atc22-artifact/SOTER/script/data/mlcvgg.txt
 echo "Finished vgg MLcapsule!"
 graphene-direct alexnet > ~/atc22-artifact/SOTER/script/data/mlcalexnet.txt

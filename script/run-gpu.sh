@@ -2,7 +2,7 @@ echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
 # model=("vggsoter" "vggennclave" "vggag" "mlcapsule" "alexsoter" "alexag"
 # "ressoter" "densesoter" "mlpsoter" "resag" "denseag" "mlpag" "gpubaseline")
-model=("vggsoter")
+model=("scp")
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
     if [ "${model[$i]}" == "vggsoter" ];then
@@ -389,6 +389,9 @@ do
         sleep 8
         proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
         kill -9 $proc
+    fi
+    if [ "${model[$i]}" == "scp" ];then
+         ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
     fi
 done
 

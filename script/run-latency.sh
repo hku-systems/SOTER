@@ -2,8 +2,8 @@
 rm -rf ./latency.txt
 rm -rf *.pdf
 rm -rf ./data/tmp
-target=./latency.txt
 
+target=./latency.txt
 for file in ./data/*
 do 
     str=$(grep 'Fetch' $file)
@@ -13,5 +13,5 @@ do
 done
 # produce new experimental figures
 python3 normalized_latency_vgg.py
-
+touch ./data/tmp
 
