@@ -14,7 +14,7 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include <memory>
-#include <grpcpp/ext/proto_server_reflection_plugin.h>
+#include <grpcpp/ext/proto_server_reflection_plugin.h>       
 #include <grpcpp/grpcpp.h>
 #include <grpcpp/health_check_service_interface.h>
 
@@ -1801,7 +1801,25 @@ public:
     {
         x = linear0.forward(x);
         x = linear1.forward(x);
-        x = linear2.forward(x);
+        // x = linear2.forward(x);
+        return x;
+    }
+    void morphpara(){
+        // nothing to do, inherit from virtual func
+    }
+};
+
+class dense_gpu_part3 : public dense_part
+{
+public:
+    torch::nn::Conv2d c0;
+    dense_gpu_part3():
+        c0(torch::nn::Conv2d(torch::nn::Conv2dOptions(3, 64, 7).padding(3).stride(2)))
+        {
+            c0->to(at::kCUDA);
+        }
+    torch::Tensor forward(torch::Tensor x)
+    {
         return x;
     }
     void morphpara(){
@@ -1810,11 +1828,11 @@ public:
 };
 
 
-
 dense_part* models[] = {
     new dense_warmup(),
     new dense_gpu_part1(),
-    new dense_gpu_part2()
+    new dense_gpu_part2(),
+    new dense_gpu_part3()
 };
 
 // Logic and data behind the server's behavior.

@@ -216,14 +216,17 @@ struct densenet : public torch::nn::Module
     operator1 relu;
     operator6 admaxp2d0;
     operator7 linear0;
+    operator7 linear2;
     std::vector<std::function<torch::Tensor(torch::Tensor)>> forwards;
         
     densenet():
         admaxp2d0(1, 1),
-        linear0(1024, 1000)
+        linear0(1024, 1000),
+        linear2(4096, 1000)
         {
             forwards.push_back(std::bind(&densenet::forward1_new, this, std::placeholders::_1));
             forwards.push_back(std::bind(&densenet::forward2_new, this, std::placeholders::_1));
+            forwards.push_back(std::bind(&densenet::forward3_new, this, std::placeholders::_1));
         }
 
     torch::Tensor forward1_new(torch::Tensor x) {
@@ -233,9 +236,10 @@ struct densenet : public torch::nn::Module
         x = relu.forward(x);
         x = admaxp2d0.forward(x);
         x = x.view({x.sizes()[0], -1});
-        // std::cout<<"forward2_new x size "<<x.sizes()<<std::endl;
-        // std::cout<<"forward2_new here"<<std::endl;
-        // x = linear0.forward(x);
+        return x;
+    }
+    torch::Tensor forward3_new(torch::Tensor x) {
+        x = linear2.forward(x);
         return x;
     }
     torch::Tensor forward(torch::Tensor x) {
@@ -243,7 +247,7 @@ struct densenet : public torch::nn::Module
         torch::Tensor tmp;
         // online inference & fp check 
         std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag+1) << "/"<<count<<")" <<std::endl; 
-        for (int i = 0; i < 2;i++) {
+        for (int i = 0; i < 3;i++) {
             // intercat = torch::cat({fp_check, intermedia},0);
             intermedia = forwards[i](x);
             std::stringstream ss;
