@@ -1789,7 +1789,7 @@ public:
     dense_gpu_part2():
         c0(torch::nn::Conv2d(torch::nn::Conv2dOptions(3, 64, 7).padding(3).stride(2))),
         linear0(1024, 32768),
-        linear1(32768, 7500),
+        linear1(32768, 9000),
         linear2(9000, 1000)
         {
             c0->to(at::kCUDA);
