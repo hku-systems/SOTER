@@ -999,6 +999,6 @@
 [Inference phase] Inference & integrity check (999/1000)
 [Inference phase] Inference & integrity check (1000/1000)
 For 1000 inferences...
-Time elapsed: 53917 ms.
-Fetch here. Time consuming: 53.917 ms per inference.
+Time elapsed: 54698 ms.
+Fetch here. Time consuming: 54.698 ms per inference.
 Completed successfully !!!
