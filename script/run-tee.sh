@@ -97,3 +97,10 @@ if [ "$1" == "transsoter" ];then
     echo '** Transformer-soter inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
+if [ "$1" == "transag" ];then
+    cd ~/atc22-artifact/SOTER/other-partition/aegisdnn/trans-partition/graphene-trans-partition
+    echo '** Transformer-ag inference started **'
+    bash runclient.sh
+    echo '** Transformer-ag inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi

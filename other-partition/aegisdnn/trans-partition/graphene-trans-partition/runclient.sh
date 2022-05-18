@@ -14,5 +14,5 @@ popd
 
 make clean
 SGX=1 make
-graphene-sgx ./tee_client --target=10.22.1.26:50051 
-# graphene-sgx ./tee_client --target=10.22.1.26:50051 > ~/atc22-artifact/SOTER/script/data/agtrans.txt
+# graphene-sgx ./tee_client --target=10.22.1.26:50051 
+graphene-sgx ./tee_client --target=10.22.1.26:50051 > ~/atc22-artifact/SOTER/script/data/agtrans.txt
