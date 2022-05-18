@@ -9,3 +9,5 @@ graphene-direct densenet > ~/atc22-artifact/SOTER/script/data/mlcdensenet.txt
 echo "Finished densenet MLcapsule!"
 graphene-direct mlp > ~/atc22-artifact/SOTER/script/data/mlcmlp.txt
 echo "Finished mlp MLcapsule!"
+graphene-direct transformer 1024 > ~/atc22-artifact/SOTER/script/data/mlctrans.txt
+echo "Finished transformer MLcapsule!"

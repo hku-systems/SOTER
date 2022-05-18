@@ -388,6 +388,9 @@ do
         sleep 8
         proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
         kill -9 $proc
+        
+        cd /home/xian/atc22-artifact/SOTER/gpubaseline/trans-gpu
+        bash run.sh
     fi
     if [ "${model[$i]}" == "scp" ];then
          ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
