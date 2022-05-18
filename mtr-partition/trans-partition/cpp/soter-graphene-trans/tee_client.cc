@@ -912,11 +912,12 @@ struct trans : public torch::nn::Module
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
 
         src = src + src0;
-        // std::cout<<"forward 1 size = "<<src.sizes()<<std::endl;
+        
         temp = fc3.forward(src);
         temp = relu.forward(temp);
         temp = fc4(temp);
         src = src + temp;
+        // std::cout<<"forward 1 size = "<<src.sizes()<<std::endl;
         return src;
     }
 
