@@ -1191,23 +1191,19 @@ public:
         temp = relu.forward(temp);
         temp = fc9(temp);
         src = src + temp;
-        std::cout<<"warm up ok"<<std::endl;
+       
 
         //encoder-layer-2
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc10.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc11.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc12.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc10.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+       
+        temp = fc11.forward(src0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc12.forward(src0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1218,31 +1214,24 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc13.forward(temp);
+        temp = fc13.forward(src);
         temp = relu.forward(temp);
-        temp = temp.to(at::kCPU);
         temp = fc14(temp);
         src = src + temp;
-
 
         //encoder-layer-3
 
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc15.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc16.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc17.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc15.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+       
+        temp = fc16.forward(src0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc17.forward(src0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1254,11 +1243,10 @@ public:
         
         src = src + src0;
         temp = fc18(src);
-        temp = temp.to(at::kCUDA);
         temp = relu.forward(temp);
         temp = fc19.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
+ 
 
 
         //encoder-layer-4
@@ -1266,18 +1254,16 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc20.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc21.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc22.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc20.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc21.forward(src0);
+   
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc22.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1288,13 +1274,11 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc23.forward(temp);
+  
+        temp = fc23.forward(src);
         temp = relu.forward(temp);
         temp = fc24.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
-
 
         //encoder-layer-5
 
@@ -1303,14 +1287,13 @@ public:
         nbatches = src0.size(0);
         temp1 = fc25(src0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc26.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc27.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc26.forward(src0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc27.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1321,11 +1304,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc28.forward(temp);
+        temp = fc28.forward(src);
         temp = relu.forward(temp);
         temp = fc29.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1352,9 +1333,7 @@ public:
         src = src + src0;
         temp = fc33(src);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc34.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1363,14 +1342,14 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc35.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc36.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc35.forward(src0);
+  
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc36.forward(src0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc37(src0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -1383,11 +1362,10 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc38.forward(temp);
+    
+        temp = fc38.forward(src);
         temp = relu.forward(temp);
         temp = fc39.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1396,16 +1374,15 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc40.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc40.forward(src0);
+   
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc41(src0);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc42.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc42.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1417,10 +1394,8 @@ public:
         
         src = src + src0;
         temp = fc43(src);
-        temp = temp.to(at::kCUDA);
         temp = relu.forward(temp);
         temp = fc44.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1431,14 +1406,14 @@ public:
         nbatches = src0.size(0);
         temp1 = fc45(src0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc46.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc47.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc46.forward(src0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc47.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1449,12 +1424,12 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc48.forward(temp);
+   
+        temp = fc48.forward(src);
         temp = relu.forward(temp);
-        temp = temp.to(at::kCPU);
         temp = fc49(temp);
         src = src + temp;
+
 
 
         //encoder-layer-10
@@ -1462,18 +1437,15 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc50.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc51.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc52.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc50.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc51.forward(src0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc52.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1484,10 +1456,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc53.forward(temp);
+
+        temp = fc53.forward(src);
         temp = relu.forward(temp);
-        temp = temp.to(at::kCPU);
         temp = fc54(temp);
         src = src + temp;
 
@@ -1497,16 +1468,14 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc55.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc55.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc56(src0);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc57.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc57.forward(src0);
+    
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1517,9 +1486,7 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc58.forward(temp);
-        temp = temp.to(at::kCPU);
+        temp = fc58.forward(src);
         temp = F::relu(temp);
         temp = fc59(temp);
         src = src + temp;
@@ -1530,18 +1497,15 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc60.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc61.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc62.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc60.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc61.forward(src0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc62.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1552,11 +1516,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc63.forward(temp);
+        temp = fc63.forward(src);
         temp = relu.forward(temp);
         temp = fc64.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1565,16 +1527,13 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc65.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc65.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc66(src0);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc67.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc67.forward(src0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1585,11 +1544,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc68.forward(temp);
+        temp = fc68.forward(src);
         temp = relu.forward(temp);
         temp = fc69.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1600,14 +1557,14 @@ public:
         nbatches = src0.size(0);
         temp1 = fc70(src0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc71.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc72.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc71.forward(src0);
+   
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc72.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1618,31 +1575,27 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc73.forward(temp);
+
+        temp = fc73.forward(src);
         temp = relu.forward(temp);
         temp = fc74.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
-
 
         //encoder-layer-15
 
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc75.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc76.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc77.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc75.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc76.forward(src0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc77.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1653,11 +1606,10 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc78.forward(temp);
+
+        temp = fc78.forward(src);
         temp = relu.forward(temp);
         temp = fc79.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1668,14 +1620,14 @@ public:
         nbatches = src0.size(0);
         temp1 = fc80(src0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc81.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc82.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc81.forward(src0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc82.forward(src0);
+  
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1686,11 +1638,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc83.forward(temp);
+        temp = fc83.forward(src);
         temp = relu.forward(temp);
         temp = fc84.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1699,14 +1649,13 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc85.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc86.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc85.forward(src0);
+
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc86.forward(src0);
+  
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc87(src0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -1719,13 +1668,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc88.forward(temp);
-        temp = temp.to(at::kCPU);
+        temp = fc88.forward(src);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc89.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1736,14 +1681,14 @@ public:
         nbatches = src0.size(0);
         temp1 = fc90(src0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc91.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc92.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc91.forward(src0);
+  
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc92.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1754,9 +1699,8 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc93.forward(temp);
-        temp = temp.to(at::kCPU);
+
+        temp = fc93.forward(src);
         temp = F::relu(temp);
         temp = fc94(temp);
         src = src + temp;
@@ -1769,14 +1713,14 @@ public:
         nbatches = src0.size(0);
         temp1 = fc95(src0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc96.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc97.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc96.forward(src0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc97.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1787,11 +1731,10 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc98.forward(temp);
+
+        temp = fc98.forward(src);
         temp = relu.forward(temp);
         temp = fc99.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1800,10 +1743,8 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc100.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc100.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc101(src0);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc102(src0);
@@ -1818,11 +1759,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc103.forward(temp);
+        temp = fc103.forward(src);
         temp = relu.forward(temp);
         temp = fc104.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1831,18 +1770,14 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc105.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc106.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc107.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc105.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc106.forward(src0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc107.forward(src0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1853,11 +1788,9 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc108.forward(temp);
+        temp = fc108.forward(src);
         temp = relu.forward(temp);
         temp = fc109.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1866,18 +1799,16 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc110.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc111.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc112.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc110.forward(src0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc111.forward(src0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc112.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1888,13 +1819,10 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc113.forward(temp);
-        temp = temp.to(at::kCPU);
+
+        temp = fc113.forward(src);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc114.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
 
 
@@ -1903,18 +1831,18 @@ public:
 
         src0 = src;
         nbatches = src0.size(0);
-        temp = src0.to(at::kCUDA);
-        temp = fc115.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc116.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src0.to(at::kCUDA);
-        temp = fc117.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc115.forward(src0);
+  
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc116.forward(src0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc117.forward(src0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         src0 = temp.div(sqrt_dk);
@@ -1925,12 +1853,11 @@ public:
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = src.to(at::kCUDA);
-        temp = fc118.forward(temp);
+        temp = fc118.forward(src);
         temp = relu.forward(temp);
         temp = fc119.forward(temp);
-        temp = temp.to(at::kCPU);
         src = src + temp;
+
 
 
         //decoder-layer-0
@@ -1938,18 +1865,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc120.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc121.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc122.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc120.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc121.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc122.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -1961,18 +1884,16 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc123.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc124.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc125.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc123.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc124.forward(src);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc125.forward(src);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -1983,13 +1904,10 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc126.forward(temp);
+        temp = fc126.forward(tgt);
         temp = relu.forward(temp);
-        temp = temp.to(at::kCPU);
         temp = fc127(temp);
         tgt = tgt + temp;
-
 
         //decoder-layer-1
 
@@ -2000,10 +1918,10 @@ public:
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc129(tgt0);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc130.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc130.forward(tgt0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2015,18 +1933,15 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc131.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc132.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc133.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc131.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc132.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc133.forward(src);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2036,14 +1951,10 @@ public:
         tgt0 = tgt0.contiguous();
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
-        
-        temp = tgt.to(at::kCUDA);
-        temp = fc134.forward(temp);
-        temp = temp.to(at::kCPU);
+  
+        temp = fc134.forward(tgt);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc135.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2052,18 +1963,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc136.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc137.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc138.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc136.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc137.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc138.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2075,14 +1982,11 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc139.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc140.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc139.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc140.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc141(src);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2096,10 +2000,8 @@ public:
         tgt0 = tgt + tgt0;
         
         temp = fc142(tgt);
-        temp = temp.to(at::kCUDA);
         temp = relu.forward(temp);
         temp = fc143.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2108,16 +2010,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc144.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc144.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc145(tgt0);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc146.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc146.forward(tgt0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2129,14 +2029,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc147.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc148.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc147.forward(tgt0);
+
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc148.forward(src);
+   
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc149(src);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2149,11 +2049,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc150.forward(temp);
+        temp = fc150.forward(tgt);
         temp = relu.forward(temp);
         temp = fc151.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2162,18 +2060,15 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc152.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc153.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc154.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc152.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc153.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc154.forward(tgt0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2185,18 +2080,18 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc155.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc156.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc157.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc155.forward(tgt0);
+
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc156.forward(src);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc157.forward(src);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2206,12 +2101,10 @@ public:
         tgt0 = tgt0.contiguous();
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
-        
-        temp = tgt.to(at::kCUDA);
-        temp = fc158.forward(temp);
+
+        temp = fc158.forward(tgt);
         temp = relu.forward(temp);
         temp = fc159.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2220,14 +2113,11 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc160.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc161.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc160.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc161.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc162(tgt0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2241,16 +2131,13 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc163.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc163.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc164(src);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc165.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc165.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2261,13 +2148,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc166.forward(temp);
-        temp = temp.to(at::kCPU);
+        temp = fc166.forward(tgt);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc167.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2276,14 +2159,12 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc168.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc169.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc168.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc169.forward(tgt0);
+    
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc170(tgt0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2297,14 +2178,11 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc171.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc172.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc171.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc172.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc173(src);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2317,11 +2195,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc174.forward(temp);
+        temp = fc174.forward(tgt);
         temp = relu.forward(temp);
         temp = fc175.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2330,18 +2206,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc176.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc177.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc178.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc176.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc177.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc178.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2355,14 +2227,12 @@ public:
         nbatches = tgt0.size(0);
         temp1 = fc179(tgt0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc180.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc181.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc180.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc181.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2372,12 +2242,10 @@ public:
         tgt0 = tgt0.contiguous();
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
-        
-        temp = tgt.to(at::kCUDA);
-        temp = fc182.forward(temp);
+  
+        temp = fc182.forward(tgt);
         temp = relu.forward(temp);
         temp = fc183.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2386,18 +2254,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc184.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc185.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc186.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc184.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc185.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc186.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2409,18 +2273,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc187.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc188.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc189.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc187.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc188.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc189.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2431,11 +2291,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc190.forward(temp);
+        temp = fc190.forward(tgt);
         temp = relu.forward(temp);
         temp = fc191.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2444,18 +2302,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc192.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc193.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc194.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc192.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc193.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc194.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2467,18 +2321,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc195.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc196.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc197.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc195.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc196.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc197.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2488,12 +2338,10 @@ public:
         tgt0 = tgt0.contiguous();
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
-        
-        temp = tgt.to(at::kCUDA);
-        temp = fc198.forward(temp);
+ 
+        temp = fc198.forward(tgt);
         temp = relu.forward(temp);
         temp = fc199.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2502,18 +2350,16 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc200.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc201.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc202.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc200.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc201.forward(tgt0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc202.forward(tgt0);
+  
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2527,14 +2373,14 @@ public:
         nbatches = tgt0.size(0);
         temp1 = fc203(tgt0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc204.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc205.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc204.forward(src);
+     
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc205.forward(src);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2546,10 +2392,8 @@ public:
         tgt0 = tgt + tgt0;
         
         temp = fc206(tgt);
-        temp = temp.to(at::kCUDA);
         temp = relu.forward(temp);
         temp = fc207.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2558,16 +2402,16 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc208.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc208.forward(tgt0);
+   
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp2 = fc209(tgt0);
         temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc210.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc210.forward(tgt0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2579,18 +2423,18 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc211.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc212.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc213.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc211.forward(tgt0);
+
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc212.forward(src);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc213.forward(src);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2601,13 +2445,10 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc214.forward(temp);
-        temp = temp.to(at::kCPU);
+
+        temp = fc214.forward(tgt);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc215.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2616,18 +2457,16 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc216.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc217.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc218.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc216.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc217.forward(tgt0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc218.forward(tgt0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2641,14 +2480,14 @@ public:
         nbatches = tgt0.size(0);
         temp1 = fc219(tgt0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc220.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc221.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc220.forward(src);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc221.forward(src);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2659,11 +2498,10 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc222.forward(temp);
+
+        temp = fc222.forward(tgt);
         temp = relu.forward(temp);
         temp = fc223.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2672,14 +2510,12 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc224.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc225.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc224.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc225.forward(tgt0);
+ 
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc226(tgt0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2693,18 +2529,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc227.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc228.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc229.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc227.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc228.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc229.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2715,11 +2547,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc230.forward(temp);
+        temp = fc230.forward(tgt);
         temp = relu.forward(temp);
         temp = fc231.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2728,18 +2558,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc232.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc233.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc234.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc232.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc233.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc234.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2751,18 +2577,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc235.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc236.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc237.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc235.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc236.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc237.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2773,11 +2595,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc238.forward(temp);
+        temp = fc238.forward(tgt);
         temp = relu.forward(temp);
         temp = fc239.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2786,18 +2606,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc240.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc241.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc242.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc240.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc241.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc242.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2809,18 +2625,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc243.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc244.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc245.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc243.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc244.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc245.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2831,11 +2643,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc246.forward(temp);
+        temp = fc246.forward(tgt);
         temp = relu.forward(temp);
         temp = fc247.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2844,14 +2654,11 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc248.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc249.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc248.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc249.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc250(tgt0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2865,18 +2672,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc251.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc252.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc253.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc251.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc252.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc253.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2887,11 +2690,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc254.forward(temp);
+        temp = fc254.forward(tgt);
         temp = relu.forward(temp);
         temp = fc255.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2900,18 +2701,15 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc256.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc257.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc258.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc256.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+   
+        temp = fc257.forward(tgt0);
+
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc258.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2925,14 +2723,13 @@ public:
         nbatches = tgt0.size(0);
         temp1 = fc259(tgt0);
         temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc260.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc261.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+
+        temp = fc260.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc261.forward(src);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2945,9 +2742,7 @@ public:
         
         temp = fc262(tgt);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc263.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -2956,14 +2751,11 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc264.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc265.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc264.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        
+        temp = fc265.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc266(tgt0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -2977,18 +2769,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc267.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc268.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc269.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc267.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+       
+        temp = fc268.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc269.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -2999,11 +2787,9 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc270.forward(temp);
+        temp = fc270.forward(tgt);
         temp = relu.forward(temp);
         temp = fc271.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -3012,18 +2798,14 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc272.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc273.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc274.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc272.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc273.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc274.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3035,18 +2817,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc275.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc276.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc277.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc275.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+       
+        temp = fc276.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc277.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3057,10 +2835,8 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc278.forward(temp);
+        temp = fc278.forward(tgt);
         temp = relu.forward(temp);
-        temp = temp.to(at::kCPU);
         temp = fc279(temp);
         tgt = tgt + temp;
 
@@ -3070,18 +2846,15 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc280.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc281.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc282.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc280.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc281.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc282.forward(tgt0);
+
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3093,18 +2866,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc283.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc284.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc285.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc283.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc284.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc285.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3116,10 +2885,8 @@ public:
         tgt0 = tgt + tgt0;
         
         temp = fc286(tgt);
-        temp = temp.to(at::kCUDA);
         temp = relu.forward(temp);
         temp = fc287.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
 
 
@@ -3128,14 +2895,11 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc288.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc289.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc288.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+       
+        temp = fc289.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc290(tgt0);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -3149,18 +2913,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc291.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc292.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc293.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc291.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+ 
+        temp = fc292.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc293.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3171,33 +2931,24 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc294.forward(temp);
-        temp = temp.to(at::kCPU);
+        temp = fc294.forward(tgt);
         temp = F::relu(temp);
-        temp = temp.to(at::kCUDA);
         temp = fc295.forward(temp);
-        temp = temp.to(at::kCPU);
         tgt = tgt + temp;
-
 
         //decoder-layer-22
 
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc296.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc297.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc298.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc296.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc297.forward(tgt0);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+     
+        temp = fc298.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3209,18 +2960,14 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc299.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc300.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc301.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc299.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc300.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+      
+        temp = fc301.forward(src);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3231,10 +2978,8 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc302.forward(temp);
+        temp = fc302.forward(tgt);
         temp = relu.forward(temp);
-        temp = temp.to(at::kCPU);
         temp = fc303(temp);
         tgt = tgt + temp;
 
@@ -3244,18 +2989,15 @@ public:
 
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc304.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc305.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc306.forward(temp);
-        temp3 = temp.to(at::kCPU);
-        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc304.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+       
+        temp = fc305.forward(tgt0);
+    
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+  
+        temp = fc306.forward(tgt0);
+        temp3 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
         temp = temp1.matmul(temp);
         tgt0 = temp.div(sqrt_dk);
@@ -3267,14 +3009,11 @@ public:
         tgt = tgt + tgt0;
         tgt0 = tgt;
         nbatches = tgt0.size(0);
-        temp = tgt0.to(at::kCUDA);
-        temp = fc307.forward(temp);
-        temp1 = temp.to(at::kCPU);
-        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-        temp = src.to(at::kCUDA);
-        temp = fc308.forward(temp);
-        temp2 = temp.to(at::kCPU);
-        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = fc307.forward(tgt0);
+        temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+    
+        temp = fc308.forward(src);
+        temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp3 = fc309(src);
         temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
         temp = temp2.transpose(2, 3);
@@ -3287,9 +3026,7 @@ public:
         tgt0 = tgt0.view( {nbatches, -1, nheads * d_k} )[0];
         tgt0 = tgt + tgt0;
         
-        temp = tgt.to(at::kCUDA);
-        temp = fc310.forward(temp);
-        temp = temp.to(at::kCPU);
+        temp = fc310.forward(tgt);
         temp = F::relu(temp);
         temp = fc311(temp);
         tgt = tgt + temp;
