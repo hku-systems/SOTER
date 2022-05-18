@@ -3,26 +3,15 @@
 [Preprocessing phase (3/3)] Preparing for oblivious fingerprint {input, output} ...
 [Inference phase] Inference & integrity check (1/10)
 [Inference phase] Inference & integrity check (2/10)
-terminate called after throwing an instance of 'c10::Error'
-  what():  [enforce fail at CPUAllocator.cpp:65] . DefaultCPUAllocator: can't allocate memory: you tried to allocate 2621440 bytes. Error code 12 (Cannot allocate memory)
-frame #0: c10::ThrowEnforceNotMet(char const*, int, char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, void const*) + 0x67 (0x6d073c97 in /home/ubuntu/libtorch17/libtorch/lib/libc10.so)
-frame #1: c10::alloc_cpu(unsigned long) + 0x205 (0x6d03d425 in /home/ubuntu/libtorch17/libtorch/lib/libc10.so)
-frame #2: <unknown function> + 0x1e066 (0x6d040066 in /home/ubuntu/libtorch17/libtorch/lib/libc10.so)
-frame #3: caffe2::serialize::PyTorchStreamReader::getRecord(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) + 0x70 (0x5e420f90 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #4: <unknown function> + 0x30dbf76 (0x5f743f76 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #5: torch::jit::Unpickler::readInstruction() + 0x1503 (0x5f79e973 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #6: torch::jit::Unpickler::run() + 0xb0 (0x5f7a0840 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #7: torch::jit::Unpickler::parse_ivalue() + 0x31 (0x5f7a0df1 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #8: torch::jit::readArchiveAndTensors(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, c10::optional<std::function<c10::StrongTypePtr (c10::QualifiedName const&)> >, c10::optional<std::function<c10::intrusive_ptr<c10::ivalue::Object, c10::detail::intrusive_target_default_null_type<c10::ivalue::Object> > (c10::StrongTypePtr, c10::IValue)> >, c10::optional<c10::Device>, caffe2::serialize::PyTorchStreamReader&) + 0x6b2 (0x5f744cc2 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #9: <unknown function> + 0x30dcfdd (0x5f744fdd in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #10: <unknown function> + 0x30df905 (0x5f747905 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #11: torch::jit::load(std::unique_ptr<caffe2::serialize::ReadAdapterInterface, std::default_delete<caffe2::serialize::ReadAdapterInterface> >, c10::optional<c10::Device>, std::unordered_map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >&) + 0x179 (0x5f747ed9 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #12: torch::jit::load(std::istream&, c10::optional<c10::Device>, std::unordered_map<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::hash<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::equal_to<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >, std::allocator<std::pair<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >&) + 0x75 (0x5f74a755 in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #13: torch::serialize::InputArchive::load_from(std::istream&, c10::optional<c10::Device>) + 0x4a (0x5fb6f9ca in /home/ubuntu/libtorch17/libtorch/lib/libtorch_cpu.so)
-frame #14: <unknown function> + 0x90f58 (0x6d366f58 in ./tee_client)
-frame #15: <unknown function> + 0x8c821 (0x6d362821 in ./tee_client)
-frame #16: <unknown function> + 0x7fc0f (0x6d355c0f in ./tee_client)
-frame #17: <unknown function> + 0x2c527 (0x5bc19527 in /lib/libc.so.6)
-frame #18: __libc_start_main + 0x7c (0x5bc195ec in /lib/libc.so.6)
-frame #19: <unknown function> + 0x7ebea (0x6d354bea in ./tee_client)
-
+[Inference phase] Inference & integrity check (3/10)
+[Inference phase] Inference & integrity check (4/10)
+[Inference phase] Inference & integrity check (5/10)
+[Inference phase] Inference & integrity check (6/10)
+[Inference phase] Inference & integrity check (7/10)
+[Inference phase] Inference & integrity check (8/10)
+[Inference phase] Inference & integrity check (9/10)
+[Inference phase] Inference & integrity check (10/10)
+For 10 inferences ...
+Time elapsed: 9563 ms.
+Fetch here. Time consuming: 956.3 ms per inference.
+Completed successfully !!!

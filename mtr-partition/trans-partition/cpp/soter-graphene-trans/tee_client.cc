@@ -1312,6 +1312,9 @@ int main(int argc, char** argv) {
     for (size_t i = 0; i < prepare; i++){
         out = model.forward(src);
     }
+    for (size_t i = 0; i < 50; i++){
+        out = model.forward(src);
+    }
 
     struct timeval tvs, tve;
     gettimeofday(&tvs, 0);
