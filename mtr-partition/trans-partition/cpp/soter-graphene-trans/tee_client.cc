@@ -913,10 +913,10 @@ struct trans : public torch::nn::Module
 
         src = src + src0;
         
-        temp = fc3.forward(src);
-        temp = relu.forward(temp);
-        temp = fc4(temp);
-        src = src + temp;
+        // temp = fc3.forward(src);
+        // temp = relu.forward(temp);
+        // temp = fc4(temp);
+        // src = src + temp;
         // std::cout<<"forward 1 size = "<<src.sizes()<<std::endl;
         return src;
     }
@@ -1026,7 +1026,7 @@ struct trans : public torch::nn::Module
             return x;
         } else {
             // online inference & fp check 
-            std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag-1) << "/"<<count<<")" <<std::endl; 
+            std::cout<<"[Inference phase] Inference & integrity check ("<<std::endl; 
 
             for (int i = 0; i < 2;i++) {
                 // intercat = torch::cat({fp_check, intermedia},0);
