@@ -955,6 +955,7 @@ struct trans : public torch::nn::Module
         
         src = src + src0;
         temp = fc13.forward(src);
+        temp_re = fc13.forward(src);
         temp = relu.forward(temp);
         temp = fc14(temp);
         src = src + temp;
