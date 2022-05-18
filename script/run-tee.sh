@@ -78,3 +78,9 @@ if [ "$1" == "scp" ];then
     echo '** Send back experimental results to 185 **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script/data;scp ./* xian@202.45.128.185:~/atc22-artifact/SOTER/script/data"
 fi
+if [ "$1" == "transsoter" ];then
+    cd ~/atc22-artifact/SOTER/teertconfig/graphene-trans-partition
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
