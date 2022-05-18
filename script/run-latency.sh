@@ -1,8 +1,7 @@
 # clean up old data and old figures
-rm -rf ./latency.txt
 rm -rf *.pdf
 rm -rf ./data/tmp
-
+touch latency.txt
 target=./latency.txt
 for file in ./data/*
 do 
@@ -15,4 +14,5 @@ done
 python3 normalized_latency.py
 mv ./normalized_latency.pdf /home/xian/atc22-artifact/SOTER/figure/
 touch ./data/tmp
+rm -rf ./latency.txt
 
