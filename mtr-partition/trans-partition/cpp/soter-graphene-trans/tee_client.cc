@@ -883,7 +883,7 @@ struct trans : public torch::nn::Module
         }
 
     torch::Tensor forward1_new(torch::Tensor src) {
-        std::cout<<"forward1_new"<<std::endl;
+        // std::cout<<"forward1_new"<<std::endl;
         int nbatches;
         torch::Tensor temp;
         torch::Tensor temp0;
@@ -912,15 +912,15 @@ struct trans : public torch::nn::Module
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
 
         src = src + src0;
-        temp = fc3.forward(src);
-        temp = relu.forward(temp);
-        temp = fc4(temp);
-        src = src + temp;
+        // temp = fc3.forward(src);
+        // temp = relu.forward(temp);
+        // temp = fc4(temp);
+        // src = src + temp;
         return src;
     }
 
     torch::Tensor forward2_new(torch::Tensor src) {
-        std::cout<<"forward2_new"<<std::endl;
+        // std::cout<<"forward2_new"<<std::endl;
         int nbatches;
         torch::Tensor temp;
         torch::Tensor temp0;

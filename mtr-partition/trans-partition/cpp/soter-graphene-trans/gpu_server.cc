@@ -3100,7 +3100,7 @@ public:
     
     torch::Tensor forward(torch::Tensor src, torch::Tensor tgt)
     {
-        std::cout<<"trans_gpu_part1 forward"<<std::endl;
+        // std::cout<<"trans_gpu_part1 forward"<<std::endl;
         int nbatches;
         torch::Tensor temp;
         torch::Tensor temp0;
@@ -3110,6 +3110,11 @@ public:
         torch::Tensor src0;
         torch::Tensor tgt0;
 
+        temp = fc3.forward(src);
+        temp = relu.forward(temp);
+        temp = fc4(temp);
+        src = src + temp;
+        
         //encoder-layer-1
         src0 = src;
         nbatches = src0.size(0);
@@ -4103,7 +4108,7 @@ public:
         temp = relu.forward(temp);
         temp = fc14(temp);
         src = src + temp;
-        
+
         src0 = src;
         nbatches = src0.size(0);
         temp = fc15.forward(src0);
