@@ -2824,7 +2824,7 @@ int main(int argc, char* argv[])
     torch::Tensor tgt = torch::rand( {32, 20, d_model} );
     torch::Tensor out;
 
-    int count = 1000;
+    int count = 100;
 
     using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;

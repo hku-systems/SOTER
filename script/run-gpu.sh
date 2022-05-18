@@ -404,7 +404,7 @@ do
         do
             sleep 1s
             var=$(head -n +1 signal)
-            if [ "$var" == "1" ]
+            if [ "$var" == "1" ] 
             then
                 echo "[After running] Signal reset to 1 by relay script"
                 proc=$(ps aux | grep gpu_server | awk 'NR==1{print $2}')
