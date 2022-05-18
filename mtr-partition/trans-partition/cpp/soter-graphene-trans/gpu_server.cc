@@ -3095,10 +3095,10 @@ public:
         torch::Tensor src0;
         torch::Tensor tgt0;
 
-        temp = fc3.forward(src);
-        temp = relu.forward(temp);
-        temp = fc4(temp);
-        src = src + temp;
+        // temp = fc3.forward(src);
+        // temp = relu.forward(temp);
+        // temp = fc4(temp);
+        // src = src + temp;
 
         //encoder-layer-1
         src0 = src;
@@ -4099,10 +4099,10 @@ public:
         torch::Tensor src0;
         torch::Tensor tgt0;
 
-        temp = fc13.forward(src);
-        temp = relu.forward(temp);
-        temp = fc14(temp);
-        src = src + temp;
+        // temp = fc13.forward(src);
+        // temp = relu.forward(temp);
+        // temp = fc14(temp);
+        // src = src + temp;
         //encoder-layer-3
     
         src0 = src;

@@ -913,10 +913,10 @@ struct trans : public torch::nn::Module
 
         src = src + src0;
         
-        // temp = fc3.forward(src);
-        // temp = relu.forward(temp);
-        // temp = fc4(temp);
-        // src = src + temp;
+        temp = fc3.forward(src);
+        temp = relu.forward(temp);
+        temp = fc4(temp);
+        src = src + temp;
         // std::cout<<"forward 1 size = "<<src.sizes()<<std::endl;
         return src;
     }
@@ -954,10 +954,10 @@ struct trans : public torch::nn::Module
         
         src = src + src0;
         // std::cout<<"forward 2 size = "<<src.sizes()<<std::endl;
-        // temp = fc13.forward(src);
-        // temp = relu.forward(temp);
-        // temp = fc14(temp);
-        // src = src + temp;
+        temp = fc13.forward(src);
+        temp = relu.forward(temp);
+        temp = fc14(temp);
+        src = src + temp;
         return src;
     }
    
