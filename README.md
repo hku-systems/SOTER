@@ -113,7 +113,7 @@ bash ~/atc22-artifact/SOTER/script/latency_fig5.sh
 
 **Important notes for Experiment 1:**
 
-- SOTER's inference latency on six models (i.e., black fonts on the bar) may not
+- SOTER's inference latency on six models (i.e., numbers on each red bar) may not
   exactly match the results presented in the paper due to the instability nature
   of model inference. 
 - This experiment is expected to take around 45 mins before producing the final
