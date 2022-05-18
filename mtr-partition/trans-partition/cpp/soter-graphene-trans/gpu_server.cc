@@ -4099,7 +4099,11 @@ public:
         torch::Tensor tgt0;
 
         //encoder-layer-3
-
+        temp = fc13.forward(src);
+        temp = relu.forward(temp);
+        temp = fc14(temp);
+        src = src + temp;
+        
         src0 = src;
         nbatches = src0.size(0);
         temp = fc15.forward(src0);

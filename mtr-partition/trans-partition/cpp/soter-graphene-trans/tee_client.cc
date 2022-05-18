@@ -951,10 +951,10 @@ struct trans : public torch::nn::Module
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        temp = fc13.forward(src);
-        temp = relu.forward(temp);
-        temp = fc14(temp);
-        src = src + temp;
+        // temp = fc13.forward(src);
+        // temp = relu.forward(temp);
+        // temp = fc14(temp);
+        // src = src + temp;
         return src;
     }
    
