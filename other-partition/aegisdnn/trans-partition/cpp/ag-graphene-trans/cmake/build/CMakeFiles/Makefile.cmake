@@ -7,13 +7,13 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/cmake/common.cmake"
   "../../CMakeLists.txt"
   "CMakeFiles/3.23.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.23.1/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.23.1/CMakeSystem.cmake"
   "detect_cuda_compute_capabilities.cpp"
   "detect_cuda_version.cc"
+  "/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/trans-partition/cpp/cmake/common.cmake"
   "/home/xian/libtorch17/libtorch/share/cmake/Caffe2/Caffe2Config.cmake"
   "/home/xian/libtorch17/libtorch/share/cmake/Caffe2/Caffe2ConfigVersion.cmake"
   "/home/xian/libtorch17/libtorch/share/cmake/Caffe2/Caffe2Targets-release.cmake"

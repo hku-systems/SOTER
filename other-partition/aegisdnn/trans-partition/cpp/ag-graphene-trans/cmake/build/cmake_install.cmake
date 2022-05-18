@@ -1,4 +1,4 @@
-# Install script for directory: /home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans
+# Install script for directory: /home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/trans-partition/cpp/ag-graphene-trans
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xian/atc22-artifact/SOTER/other-partition/aegisdnn/trans-partition/cpp/ag-graphene-trans/cmake/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

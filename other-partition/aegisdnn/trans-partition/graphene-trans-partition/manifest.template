@@ -35,7 +35,7 @@ fs.mount.data.path = "{{ torch_data_dir }}"
 fs.mount.data.uri = "file:{{ torch_data_dir }}"
 
 sgx.nonpie_binary = true
-sgx.enclave_size = "4G"
+sgx.enclave_size = "8G"
 sgx.thread_num = 16
 
 sgx.trusted_files = [
