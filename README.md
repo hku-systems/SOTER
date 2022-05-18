@@ -81,8 +81,46 @@ Completed successfully !!!
 ```
 
 If you see the the above logs (the "**Time consuming**" is normal to fluctuate
-within -5 ~ +5 ms owing to the nature of inference tasks), the artifact runs
+within -5 ~ +5 ms on VGG19 owing to the nature of inference tasks), the artifact runs
 perfectly. 
+
+### Experiment 1: End-to-end performance (45 mins)
+
+This experiment runs SOTER and three secure inference baselines (i.e., AegisDNN,
+eNNclave, and MLCapsule) on six neural networks. The output reports each
+system's inference latency normalized to insecure GPU inference. 
+
+**Command to run (in the GPU terminal):**
+
+```shell
+bash ~/atc22-artifact/SOTER/script/latency_fig5.sh
+```
+
+**Output:**
+
+- A pdf file named `normalized_latency.pdf` in `~/atc22-artifact/SOTER/figure/`, containing the normalized inference
+ latency of SOTER and all baselines.
+- You can also find the log files for generating figure in
+  `~/atc22-artifact/SOTER/script/data/`
+
+**Expected results:**
+
+- MLCapsule incurs the highest latency (i.e., highest bar) among all systems and models.
+- For VGG19: partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
+  have similar inference latency.
+- For other five models: SOTER incurs slightly higher latency than AegisDNN;
+  eNNclave is not applicable to these five models (i.e., N/A in figure).
+
+**Important notes for Experiment 1:**
+
+- SOTER's inference latency on six models (i.e., black fonts on the bar) may not
+  exactly match the results presented in the paper due to the instability nature
+  of model inference. 
+- This experiment is expected to take around 45 mins before producing the final
+  PDF file, as we need to compile and run each program. Please do not interrupt
+  the running process. If you failed in this step, please make sure
+  other evaluators are not running this experiment concurrently.
+
 
 
 ### Experiment X: The pattern between SOTER's fingerprint protocol and fixed fingerprint (baseline)
