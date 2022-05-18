@@ -46,7 +46,7 @@ std::string msg = "w";
 std::string msg_y = "Y";
 std::string reply = "0";
 int scalar = 4;
-int count = 200; // number of inference tests
+int count = 10; // number of inference tests
 int d_model = 1024; //token size
 int nheads = 8;
 int d_k = d_model / nheads;
@@ -1312,9 +1312,9 @@ int main(int argc, char** argv) {
     for (size_t i = 0; i < prepare; i++){
         out = model.forward(src);
     }
-    // for (size_t i = 0; i < 10; i++){
-    //     out = model.forward(src);
-    // }
+    for (size_t i = 0; i < 10; i++){
+        out = model.forward(src);
+    }
 
     struct timeval tvs, tve;
     gettimeofday(&tvs, 0);
