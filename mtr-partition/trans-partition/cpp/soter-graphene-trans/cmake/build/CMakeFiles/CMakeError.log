@@ -1,25 +1,25 @@
 Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
 Change Dir: /home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_38384/fast && /usr/bin/make  -f CMakeFiles/cmTC_38384.dir/build.make CMakeFiles/cmTC_38384.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_6b7b8/fast && /usr/bin/make  -f CMakeFiles/cmTC_6b7b8.dir/build.make CMakeFiles/cmTC_6b7b8.dir/build
 make[1]: Entering directory '/home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_38384.dir/src.c.o
-/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_38384.dir/src.c.o -c /home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_38384
-/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_38384.dir/link.txt --verbose=1
-/usr/bin/cc CMakeFiles/cmTC_38384.dir/src.c.o -o cmTC_38384 
-CMakeFiles/cmTC_38384.dir/src.c.o: In function `main':
+Building C object CMakeFiles/cmTC_6b7b8.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_6b7b8.dir/src.c.o -c /home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_6b7b8
+/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6b7b8.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_6b7b8.dir/src.c.o -o cmTC_6b7b8 
+CMakeFiles/cmTC_6b7b8.dir/src.c.o: In function `main':
 src.c:(.text+0x3c): undefined reference to `pthread_create'
 src.c:(.text+0x48): undefined reference to `pthread_detach'
 src.c:(.text+0x54): undefined reference to `pthread_cancel'
 src.c:(.text+0x65): undefined reference to `pthread_join'
 src.c:(.text+0x79): undefined reference to `pthread_atfork'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_38384.dir/build.make:98: recipe for target 'cmTC_38384' failed
-make[1]: *** [cmTC_38384] Error 1
+CMakeFiles/cmTC_6b7b8.dir/build.make:98: recipe for target 'cmTC_6b7b8' failed
+make[1]: *** [cmTC_6b7b8] Error 1
 make[1]: Leaving directory '/home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_38384/fast' failed
-make: *** [cmTC_38384/fast] Error 2
+Makefile:127: recipe for target 'cmTC_6b7b8/fast' failed
+make: *** [cmTC_6b7b8/fast] Error 2
 
 
 Source file was:
@@ -46,20 +46,20 @@ int main(void)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make -f Makefile cmTC_acec5/fast && /usr/bin/make  -f CMakeFiles/cmTC_acec5.dir/build.make CMakeFiles/cmTC_acec5.dir/build
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_04d77/fast && /usr/bin/make  -f CMakeFiles/cmTC_04d77.dir/build.make CMakeFiles/cmTC_04d77.dir/build
 make[1]: Entering directory '/home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_acec5.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_acec5.dir/CheckFunctionExists.c.o -c /snap/cmake/1082/share/cmake-3.23/Modules/CheckFunctionExists.c
-Linking C executable cmTC_acec5
-/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_acec5.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_acec5.dir/CheckFunctionExists.c.o -o cmTC_acec5  -lpthreads 
+Building C object CMakeFiles/cmTC_04d77.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_04d77.dir/CheckFunctionExists.c.o -c /snap/cmake/1082/share/cmake-3.23/Modules/CheckFunctionExists.c
+Linking C executable cmTC_04d77
+/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04d77.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_04d77.dir/CheckFunctionExists.c.o -o cmTC_04d77  -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_acec5.dir/build.make:98: recipe for target 'cmTC_acec5' failed
-make[1]: *** [cmTC_acec5] Error 1
+CMakeFiles/cmTC_04d77.dir/build.make:98: recipe for target 'cmTC_04d77' failed
+make[1]: *** [cmTC_04d77] Error 1
 make[1]: Leaving directory '/home/xian/atc22-artifact/SOTER/mtr-partition/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
-Makefile:127: recipe for target 'cmTC_acec5/fast' failed
-make: *** [cmTC_acec5/fast] Error 2
+Makefile:127: recipe for target 'cmTC_04d77/fast' failed
+make: *** [cmTC_04d77/fast] Error 2
 
 
 
