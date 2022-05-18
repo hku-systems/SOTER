@@ -912,6 +912,7 @@ struct trans : public torch::nn::Module
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
 
         src = src + src0;
+        // std::cout<<"forward 1 size = "<<src.sizes()<<std::endl;
         // temp = fc3.forward(src);
         // temp = relu.forward(temp);
         // temp = fc4(temp);
@@ -951,6 +952,7 @@ struct trans : public torch::nn::Module
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
+        // std::cout<<"forward 2 size = "<<src.sizes()<<std::endl;
         // temp = fc13.forward(src);
         // temp = relu.forward(temp);
         // temp = fc14(temp);
@@ -962,122 +964,96 @@ struct trans : public torch::nn::Module
     torch::Tensor forward(torch::Tensor x) {
         torch::Tensor intermedia;
         torch::Tensor tmp;
-        std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag+1) << "/"<<count<<")" <<std::endl;
-        for (int i = 0; i < 2;i++) {
-            intermedia = forwards[i](x);
-            std::stringstream ss;
-            torch::save(intermedia, ss);
-            auto reply = request(ss.str().data(), ss.str().size(), i + 1);
-            std::istringstream is(reply);
-            torch::load(tmp, is);             
-            x = tmp/scalar; 
-        }
+        // std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag+1) << "/"<<count<<")" <<std::endl;
+        // for (int i = 0; i < 2;i++) {
+        //     intermedia = forwards[i](x);
+        //     std::stringstream ss;
+        //     torch::save(intermedia, ss);
+        //     auto reply = request(ss.str().data(), ss.str().size(), i + 1);
+        //     std::istringstream is(reply);
+        //     torch::load(tmp, is);             
+        //     x = tmp/scalar; 
+        // }
         
-        record_flag ++;
-        return x;
+        // record_flag ++;
+        // return x;
+        torch::Tensor fp_check;
+        torch::Tensor proof;
+        torch::Tensor intercat;
+        if (record_flag == 0){
+            std::cout<<"[Preprocessing phase (2/3)] Preparing for cornerstone fingerprint ..."<<std::endl;   
 
-        // torch::Tensor fp_check;
-        // torch::Tensor proof;
-        // torch::Tensor intercat;
-        // if (record_flag == 0){
-        //     std::cout<<"[Preprocessing phase (2/3)] Preparing for cornerstone fingerprint ..."<<std::endl;   
+            intermedia = torch::rand( {32, 10, d_model} );
+            cfp11 = pass_fingerprint(intermedia, record_flag); 
+            cfp12 = pass_fingerprint(intermedia, record_flag); 
+            record_flag ++;
+            return x;
+        } else if (record_flag == 1) {
+            std::cout<<"[Preprocessing phase (3/3)] Preparing for oblivious fingerprint {input, output} ..."<<std::endl;
 
-        //     intermedia = torch::rand({1, 3, 224, 224});
-        //     cfp11 = pass_fingerprint(intermedia, record_flag); 
-        //     cfp12 = pass_fingerprint(intermedia, record_flag); 
-        //     intermedia = torch::rand({1, 25088});
-        //     cfp21 = pass_fingerprint(intermedia, record_flag); 
-        //     cfp22 = pass_fingerprint(intermedia, record_flag); 
-        //     record_flag ++;
-        //     return x;
-        // } else if (record_flag == 1) {
-        //     std::cout<<"[Preprocessing phase (3/3)] Preparing for oblivious fingerprint {input, output} ..."<<std::endl;
+            fp1_1 = generate_obli_fp_trans(1, 1.0, 6.6); // para: [cfp index ; random factor 1 ; random factor 2]
+            // std::cout<<"fp1_1 "<<fp1_1[0][0][0][0]<<std::endl;
+            std::stringstream ss1;
+            torch::save(fp1_1, ss1);
+            auto reply1 = request(ss1.str().data(), ss1.str().size(), record_flag);
+            std::istringstream is1(reply1);
+            torch::load(tmp, is1); 
+            pf1_1 = tmp.clone();
+            // std::cout<<"pf1_1 "<<pf1_1[0][0][0][0]<<std::endl;
 
-        //     fp1_1 = generate_obli_fp(1, 1.0, 6.6); // para: [cfp index ; random factor 1 ; random factor 2]
-        //     // std::cout<<"fp1_1 "<<fp1_1[0][0][0][0]<<std::endl;
-        //     std::stringstream ss1;
-        //     torch::save(fp1_1, ss1);
-        //     auto reply1 = request(ss1.str().data(), ss1.str().size(), record_flag);
-        //     std::istringstream is1(reply1);
-        //     torch::load(tmp, is1); 
-        //     pf1_1 = tmp.clone();
-        //     // std::cout<<"pf1_1 "<<pf1_1[0][0][0][0]<<std::endl;
+            fp1_2 = generate_obli_fp_trans(1, 2.1, 3.2); 
+            // std::cout<<"fp1_2 "<<fp1_2[0][0][0][0]<<std::endl;
+            std::stringstream ss2;
+            torch::save(fp1_2, ss2);
+            auto reply2 = request(ss2.str().data(), ss2.str().size(), record_flag);
+            std::istringstream is2(reply2);
+            torch::load(tmp, is2); 
+            pf1_2 = tmp.clone();
+            // std::cout<<"pf1_2 "<<pf1_2[0][0][0][0]<<std::endl;
 
-        //     fp1_2 = generate_obli_fp(1, 2.1, 3.2); 
-        //     // std::cout<<"fp1_2 "<<fp1_2[0][0][0][0]<<std::endl;
-        //     std::stringstream ss2;
-        //     torch::save(fp1_2, ss2);
-        //     auto reply2 = request(ss2.str().data(), ss2.str().size(), record_flag);
-        //     std::istringstream is2(reply2);
-        //     torch::load(tmp, is2); 
-        //     pf1_2 = tmp.clone();
-        //     // std::cout<<"pf1_2 "<<pf1_2[0][0][0][0]<<std::endl;
+            fp1_3 = generate_obli_fp_trans(1, 1.1, 6.9); 
+            // std::cout<<"fp1_3 "<<fp1_3[0][0][0][0]<<std::endl;
+            std::stringstream ss3;
+            torch::save(fp1_3, ss3);
+            auto reply3 = request(ss3.str().data(), ss3.str().size(), record_flag);
+            std::istringstream is3(reply3);
+            torch::load(tmp, is3); 
+            pf1_3 = tmp.clone();
+            // std::cout<<"pf1_3 "<<pf1_3[0][0][0][0]<<std::endl;
 
-        //     fp1_3 = generate_obli_fp(1, 1.1, 6.9); 
-        //     // std::cout<<"fp1_3 "<<fp1_3[0][0][0][0]<<std::endl;
-        //     std::stringstream ss3;
-        //     torch::save(fp1_3, ss3);
-        //     auto reply3 = request(ss3.str().data(), ss3.str().size(), record_flag);
-        //     std::istringstream is3(reply3);
-        //     torch::load(tmp, is3); 
-        //     pf1_3 = tmp.clone();
-        //     // std::cout<<"pf1_3 "<<pf1_3[0][0][0][0]<<std::endl;
+            record_flag ++;
+            return x;
+        } else {
+            // online inference & fp check 
+            std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag-1) << "/"<<count<<")" <<std::endl; 
 
-        //     fp2_1 = generate_obli_fp_smallkernel(2, 1.5, 7.6); // para: [cfp index ; random factor 1 ; random factor 2]
-        //     std::stringstream ss4;
-        //     torch::save(fp2_1, ss4);
-        //     auto reply4 = request(ss4.str().data(), ss4.str().size(), record_flag+1);
-        //     std::istringstream is4(reply4);
-        //     torch::load(tmp, is4); 
-        //     pf2_1 = tmp.clone();
-        //     fp2_2 = generate_obli_fp_smallkernel(2, 4.1, 1.3); 
-        //     std::stringstream ss5;
-        //     torch::save(fp2_2, ss5);
-        //     auto reply5 = request(ss5.str().data(), ss5.str().size(), record_flag+1);
-        //     std::istringstream is5(reply5);
-        //     torch::load(tmp, is5); 
-        //     pf2_2 = tmp.clone();
-        //     fp2_3 = generate_obli_fp_smallkernel(2, 1.5, 14.2); 
-        //     std::stringstream ss6;
-        //     torch::save(fp2_3, ss6);
-        //     auto reply6 = request(ss6.str().data(), ss6.str().size(), record_flag+1);
-        //     std::istringstream is6(reply6);
-        //     torch::load(tmp, is6); 
-        //     pf2_3 = tmp.clone();
-        //     record_flag ++;
-        //     return x;
-        // } else {
-        //     // online inference & fp check 
-        //     std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag-1) << "/"<<count<<")" <<std::endl; 
+            for (int i = 0; i < 2;i++) {
+                // intercat = torch::cat({fp_check, intermedia},0);
+                intermedia = forwards[i](x);
+                std::stringstream ss;
+                torch::save(intermedia, ss);
+                auto reply = request(ss.str().data(), ss.str().size(), i + 1);
+                std::istringstream is(reply);
+                torch::load(tmp, is);             
+                x = tmp/scalar; 
 
-        //     for (int i = 0; i < 2;i++) {
-        //         // intercat = torch::cat({fp_check, intermedia},0);
-        //         intermedia = forwards[i](x);
-        //         std::stringstream ss;
-        //         torch::save(intermedia, ss);
-        //         auto reply = request(ss.str().data(), ss.str().size(), i + 1);
-        //         std::istringstream is(reply);
-        //         torch::load(tmp, is);             
-        //         x = tmp/scalar; // restore 11ms
-
-        //         // send fingerprints to untrusted GPU for integrity checking
-        //         int idx;
-        //         fp_check = pass_fingerprint_withindex(&idx, i+1);
-        //         std::stringstream ssfp;
-        //         torch::save(fp_check, ssfp);
-        //         auto replyfp = request(ssfp.str().data(), ssfp.str().size(), i + 1); //56ms
-        //         std::istringstream isfp(replyfp);
-        //         torch::load(proof, isfp);
-        //         if (i == 0){
-        //             integrity_check(i+1, idx, proof);
-        //         } else {
-        //             integrity_check_smallkernel(i+1, idx, proof);
-        //         }
-        //     }
+                // send fingerprints to untrusted GPU for integrity checking
+                if (i == 0){
+                    //forcefully check partition "1"
+                    int idx;
+                    fp_check = pass_fingerprint_withindex(&idx, i+1);
+                    std::stringstream ssfp;
+                    torch::save(fp_check, ssfp);
+                    auto replyfp = request(ssfp.str().data(), ssfp.str().size(), i + 1); 
+                    std::istringstream isfp(replyfp);
+                    torch::load(proof, isfp);
+                    integrity_check_trans(i+1, idx, proof);
+                }
+            }
             
-        //     record_flag ++;
-        //     return x;
-        // }  
+            record_flag ++;
+            return x;
+        }  
     }
 
     torch::Tensor pass_fingerprint_withindex(int *idx, int fp_flag){
@@ -1085,6 +1061,20 @@ struct trans : public torch::nn::Module
         int index = (rand() % 2)+ 1;
         *idx = index;
         return getfp(fp_flag, index);
+    }
+
+    torch::Tensor generate_obli_fp_trans(int fp_flag, float fact1, float fact2){
+        torch::Tensor x1 = getcfp(fp_flag, 1).clone();
+        torch::Tensor x2 = getcfp(fp_flag, 2).clone();
+
+        for (int i = 0 ; i < x1.sizes()[0]; i++){
+            for (int j = 0 ; j < x1.sizes()[1]; j++){
+                for (int m = 0 ; m < x1.sizes()[2]; m++){
+                    x1[i][j][m] = x1[i][j][m] * fact1 + x2[i][j][m] * fact2;
+                }
+            }
+        }
+        return x1;
     }
 
     torch::Tensor generate_obli_fp(int fp_flag, float fact1, float fact2){
@@ -1140,6 +1130,14 @@ struct trans : public torch::nn::Module
             int index = (rand() % 5)+ 1;
             return getfp(fp_flag, index);
         }
+    }
+
+    void integrity_check_trans(int fp_flag, int idx, torch::Tensor proof){
+        float left = getpf(fp_flag, idx)[0][0][0].item().to<float>();
+        float right = proof[0][0][0].item().to<float>();
+    	if (( (float)( (int)( (left+0.005)*100 ) ) )/100 != ( (float)( (int)( (right+0.005)*100 ) ) )/100){
+		    std::cout<<"fp"<<fp_flag<<""<<idx<<" Expect: "<<right<<" Actual: "<<left<<" Detect breaches!"<<std::endl;
+	    } 
     }
 
     void integrity_check(int fp_flag, int idx, torch::Tensor proof){
@@ -1309,6 +1307,10 @@ int main(int argc, char** argv) {
     std::cout << "[Preprocessing phase (1/3)] Model partitioned & Parameter morphed!" <<std::endl;
     reply = greeter->SayHello(msg, 0);
 
+    int prepare = 2;
+    for (size_t i = 0; i < prepare; i++){
+        out = model.forward(src);
+    }
 
     struct timeval tvs, tve;
     gettimeofday(&tvs, 0);

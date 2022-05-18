@@ -45,7 +45,7 @@ int opt = 1;
 int addrlen = sizeof(address);
 char buffer[1024] = { 0 };
 int count = 100;
-
+int scalar = 4;
 int d_model = 1024;
 int nheads = 8;
 int d_k = d_model / nheads;
@@ -161,6 +161,10 @@ struct operator7 : public torch::nn::Module
     {
         x = linear(x);
         return x;
+    }
+    void morph(){
+        linear->weight = linear->weight * scalar;
+        linear->bias = linear->bias * scalar;
     }
 };
 
@@ -3039,25 +3043,6 @@ public:
     }
 };
 
-// void morphpara(){
-//     int scalar = 4;
-//     c->weight = c->weight * scalar;
-//     cv0->weight = cv0->weight * scalar;
-//     cv1->weight = cv1->weight * scalar;
-//     cv2->weight = cv2->weight * scalar;
-//     cv3->weight = cv3->weight * scalar;
-//     cv4->weight = cv4->weight * scalar;
-//     cv5->weight = cv5->weight * scalar;
-//     cv6->weight = cv6->weight * scalar;
-//     cv7->weight = cv7->weight * scalar;
-//     cv8->weight = cv8->weight * scalar;
-//     cv9->weight = cv9->weight * scalar;
-//     cv10->weight = cv10->weight * scalar;
-//     cv11->weight = cv11->weight * scalar;
-//     cv12->weight = cv12->weight * scalar;
-//     cv13->weight = cv13->weight * scalar;
-//     cv14->weight = cv14->weight * scalar;
-// }
 
 class trans_gpu_part1 : public trans_part
 {
@@ -3114,7 +3099,7 @@ public:
         temp = relu.forward(temp);
         temp = fc4(temp);
         src = src + temp;
-        
+
         //encoder-layer-1
         src0 = src;
         nbatches = src0.size(0);
@@ -3142,7 +3127,18 @@ public:
         return src;
     }
     void morphpara(){
-        // nothing to do, inherit from virtual func
+        fc0.morph();
+        fc1.morph();
+        fc2.morph();
+        fc3.morph();
+        fc4->weight = fc4->weight * scalar;
+        fc4->bias = fc4->bias * scalar;
+        fc5.morph();
+        fc6.morph();
+        fc7.morph();
+        fc8.morph();
+        fc9->weight = fc9->weight * scalar;
+        fc9->bias = fc9->bias * scalar;
     }
 };
 
@@ -4103,12 +4099,12 @@ public:
         torch::Tensor src0;
         torch::Tensor tgt0;
 
-        //encoder-layer-3
         temp = fc13.forward(src);
         temp = relu.forward(temp);
         temp = fc14(temp);
         src = src + temp;
-
+        //encoder-layer-3
+    
         src0 = src;
         nbatches = src0.size(0);
         temp = fc15.forward(src0);
@@ -5922,7 +5918,7 @@ public:
     }
 
     void morphpara(){
-        // nothing to do, inherit from virtual func
+        // 
     }
 };
 
@@ -5930,7 +5926,7 @@ trans_part* models[] = {
     new trans_warmup(),
     new trans_gpu_part1(),
     new trans_gpu_part2()
-};
+}; 
 
 // Logic and data behind the server's behavior.
 class GreeterServiceImpl final : public Greeter::Service {
