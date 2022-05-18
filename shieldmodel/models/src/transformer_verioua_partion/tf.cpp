@@ -1094,7 +1094,28 @@ struct transformer : public torch::nn::Module
         torch::Tensor src0;
         torch::Tensor tgt0;
 
-
+        src0 = src;
+        nbatches = src0.size(0);
+        temp1 = fc0(src0);
+        temp1 = temp1.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp2 = fc1(src0);
+        temp2 = temp2.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp3 = fc2(src0);
+        temp3 = temp3.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
+        temp = temp2.transpose(2, 3);
+        temp = temp1.matmul(temp);
+        src0 = temp.div(sqrt_dk);
+        src0 = src0.softmax(3);
+        src0 = src0.matmul(temp3);
+        src0 = src0.transpose(1, 2);
+        src0 = src0.contiguous();
+        src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
+        
+        src = src + src0;
+        temp = fc3(src);
+        temp = F::relu(temp);
+        temp = fc4(temp);
+        src = src + temp;
         //encoder-layer-0
 
 
@@ -2805,26 +2826,26 @@ struct transformer : public torch::nn::Module
 
 int main(int argc, char* argv[])
 {
-    std::cout << "Please input the token size..." << std::endl;
+    // std::cout << "Please input the token size..." << std::endl;
     d_model = std::stoi(argv[1]);
     nheads = 8;
     d_k = d_model / nheads;
     d_v = d_k;
     sqrt_dk = (int)floor(sqrt((double)d_v));
     d_ff = 2048;
-    std::cout << "Read integer: " << d_model << std::endl;
+    // std::cout << "Read integer: " << d_model << std::endl;
 
     transformer model;
-    std::cout << "Transformer - CPU version" << std::endl;
-    std::cout << "Kernel Switch: 0" << std::endl;
-    std::cout << "Associative Op: 360" << std::endl;
-    std::cout << "Outsourced Op: 0" << std::endl;
+    std::cout << "Transformer - Graphene version" << std::endl;
+    // std::cout << "Kernel Switch: 0" << std::endl;
+    // std::cout << "Associative Op: 360" << std::endl;
+    // std::cout << "Outsourced Op: 0" << std::endl;
 
     torch::Tensor src = torch::rand( {32, 10, d_model} );
     torch::Tensor tgt = torch::rand( {32, 20, d_model} );
     torch::Tensor out;
 
-    int count = 100;
+    int count = 1;
 
     using std::chrono::high_resolution_clock;
     using std::chrono::duration_cast;
