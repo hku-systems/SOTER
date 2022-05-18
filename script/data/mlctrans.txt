@@ -1,0 +1,4 @@
+Transformer - Graphene version
+For 50 inferences...
+Time elapsed: 100936.5 ms.
+Fetch here. Time consuming: 2018.73 ms per inference.
