@@ -924,6 +924,7 @@ struct trans : public torch::nn::Module
     torch::Tensor forward2_new(torch::Tensor src) {
         // std::cout<<"forward2_new"<<std::endl;
         int nbatches;
+        torch::Tensor temp_re;
         torch::Tensor temp;
         torch::Tensor temp0;
         torch::Tensor temp1;
@@ -937,7 +938,7 @@ struct trans : public torch::nn::Module
         nbatches = src0.size(0);
         temp = fc10.forward(src0);
         temp1 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
-       
+        temp_re = fc10.forward(src0);
         temp = fc11.forward(src0);
         temp2 = temp.view( {nbatches, -1, nheads, d_k} ).transpose(1, 2);
 
@@ -953,7 +954,6 @@ struct trans : public torch::nn::Module
         src0 = src0.view( {nbatches, -1, nheads * d_k} )[0];
         
         src = src + src0;
-        // std::cout<<"forward 2 size = "<<src.sizes()<<std::endl;
         temp = fc13.forward(src);
         temp = relu.forward(temp);
         temp = fc14(temp);
