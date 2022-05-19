@@ -107,7 +107,7 @@ bash ~/atc22-artifact/SOTER/script/latency_fig5.sh
 
 - MLCapsule incurs the highest latency (i.e., highest bar) among all systems and models.
 - For VGG19: partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
-  have similar inference latency.
+  have similar inference latency, which should be lower than MLCapsule.
 - For other five models: SOTER incurs slightly higher latency than AegisDNN;
   eNNclave is not applicable to these five models (i.e., N/A in figure).
 
