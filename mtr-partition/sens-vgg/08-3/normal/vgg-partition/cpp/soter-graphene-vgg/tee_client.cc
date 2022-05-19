@@ -644,7 +644,7 @@ struct vgg19 : public torch::nn::Module
         {
             num_features *= s;
         }
-        num_features /= nbatches;
+        num_features /= 3;
         return num_features;
     }
 

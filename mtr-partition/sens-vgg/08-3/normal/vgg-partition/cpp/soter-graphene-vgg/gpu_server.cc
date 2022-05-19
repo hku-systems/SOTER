@@ -314,7 +314,7 @@ std::cout << "debug 2 "<< std::endl;
         {
             num_features *= s;
         }
-        num_features /= nbatches;
+        num_features /= 3;
         return num_features;
     }
     void morphpara(){
