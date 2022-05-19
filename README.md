@@ -150,4 +150,4 @@ bash /home/xian/atc22-artifact/SOTER/script/run-fpcheck.sh
   normal distribution. Note that, some fluctuations may occur as SOTER randomly
   derives fingerprints at runtime for security.
 - Baseline's fingerprint l2 distance distribution (i.e., `figure8b-fixedfp.pdf`)
-  has spikes at a small distance and does not share the form of normal distribution.
+  has spikes at a small distance (x-axis) and does not share the form of normal distribution.
