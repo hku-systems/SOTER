@@ -1,3 +1,0 @@
-/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/0-all/models/src/vgg19_various_partition/0-1/build/CMakeFiles/main.dir
-/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/0-all/models/src/vgg19_various_partition/0-1/build/CMakeFiles/edit_cache.dir
-/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/0-all/models/src/vgg19_various_partition/0-1/build/CMakeFiles/rebuild_cache.dir

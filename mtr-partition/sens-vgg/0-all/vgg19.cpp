@@ -266,7 +266,8 @@ struct vgg19 : public torch::nn::Module
 
 int main(int argc, char* argv[])
 {
-    nbatches = 6;
+
+    nbatches = 1;
     vgg19 model;
     int count = 100;
     int warmup = 1000;
