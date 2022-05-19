@@ -1,0 +1,5 @@
+DenseNet121 - Graphene version
+For 1,000 1000 inferences...
+Time elapsed: 79055 ms.
+Fetch here. Time consuming: 79.055 ms per inference.
+Completed.

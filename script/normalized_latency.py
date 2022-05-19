@@ -40,7 +40,7 @@ data[0][1] = float(exper[5])/float(exper[12])
 data[0][2] = float(exper[6])/float(exper[12])
 data[0][3] = float(exper[18])/float(exper[12])
 # alex: 
-data[1][0] = float(exper[19])/float(exper[7])
+data[1][0] = float(exper[19])/float(exper[7])    
 data[1][1] = float(exper[0])/float(exper[7])
 data[1][2] = 0
 data[1][3] = float(exper[13])/float(exper[7])
