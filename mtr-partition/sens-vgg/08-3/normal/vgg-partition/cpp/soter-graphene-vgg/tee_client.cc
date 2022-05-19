@@ -217,7 +217,7 @@ std::string request(const char* user_r, int len, int tag) {
 
 struct vgg19 : public torch::nn::Module
 {
-    int record_flag = 3;
+    int record_flag = 0;
     // cornerstone fingerprint
     torch::Tensor cfp11;
     torch::Tensor cfp12;
