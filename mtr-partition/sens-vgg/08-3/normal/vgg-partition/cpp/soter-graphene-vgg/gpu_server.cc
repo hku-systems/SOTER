@@ -45,7 +45,7 @@ int opt = 1;
 int addrlen = sizeof(address);
 char buffer[1024] = { 0 };
 
-torch::Tensor input = torch::rand({1, 3, 224, 224}, torch::dtype(torch::kFloat32)).to(at::kCUDA);
+torch::Tensor input = torch::rand({3, 3, 224, 224}, torch::dtype(torch::kFloat32)).to(at::kCUDA);
 torch::Tensor output;
 torch::Tensor output_test;
 

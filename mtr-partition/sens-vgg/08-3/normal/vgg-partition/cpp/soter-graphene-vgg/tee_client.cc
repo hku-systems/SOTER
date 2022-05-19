@@ -344,7 +344,7 @@ struct vgg19 : public torch::nn::Module
         if (record_flag == 0){
             std::cout<<"[Preprocessing phase (2/3)] Preparing for cornerstone fingerprint ..."<<std::endl;   
 
-            intermedia = torch::rand({1, 3, 224, 224});
+            intermedia = torch::rand({3, 3, 224, 224});
             cfp11 = pass_fingerprint(intermedia, record_flag); 
             cfp12 = pass_fingerprint(intermedia, record_flag); 
             intermedia = torch::rand({1, 25088});
