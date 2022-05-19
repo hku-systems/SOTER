@@ -14,4 +14,4 @@ popd
 
 make clean
 SGX=1 make
-graphene-sgx ./tee_client --target=10.22.1.26:50051 > ../../../normal.txt
+graphene-sgx ./tee_client --target=10.22.1.26:50051 > ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-6-1.txt
