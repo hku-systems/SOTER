@@ -251,9 +251,9 @@ public:
     torch::Tensor forward(torch::Tensor x)
     {
         torch::Tensor temp;
-std::cout << "debug 1 "<<i << std::endl;
+std::cout << "debug 1 "<< std::endl;
         x = c(x);
-std::cout << "debug 2 "<<i << std::endl;
+std::cout << "debug 2 "<< std::endl;
         x = F::relu(x);
         x = cv0(x);
         x = F::relu(x);
