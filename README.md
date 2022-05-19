@@ -133,7 +133,7 @@ reports the pattern from an attacker's perspective.
 **Command to run (in the GPU terminal):**
 
 ```shell
-bash /home/xian/atc22-artifact/SOTER/script/run-fpcheck.sh
+bash ~/atc22-artifact/SOTER/script/run-fpcheck.sh
 ```
 
 **Output:**

@@ -28,5 +28,5 @@ done
 python3 normalized_latency.py
 mv ./normalized_latency.pdf /home/xian/atc22-artifact/SOTER/figure/
 touch ./data/tmp
-# rm -rf ./latency.txt
+rm -rf ./latency.txt
 
