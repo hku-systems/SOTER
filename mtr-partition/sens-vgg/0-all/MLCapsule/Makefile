@@ -8,7 +8,7 @@
 # Use `make clean` to remove Graphene-generated files.
 
 # Listing the programs to be run inside the bash script
-PROGRAMS = vgg alexnet resnet densenet mlp transformer
+PROGRAMS = vgg1 vgg3 vgg6
 
 CUR_DIR = $(shell pwd)
 

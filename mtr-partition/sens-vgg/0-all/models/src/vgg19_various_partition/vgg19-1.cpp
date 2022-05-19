@@ -269,7 +269,7 @@ int main(int argc, char* argv[])
 
     nbatches = 1;
     vgg19 model;
-    int count = 1000;
+    int count = 100;
     int warmup = 1000;
 
     torch::Tensor input = torch::rand({nbatches, 3, 224, 224});
