@@ -86,7 +86,7 @@ perfectly.
 
 ### Experiment 1: End-to-end performance (45 mins)
 
-This experiment runs SOTER and three secure inference baselines (i.e., AegisDNN,
+This experiment runs SOTER and three baseline systems (i.e., AegisDNN,
 eNNclave, and MLCapsule) on six neural networks. The output reports each
 system's inference latency normalized to insecure GPU inference. 
 
