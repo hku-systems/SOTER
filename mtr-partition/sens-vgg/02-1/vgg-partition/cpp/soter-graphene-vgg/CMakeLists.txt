@@ -11,7 +11,7 @@ get_filename_component(hw_proto "../../protos/helloworld.proto" ABSOLUTE)
 get_filename_component(hw_proto_path "${hw_proto}" PATH)
 
 # Generated sources
-set(Torch_DIR /home/xian/libtorch/share/cmake/Torch)
+set(Torch_DIR /home/xian/libtorch17/libtorch/share/cmake/Torch) 
 
 set(hw_proto_srcs "${CMAKE_CURRENT_BINARY_DIR}/helloworld.pb.cc")
 set(hw_proto_hdrs "${CMAKE_CURRENT_BINARY_DIR}/helloworld.pb.h")

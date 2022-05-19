@@ -5,4 +5,4 @@ mkdir build
 cd build
 cmake ..
 make
-./main 
+./main $1
