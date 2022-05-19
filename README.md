@@ -123,7 +123,7 @@ bash ~/atc22-artifact/SOTER/script/latency_fig5.sh
 
 
 
-### Experiment X: The pattern between SOTER's fingerprint protocol and fixed fingerprint (baseline)
+### Experiment 4: The pattern between SOTER's fingerprint protocol and fixed fingerprint baseline (20 mins)
 
 This experiment runs two VGG inference programs (i.e., one for SOTER's
 fingerprint protocol, one for a fixed fingerprint protocol as a
@@ -138,7 +138,7 @@ bash /home/xian/atc22-artifact/SOTER/script/run-fpcheck.sh
 
 **Output:**
 
-- Two pdf files named `figure8a-oblifp.pdf` and `figure8b-fixedfp.pdf`,
+- Two pdf files named `figure8a-oblifp.pdf` and `figure8b-fixedfp.pdf` in `~/atc22-artifact/SOTER/figure/`,
   containing the l2 distance distribution of SOTER and baseline.
 - You can also find the log files for generating figures in
   `/home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a(or
@@ -147,6 +147,6 @@ bash /home/xian/atc22-artifact/SOTER/script/run-fpcheck.sh
 **Expected results:**
 
 - SOTER's fingerprint l2 distance distribution (i.e., `figure8a-oblifp.pdf`) is close to a
-  normal distribution.
+  normal distribution. Note that, some fluctuations may occur as SOTER randomly derives fingerprints at runtime.
 - Baseline's fingerprint l2 distance distribution (i.e., `figure8b-fixedfp.pdf`)
   has spikes at a small distance and does not share the form of normal distribution.
