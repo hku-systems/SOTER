@@ -537,6 +537,7 @@ class GreeterServiceImpl final : public Greeter::Service {
     int tag = request->tag();
     if (tag == 0) {
         for (size_t i = 0; i < 100; i++) {
+            std::cout << "debug i = "<<i << std::endl;
             output = models[tag]->forward(input);
         }
         std::cout << "[Preprocessing phase] Receive TEE signal, GPU is now warming up ..."<< std::endl;
