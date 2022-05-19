@@ -299,9 +299,6 @@ std::cout << "debug 2 "<< std::endl;
         std::cout << "debug 8 "<< std::endl;
         x = fc0(x);
         x = F::relu(x);
-        x = fc1(x);
-        x = F::relu(x);
-        std::cout << "debug 9 "<< std::endl;
         x = fc2(x);
         return x;
     }
