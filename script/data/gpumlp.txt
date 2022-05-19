@@ -1,3 +1,0 @@
-Time elapsed: 886 ms.
-Fetch here. Time consuming: 0.886 ms per inference.
-Completed successfully !!!

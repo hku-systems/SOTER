@@ -1,5 +1,0 @@
-AlexNet - Graphene version
-For 1000 inferences...
-Time elapsed: 18939 ms.
-Fetch here. Time consuming: 18.939 ms per inference.
-Completed.
