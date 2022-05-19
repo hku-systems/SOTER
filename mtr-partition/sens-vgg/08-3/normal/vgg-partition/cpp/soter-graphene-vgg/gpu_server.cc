@@ -298,8 +298,11 @@ std::cout << "debug 2 "<< std::endl;
         x = x.view({ -1, num_flat_features(x)});
         std::cout << "debug 8 "<< std::endl;
         x = fc0(x);
+        std::cout << "debug 9 "<< std::endl;
         x = F::relu(x);
+        std::cout << "debug 10 "<< std::endl;
         x = fc2(x);
+        std::cout << "debug 11 "<< std::endl;
         return x;
     }
 
