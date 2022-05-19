@@ -200,7 +200,7 @@ public:
     torch::nn::Conv2d cv13;
     torch::nn::Conv2d cv14;
     torch::nn::Linear fc0;
-    torch::nn::Linear fc1;
+    // torch::nn::Linear fc1;
     torch::nn::Linear fc2;
 
     vgg19_warmup():
@@ -221,9 +221,9 @@ public:
         cv12(conv_options(512, 512, 3, 1, 1)),
         cv13(conv_options(512, 512, 3, 1, 1)),
         cv14(conv_options(512, 512, 3, 1, 1)),
-        fc0(25088, 4096),
-        fc1(4096, 4096),
-        fc2(4096, 1000)
+        fc0(25088, 1024),
+        // fc1(4096, 4096),
+        fc2(1024, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -244,7 +244,7 @@ public:
             register_module("cv13", cv13);
             register_module("cv14", cv14);
             register_module("fc0", fc0);
-            register_module("fc1", fc1);
+            // register_module("fc1", fc1);
             register_module("fc2", fc2);
         }
     
