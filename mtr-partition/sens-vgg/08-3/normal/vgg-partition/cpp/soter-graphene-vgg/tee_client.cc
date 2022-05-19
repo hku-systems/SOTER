@@ -217,7 +217,7 @@ std::string request(const char* user_r, int len, int tag) {
 
 struct vgg19 : public torch::nn::Module
 {
-    int record_flag = 0;
+    int record_flag = 3;
     // cornerstone fingerprint
     torch::Tensor cfp11;
     torch::Tensor cfp12;
@@ -423,18 +423,18 @@ struct vgg19 : public torch::nn::Module
                 x = tmp/scalar; // restore 11ms
 
                 // send fingerprints to untrusted GPU for integrity checking
-                int idx;
-                fp_check = pass_fingerprint_withindex(&idx, i+1);
-                std::stringstream ssfp;
-                torch::save(fp_check, ssfp);
-                auto replyfp = request(ssfp.str().data(), ssfp.str().size(), i + 1); //56ms
-                std::istringstream isfp(replyfp);
-                torch::load(proof, isfp);
-                if (i == 0){
-                    integrity_check(i+1, idx, proof);
-                } else {
-                    integrity_check_smallkernel(i+1, idx, proof);
-                }
+                // int idx;
+                // fp_check = pass_fingerprint_withindex(&idx, i+1);
+                // std::stringstream ssfp;
+                // torch::save(fp_check, ssfp);
+                // auto replyfp = request(ssfp.str().data(), ssfp.str().size(), i + 1); //56ms
+                // std::istringstream isfp(replyfp);
+                // torch::load(proof, isfp);
+                // if (i == 0){
+                //     integrity_check(i+1, idx, proof);
+                // } else {
+                //     integrity_check_smallkernel(i+1, idx, proof);
+                // }
             }
             
             record_flag ++;
