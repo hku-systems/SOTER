@@ -98,18 +98,18 @@ bash ~/atc22-artifact/SOTER/script/latency_fig5.sh
 
 **Output:**
 
-- A pdf file named `normalized_latency.pdf` in `~/atc22-artifact/SOTER/figure/`, containing the normalized inference
+- A PDF file named `normalized_latency.pdf` in `~/atc22-artifact/SOTER/figure/`, containing the normalized inference
  latency of SOTER and all baselines.
 - You can also find the log files for generating figure in
   `~/atc22-artifact/SOTER/script/data/`
 
 **Expected results:**
 
-- The TEE-shielding system (i.e., MLCapsule) incurs the highest latency (i.e., highest bar) among all systems and models.
+- The TEE-shielding system (i.e., MLCapsule) incurs the highest latency (i.e., highest bar).
 - Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
   have similar inference latency, which should be lower than MLCapsule.
 - SOTER incurs slightly higher latency than AegisDNN; eNNclave is not applicable
-  to other models except VGG19 (i.e., N/A in figure).
+  to other models except VGG19 (i.e., N/A in the figure).
 
 **Important notes for Experiment 1:**
 
