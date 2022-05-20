@@ -318,7 +318,7 @@ struct vgg19 : public torch::nn::Module
         return x;
     }
     torch::Tensor forward6_new(torch::Tensor x) {
-
+        x = fc2.forward(x);
         return x;
     }
 

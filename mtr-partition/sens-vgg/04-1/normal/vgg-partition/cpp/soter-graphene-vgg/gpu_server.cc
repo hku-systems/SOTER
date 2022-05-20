@@ -585,7 +585,7 @@ public:
     
     torch::Tensor forward(torch::Tensor x)
     {  
-        x = fc2(x);
+        // x = fc2(x);
         return x;
     }
 
