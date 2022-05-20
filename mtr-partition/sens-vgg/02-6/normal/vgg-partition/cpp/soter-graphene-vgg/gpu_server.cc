@@ -452,9 +452,9 @@ public:
 
     vgg19_gpu_part2_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3066),
-        fc1(3066, 3066),
-        fc2(3066, 1000)
+        fc0(25088, 2558),
+        fc1(2558, 2558),
+        fc2(2558, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -484,9 +484,9 @@ public:
 
     vgg19_gpu_part3_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3097),
-        fc1(3097, 3097),
-        fc2(3097, 1000)
+        fc0(25088, 2558),
+        fc1(2558, 2558),
+        fc2(2558, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -528,9 +528,9 @@ public:
 
     vgg19_gpu_part4_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3097),
-        fc1(3097, 3097),
-        fc2(3097, 1000)
+        fc0(25088, 2558),
+        fc1(2558, 2558),
+        fc2(2558, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -572,9 +572,9 @@ public:
 
     vgg19_gpu_part5_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3097),
-        fc1(3097, 3097),
-        fc2(3097, 1000)
+        fc0(25088, 2558),
+        fc1(2558, 2558),
+        fc2(2558, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -612,9 +612,9 @@ public:
 
     vgg19_gpu_part6_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 4000),
-        fc1(4000, 4000),
-        fc2(4000, 1000)
+        fc0(25088, 2558),
+        fc1(2558, 2558),
+        fc2(2558, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
