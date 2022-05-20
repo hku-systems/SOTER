@@ -320,7 +320,11 @@ struct vgg19 : public torch::nn::Module
         return x;
     }
     torch::Tensor forward6_new(torch::Tensor x) {
-        // x = fc2.forward(x);
+        torch::Tensor x1 = fc2.forward(x);
+        torch::Tensor x2 = fc2.forward(x);
+        torch::Tensor x3 = fc2.forward(x);
+        torch::Tensor x4 = fc2.forward(x);
+        torch::Tensor y = F::relu(x4);
         return x;
     }
 
