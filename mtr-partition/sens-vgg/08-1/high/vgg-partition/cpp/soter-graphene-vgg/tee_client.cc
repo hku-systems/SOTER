@@ -289,6 +289,7 @@ struct vgg19 : public torch::nn::Module
             register_module("fc1", fc1);
             forwards.push_back(std::bind(&vgg19::forward1_new, this, std::placeholders::_1));
             forwards.push_back(std::bind(&vgg19::forward2_new, this, std::placeholders::_1));
+            forwards.push_back(std::bind(&vgg19::forward3_new, this, std::placeholders::_1));
         }
 
     torch::Tensor forward1_new(torch::Tensor x) {
@@ -298,45 +299,13 @@ struct vgg19 : public torch::nn::Module
     torch::Tensor forward2_new(torch::Tensor x) {
         // std::cout<<"forward2_new"<<std::endl;
         x = F::relu(x);
-        x = F::relu(x);
-        x = F::relu(x);
-        // x = torch::max_pool2d(x, 2, 2, 0);
+        torch::Tensor y = F::relu(x);
+        return x;
+    }
+    torch::Tensor forward3_new(torch::Tensor x) {
+        // std::cout<<"forward2_new"<<std::endl;
         x = torch::max_pool2d(x, 2, 2, 0);
         return x.view({ -1, num_flat_features(x)});
-    }
-
-    torch::Tensor forward1(torch::Tensor x) {
-        return c(x);
-    }
-
-    torch::Tensor forward2(torch::Tensor x) {
-        x = x.to(at::kCPU);
-        return F::relu(x);     
-    }
-
-    torch::Tensor forward3(torch::Tensor x) {
-        x = x.to(at::kCPU);
-        return F::relu(x);        
-    }
-
-    torch::Tensor forward4(torch::Tensor x) {
-        x = x.to(at::kCPU);
-        x = F::relu(x);
-        return cv14(x);        
-    }
-
-    torch::Tensor forward5(torch::Tensor x) {
-        x = x.to(at::kCPU);
-        return x.view({ -1, num_flat_features(x)});
-    }
-
-    torch::Tensor forward6(torch::Tensor x) {
-        x = x.to(at::kCPU);
-        return fc1(x);
-    }
-
-    torch::Tensor forward7(torch::Tensor x) {
-        return x.to(at::kCPU);
     }
 
     torch::Tensor forward(torch::Tensor x) {
@@ -416,7 +385,7 @@ struct vgg19 : public torch::nn::Module
             // online inference & fp check 
             std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag-1) << "/"<<count<<")" <<std::endl; 
 
-            for (int i = 0; i < 2;i++) {
+            for (int i = 0; i < 3;i++) {
                 // intercat = torch::cat({fp_check, intermedia},0);
                 intermedia = forwards[i](x);
                 std::stringstream ss;

@@ -446,11 +446,33 @@ class vgg19_gpu_part2_new : public vgg19_part
 public:
     operator1 relu;
     operator4 mxp2d0;
+
+    vgg19_gpu_part2_new():
+        mxp2d0(2, 2, 0)
+        {
+            mxp2d0.to(at::kCUDA);
+        }
+    
+    torch::Tensor forward(torch::Tensor x)
+    {  
+        return x;
+    }
+
+    void morphpara(){     
+    }
+
+};
+
+class vgg19_gpu_part3_new : public vgg19_part
+{
+public:
+    operator1 relu;
+    operator4 mxp2d0;
     torch::nn::Linear fc0;
     torch::nn::Linear fc1;
     torch::nn::Linear fc2;
 
-    vgg19_gpu_part2_new():
+    vgg19_gpu_part3_new():
         mxp2d0(2, 2, 0),
         fc0(25088, 4096),
         fc1(4096, 4096),
@@ -524,8 +546,7 @@ vgg19_part* models[] = {
     new vgg19_warmup(),
     new vgg19_gpu_part1_new(),
     new vgg19_gpu_part2_new(),
-    new vgg19_gpu_part1_fp(),
-    new vgg19_gpu_part2_fp()
+    new vgg19_gpu_part3_new()
 };
 
 // Logic and data behind the server's behavior.
