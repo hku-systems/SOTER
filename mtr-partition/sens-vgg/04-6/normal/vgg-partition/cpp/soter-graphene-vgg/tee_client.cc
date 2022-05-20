@@ -280,9 +280,9 @@ struct vgg19 : public torch::nn::Module
         cv12(conv_options(512, 512, 3, 1, 1)),
         cv13(conv_options(512, 512, 3, 1, 1)),
         cv14(conv_options(512, 512, 3, 1, 1)),
-        fc0(25088, 3096),
-        fc1(3096, 3096),
-        fc2(3096, 1000)
+        fc0(25088, 2048),
+        fc1(2048, 2048),
+        fc2(2048, 1000)
         {
             register_module("c", c);
 	        register_module("cv14", cv14);
@@ -315,9 +315,9 @@ struct vgg19 : public torch::nn::Module
     }
     torch::Tensor forward5_new(torch::Tensor x) {
         
-        // x = F::relu(x);
-        // x = fc1(x);
-        // x = F::relu(x);
+        x = F::relu(x);
+        x = fc1(x);
+        x = F::relu(x);
         return x;
     }
     torch::Tensor forward6_new(torch::Tensor x) {

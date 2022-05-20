@@ -452,9 +452,9 @@ public:
 
     vgg19_gpu_part2_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3066),
-        fc1(3066, 3066),
-        fc2(3066, 1000)
+        fc0(25088, 2048),
+        fc1(2048, 2048),
+        fc2(2048, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -484,9 +484,9 @@ public:
 
     vgg19_gpu_part3_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3096),
-        fc1(3096, 3096),
-        fc2(3096, 1000)
+        fc0(25088, 2048),
+        fc1(2048, 2048),
+        fc2(2048, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -528,9 +528,9 @@ public:
 
     vgg19_gpu_part4_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3096),
-        fc1(3096, 3096),
-        fc2(3096, 1000)
+        fc0(25088, 2048),
+        fc1(2048, 2048),
+        fc2(2048, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
@@ -586,9 +586,9 @@ public:
     torch::Tensor forward(torch::Tensor x)
     {  
         // x = fc2(x);
-        x = F::relu(x);
-        x = fc1(x);
-        x = F::relu(x);
+        // x = F::relu(x);
+        // x = fc1(x);
+        // x = F::relu(x);
         return x;
     }
 
@@ -615,9 +615,9 @@ public:
 
     vgg19_gpu_part6_new():
         mxp2d0(2, 2, 0),
-        fc0(25088, 3096),
-        fc1(3096, 3096),
-        fc2(3096, 1000)
+        fc0(25088, 2048),
+        fc1(2048, 2048),
+        fc2(2048, 1000)
         {
             relu.to(at::kCUDA);
             mxp2d0.to(at::kCUDA);
