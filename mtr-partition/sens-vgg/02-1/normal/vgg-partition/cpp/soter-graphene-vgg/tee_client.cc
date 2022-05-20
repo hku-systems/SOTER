@@ -320,6 +320,8 @@ struct vgg19 : public torch::nn::Module
         
         x = F::relu(x);
         x = fc1(x);
+        torch::Tensor x2 = fc1(x);
+        torch::Tensor x3 = fc1(x);
         x = F::relu(x);
         return x;
     }
