@@ -544,7 +544,7 @@ public:
         // x = fc0(x);
         // x = F::relu(x);
         x = fc1(x);
-        x = F::relu(x);
+        // x = F::relu(x);
         // x = fc2(x);
         return x;
     }
