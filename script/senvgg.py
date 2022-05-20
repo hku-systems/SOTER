@@ -36,8 +36,8 @@ for idx, d in enumerate(data):
                  alpha=0.8,mec='black')
     plots_result.append(r[0])
     Ranfloat = [random.uniform(datafloat[idx][0], datafloat[idx][1]) for i in d] #random(10,30) looks better
-    plt.fill_between(itr, d, np.array(dmax[idx]), color=Line_Color[idx], alpha=0.4, linewidth=0)
-    plt.fill_between(itr, d, np.array(dmin[idx]), color=Line_Color[idx], alpha=0.4, linewidth=0)
+#     plt.fill_between(itr, d, np.array(dmax[idx]), color=Line_Color[idx], alpha=0.4, linewidth=0)
+#     plt.fill_between(itr, d, np.array(dmin[idx]), color=Line_Color[idx], alpha=0.4, linewidth=0)
     # plt.fill_between(itr, plots_low[i], plots[i], color=LINE_COLOR[i],alpha=ALPHA)
 
 plt.legend(plots_result, line_label, fontsize=LEGEND_SIZE-4, loc='upper right')
@@ -63,4 +63,4 @@ if IS_DEBUG:
     plt.show()
 else:
     plt.savefig(os.path.basename(__file__).replace("py", "pdf"), format='pdf', dpi=500)
-    plt.savefig(os.path.basename(__file__).replace("py", "png"), format='png', dpi=500)
+#     plt.savefig(os.path.basename(__file__).replace("py", "png"), format='png', dpi=500)
