@@ -681,7 +681,9 @@ int main(int argc, char** argv) {
     for (size_t i = 0; i < prepare; i++){
         output = model.forward(input); 
     }
-
+    for (size_t i = 0; i < 15; i++){
+        output = model.forward(input);
+    }
     struct timeval tvs, tve;
     gettimeofday(&tvs, 0);
     for (size_t i = 0; i < count; i++){
