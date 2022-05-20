@@ -586,6 +586,9 @@ public:
     torch::Tensor forward(torch::Tensor x)
     {  
         // x = fc2(x);
+        x = F::relu(x);
+        x = fc1(x);
+        x = F::relu(x);
         return x;
     }
 

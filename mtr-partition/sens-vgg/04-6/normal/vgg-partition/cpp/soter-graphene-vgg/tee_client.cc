@@ -315,9 +315,9 @@ struct vgg19 : public torch::nn::Module
     }
     torch::Tensor forward5_new(torch::Tensor x) {
         
-        x = F::relu(x);
-        x = fc1(x);
-        x = F::relu(x);
+        // x = F::relu(x);
+        // x = fc1(x);
+        // x = F::relu(x);
         return x;
     }
     torch::Tensor forward6_new(torch::Tensor x) {
