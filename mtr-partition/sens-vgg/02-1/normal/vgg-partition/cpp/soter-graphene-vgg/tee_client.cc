@@ -280,9 +280,9 @@ struct vgg19 : public torch::nn::Module
         cv12(conv_options(512, 512, 3, 1, 1)),
         cv13(conv_options(512, 512, 3, 1, 1)),
         cv14(conv_options(512, 512, 3, 1, 1)),
-        fc0(25088, 4000),
-        fc1(4000, 4000),
-        fc2(4000, 1000)
+        fc0(25088, 3097),
+        fc1(3097, 3097),
+        fc2(3097, 1000)
         {
             register_module("c", c);
 	        register_module("cv14", cv14);
