@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/high/vgg-partition/cpp/cmake/common.cmake"
+  "/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-6/high/vgg-partition/cpp/cmake/common.cmake"
   "../../CMakeLists.txt"
   "CMakeFiles/3.23.1/CMakeCCompiler.cmake"
   "CMakeFiles/3.23.1/CMakeCXXCompiler.cmake"
