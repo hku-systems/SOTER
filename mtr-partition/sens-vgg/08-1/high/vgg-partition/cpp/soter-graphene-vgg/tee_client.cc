@@ -46,7 +46,7 @@ std::string msg = "w";
 std::string msg_y = "Y";
 std::string reply = "0";
 int scalar = 4;
-int count = 100; // number of inference tests
+int count = 1000; // number of inference tests
 
 torch::nn::Conv2dOptions conv_options(int64_t in_planes, int64_t out_planes, int64_t kerner_size, int64_t stride=1, int64_t padding=0, bool with_bias=false)
 {
@@ -300,11 +300,13 @@ struct vgg19 : public torch::nn::Module
         // std::cout<<"forward2_new"<<std::endl;
         x = F::relu(x);
         torch::Tensor y = F::relu(x);
+        
         return x;
     }
     torch::Tensor forward3_new(torch::Tensor x) {
         // std::cout<<"forward2_new"<<std::endl;
         x = torch::max_pool2d(x, 2, 2, 0);
+        torch::Tensor y = torch::max_pool2d(x, 2, 2, 0);
         return x.view({ -1, num_flat_features(x)});
     }
 
