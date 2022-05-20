@@ -291,7 +291,7 @@ struct vgg19 : public torch::nn::Module
             forwards.push_back(std::bind(&vgg19::forward2_new, this, std::placeholders::_1));
             forwards.push_back(std::bind(&vgg19::forward3_new, this, std::placeholders::_1));
             forwards.push_back(std::bind(&vgg19::forward4_new, this, std::placeholders::_1));
-            forwards.push_back(std::bind(&vgg19::forward5_new, this, std::placeholders::_1));
+            // forwards.push_back(std::bind(&vgg19::forward5_new, this, std::placeholders::_1));
         }
 
     torch::Tensor forward1_new(torch::Tensor x) {
@@ -308,11 +308,8 @@ struct vgg19 : public torch::nn::Module
     
         return x;
     }
-    torch::Tensor forward4_new(torch::Tensor x) {
     
-        return x;
-    }
-    torch::Tensor forward5_new(torch::Tensor x) {
+    torch::Tensor forward4_new(torch::Tensor x) {
         // std::cout<<"forward2_new"<<std::endl;
         x = torch::max_pool2d(x, 2, 2, 0);
         // torch::Tensor y = torch::max_pool2d(x, 2, 2, 0);
@@ -398,7 +395,7 @@ struct vgg19 : public torch::nn::Module
             // online inference & fp check 
             std::cout<<"[Inference phase] Inference & integrity check ("<< (record_flag-1) << "/"<<count<<")" <<std::endl; 
 
-            for (int i = 0; i < 5;i++) {
+            for (int i = 0; i < 4;i++) {
                 // intercat = torch::cat({fp_check, intermedia},0);
                 intermedia = forwards[i](x);
                 std::stringstream ss;
