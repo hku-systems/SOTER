@@ -298,7 +298,8 @@ struct vgg19 : public torch::nn::Module
     torch::Tensor forward2_new(torch::Tensor x) {
         // std::cout<<"forward2_new"<<std::endl;
         x = F::relu(x);
-        // x = F::relu(x);
+        x = F::relu(x);
+        x = F::relu(x);
         // x = torch::max_pool2d(x, 2, 2, 0);
         x = torch::max_pool2d(x, 2, 2, 0);
         return x.view({ -1, num_flat_features(x)});
