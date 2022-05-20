@@ -1,0 +1,5 @@
+/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles/hw_grpc_proto.dir
+/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles/tee_client.dir
+/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles/gpu_server.dir
+/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles/edit_cache.dir
+/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles/rebuild_cache.dir
