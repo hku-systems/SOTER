@@ -465,22 +465,10 @@ public:
     
     torch::Tensor forward(torch::Tensor x)
     {  
-        x = fc0(x);
-        x = F::relu(x);
-        x = fc1(x);
-        x = F::relu(x);
-        x = fc2(x);
         return x;
     }
 
-    void morphpara(){
-        int scalar = 4;
-        fc0->weight = fc0->weight * scalar;
-        fc0->bias = fc0->bias * scalar;
-        fc1->weight = fc1->weight * scalar;
-        fc1->bias = fc1->bias * scalar;
-        fc2->weight = fc2->weight * scalar;
-        fc2->bias = fc2->bias * scalar;        
+    void morphpara(){      
     }
 
 };
@@ -509,6 +497,11 @@ public:
     
     torch::Tensor forward(torch::Tensor x)
     {  
+        x = fc0(x);
+        x = F::relu(x);
+        x = fc1(x);
+        x = F::relu(x);
+        x = fc2(x);
         return x;
     }
 
@@ -524,45 +517,45 @@ public:
 
 };
 
-class vgg19_gpu_part1_fp: public vgg19_part
+class vgg19_gpu_part4_new : public vgg19_part
 {
 public:
-    torch::nn::Conv2d c;
-    vgg19_gpu_part1_fp():
-        c(conv_options(3, 64, 3, 1, 1))
+    operator1 relu;
+    operator4 mxp2d0;
+    torch::nn::Linear fc0;
+    torch::nn::Linear fc1;
+    torch::nn::Linear fc2;
+
+    vgg19_gpu_part4_new():
+        mxp2d0(2, 2, 0),
+        fc0(25088, 4096),
+        fc1(4096, 4096),
+        fc2(4096, 1000)
         {
-            c->to(at::kCUDA);
-        } 
+            relu.to(at::kCUDA);
+            mxp2d0.to(at::kCUDA);
+            fc0->to(at::kCUDA);
+            fc1->to(at::kCUDA);
+            fc2->to(at::kCUDA);
+        }
+    
     torch::Tensor forward(torch::Tensor x)
-    {
-        x = c(x);
+    {  
         return x;
     }
-    void morphpara(){}
+
+    void morphpara(){     
+    }
+
 };
 
-class vgg19_gpu_part2_fp: public vgg19_part
-{
-public:
-    torch::nn::Linear fc0;
-    vgg19_gpu_part2_fp():
-        fc0(25088, 4096)
-        {
-            fc0->to(at::kCUDA);
-        } 
-    torch::Tensor forward(torch::Tensor x)
-    {
-        x = fc0(x);
-        return x;
-    }
-    void morphpara(){}
-};
 
 vgg19_part* models[] = {
     new vgg19_warmup(),
     new vgg19_gpu_part1_new(),
     new vgg19_gpu_part2_new(),
-    new vgg19_gpu_part3_new()
+    new vgg19_gpu_part3_new(),
+    new vgg19_gpu_part4_new()
 };
 
 // Logic and data behind the server's behavior.
