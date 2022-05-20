@@ -423,7 +423,7 @@ struct vgg19 : public torch::nn::Module
                 x = tmp/scalar; // restore 11ms
 
                 // send fingerprints to untrusted GPU for integrity checking
-                if (record_flag % 200 == 0){
+                if (record_flag % 500 == 0){
                     int idx;
                     fp_check = pass_fingerprint_withindex(&idx, i+1);
                     std::stringstream ssfp;

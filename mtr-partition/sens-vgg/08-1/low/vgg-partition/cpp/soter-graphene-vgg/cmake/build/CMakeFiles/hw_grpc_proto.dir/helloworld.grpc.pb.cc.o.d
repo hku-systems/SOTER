@@ -1,7 +1,7 @@
 CMakeFiles/hw_grpc_proto.dir/helloworld.grpc.pb.cc.o: \
- /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/helloworld.grpc.pb.cc \
+ /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/low/vgg-partition/cpp/soter-graphene-vgg/cmake/build/helloworld.grpc.pb.cc \
  /usr/include/stdc-predef.h \
- /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/helloworld.pb.h \
+ /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/low/vgg-partition/cpp/soter-graphene-vgg/cmake/build/helloworld.pb.h \
  /usr/include/c++/7/limits \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -197,7 +197,7 @@ CMakeFiles/hw_grpc_proto.dir/helloworld.grpc.pb.cc.o: \
  /include/google/protobuf/stubs/stl_util.h \
  /include/google/protobuf/message.h \
  /include/google/protobuf/extension_set.h /usr/include/c++/7/cassert \
- /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/helloworld.grpc.pb.h \
+ /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/low/vgg-partition/cpp/soter-graphene-vgg/cmake/build/helloworld.grpc.pb.h \
  /include/grpcpp/impl/codegen/async_generic_service.h \
  /include/grpc/impl/codegen/port_platform.h /usr/include/linux/version.h \
  /include/grpcpp/impl/codegen/async_stream.h \
