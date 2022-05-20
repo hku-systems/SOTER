@@ -46,7 +46,7 @@ std::string msg = "w";
 std::string msg_y = "Y";
 std::string reply = "0";
 int scalar = 4;
-int count = 50; // number of inference tests
+int count = 500; // number of inference tests
 
 torch::nn::Conv2dOptions conv_options(int64_t in_planes, int64_t out_planes, int64_t kerner_size, int64_t stride=1, int64_t padding=0, bool with_bias=false)
 {
@@ -316,17 +316,12 @@ struct vgg19 : public torch::nn::Module
     torch::Tensor forward5_new(torch::Tensor x) {
         
         x = F::relu(x);
-        torch::Tensor x1 = fc2.forward(x);
-        torch::Tensor x2 = fc2.forward(x);
-        torch::Tensor x3 = fc2.forward(x);
-        torch::Tensor x4 = fc2.forward(x);
-        x = fc2.forward(x);
-        
-        torch::Tensor y = F::relu(x4);
+        x = fc1(x);
+        x = F::relu(x);
         return x;
     }
     torch::Tensor forward6_new(torch::Tensor x) {
-        
+        x = fc2.forward(x);
         return x;
     }
 
@@ -686,9 +681,7 @@ int main(int argc, char** argv) {
     for (size_t i = 0; i < prepare; i++){
         output = model.forward(input); 
     }
-    for (size_t i = 0; i < 15; i++){
-        output = model.forward(input);
-    }
+
     struct timeval tvs, tve;
     gettimeofday(&tvs, 0);
     for (size_t i = 0; i < count; i++){
