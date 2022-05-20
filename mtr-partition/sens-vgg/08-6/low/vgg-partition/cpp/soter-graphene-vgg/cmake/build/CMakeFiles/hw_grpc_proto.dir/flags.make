@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DCARES_STATICLIB
 
-CXX_INCLUDES = -I/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/low/vgg-partition/cpp/soter-graphene-vgg/cmake/build -isystem /include
+CXX_INCLUDES = -I/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-6/low/vgg-partition/cpp/soter-graphene-vgg/cmake/build -isystem /include
 
 CXX_FLAGS =  -g -std=gnu++11
 

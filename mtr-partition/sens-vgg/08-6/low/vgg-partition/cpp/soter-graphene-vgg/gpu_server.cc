@@ -416,6 +416,7 @@ public:
         x = F::relu(x);
         x = cv14(x);
         x = F::relu(x);
+        x = torch::max_pool2d(x, 2, 2, 0);
         return x;
     }
 

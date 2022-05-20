@@ -1,4 +1,4 @@
-# Install script for directory: /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/low/vgg-partition/cpp/soter-graphene-vgg
+# Install script for directory: /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-6/low/vgg-partition/cpp/soter-graphene-vgg
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/low/vgg-partition/cpp/soter-graphene-vgg/cmake/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-6/low/vgg-partition/cpp/soter-graphene-vgg/cmake/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
