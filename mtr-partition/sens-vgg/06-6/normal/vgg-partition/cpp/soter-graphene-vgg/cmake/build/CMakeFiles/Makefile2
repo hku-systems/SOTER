@@ -54,10 +54,10 @@ RM = /snap/cmake/1082/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg
+CMAKE_SOURCE_DIR = /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build
+CMAKE_BINARY_DIR = /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -85,14 +85,14 @@ clean: CMakeFiles/gpu_server.dir/clean
 CMakeFiles/hw_grpc_proto.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hw_grpc_proto.dir/build.make CMakeFiles/hw_grpc_proto.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hw_grpc_proto.dir/build.make CMakeFiles/hw_grpc_proto.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles --progress-num=3,4,5,6 "Built target hw_grpc_proto"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles --progress-num=3,4,5,6 "Built target hw_grpc_proto"
 .PHONY : CMakeFiles/hw_grpc_proto.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/hw_grpc_proto.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/hw_grpc_proto.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
 .PHONY : CMakeFiles/hw_grpc_proto.dir/rule
 
 # Convenience name for target.
@@ -111,14 +111,14 @@ CMakeFiles/hw_grpc_proto.dir/clean:
 CMakeFiles/tee_client.dir/all: CMakeFiles/hw_grpc_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tee_client.dir/build.make CMakeFiles/tee_client.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/tee_client.dir/build.make CMakeFiles/tee_client.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles --progress-num=7,8 "Built target tee_client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles --progress-num=7,8 "Built target tee_client"
 .PHONY : CMakeFiles/tee_client.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/tee_client.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/tee_client.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
 .PHONY : CMakeFiles/tee_client.dir/rule
 
 # Convenience name for target.
@@ -137,14 +137,14 @@ CMakeFiles/tee_client.dir/clean:
 CMakeFiles/gpu_server.dir/all: CMakeFiles/hw_grpc_proto.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gpu_server.dir/build.make CMakeFiles/gpu_server.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gpu_server.dir/build.make CMakeFiles/gpu_server.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles --progress-num=1,2 "Built target gpu_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles --progress-num=1,2 "Built target gpu_server"
 .PHONY : CMakeFiles/gpu_server.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/gpu_server.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gpu_server.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xian/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/cpp/soter-graphene-vgg/cmake/build/CMakeFiles 0
 .PHONY : CMakeFiles/gpu_server.dir/rule
 
 # Convenience name for target.
