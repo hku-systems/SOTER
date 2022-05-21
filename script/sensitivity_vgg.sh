@@ -1,7 +1,7 @@
 echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
-# model=("0all" "1all" "02-1")
-model=("02-3" "02-6" "04-1" "04-3" "04-6" "06-1" "06-3" "06-6" "08-1" "08-3" "08-6" )
+# model=("0all" "1all" "02-1" "02-3" "02-6" "04-1" "04-3" "04-6" "06-1" "06-3" "06-6" "08-1" "08-3" "08-6" )
+model=("scp-sens" )
 # model=($@)
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
@@ -400,5 +400,8 @@ do
                 echo "[After running] Signal = 0 "  
             fi
         done
+    fi
+    if [ "${model[$i]}" == "scp-sens" ];then
+         ssh jianyu@10.22.1.16 "bash ~/atc22-artifact/SOTER/script/run-relay-forw.sh ${model[$i]}"
     fi
 done
