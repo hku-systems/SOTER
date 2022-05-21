@@ -111,3 +111,80 @@ if [ "$1" == "02-1" ];then
     echo '** VGG-soter inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
+if [ "$1" == "02-3" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/02-3/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "02-6" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/02-6/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "04-1" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-1/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "04-3" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-3/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "04-6" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/04-6/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "06-1" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-1/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "06-3" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-3/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "06-6" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/06-6/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "08-1" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-1/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "08-3" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-3/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "08-6" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-vgg/08-6/normal/vgg-partition/graphene-vgg-partition
+    echo '** VGG-soter inference started **'
+    bash runclient.sh
+    echo '** VGG-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
