@@ -84,6 +84,25 @@ If you see the the above logs (the "**Time consuming**" is normal to fluctuate
 within -5 ~ +5 ms on VGG19 owing to the nature of inference tasks), the artifact runs
 perfectly. 
 
+### Major Claims for Artifact Evaluation
+- **(C1)** The TEE-shielding baseline (i.e., MLCapsule) incurs the highest inference
+  latency among all systems and all six models (Figure 5 in our paper).
+- **(C2)** Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave) have
+  similar inference latency on VGG19 (Figure 5 in our paper).
+- **(C3)** SOTER incurs slightly higher latency than AegisDNN for other five
+  models (Figure 5 in our paper).
+- **(C4)** With a larger input shape, SOTER's inference latency increases (Figure 6 in our paper).
+- **(C5)** With a larger partition ratio, SOTER's inference latency decreases (Figure 6 in our paper).
+- **(C6)** With a larger partition ratio, SOTER achieves similar confidentiality
+ guarantee (i.e., similar accuracy) as eNNclave (Figure 7a in our paper).
+- **(C7)** With a larger partition ratio, SOTER achieves stronger confidentiality
+ guarantee (i.e., lower accuracy) than AegisDNN (Figure 7a&7b in our paper).
+- **(C8)** When running SOTER's oblivious fingerprint protocol, the l2 distance
+  distribution between randomly sampled fingerprints is close to a normal
+  distribution (Figure 8a in our paper).
+- **(C9)** When running a baseline fixed fingerprint protocol, the distribution
+  has spikes on a small distance, and does not share the form of normal distribution (Figure 8b in our paper).
+
 ### Experiment 1: End-to-end performance (45 mins)
 
 This experiment runs SOTER and three baseline systems (i.e., AegisDNN,
