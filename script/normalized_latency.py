@@ -77,7 +77,7 @@ soter = [round(float(exper[24]),2),round(float(exper[19]),2),round(float(exper[2
 myticks = [
     [0,10,20,40],
     [0,5,10,25],
-    [0,10,15,20],
+    [0,10,15,25],
     [0,3,6,9],
     [0,1,2,6],
     [0,15,30,45]
