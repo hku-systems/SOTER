@@ -35,20 +35,20 @@ data = [
 ]
 
 # vgg: 
-data[0][0] = float(exper[24])/float(exper[12])
-data[0][1] = float(exper[5])/float(exper[12])
-data[0][2] = float(exper[6])/float(exper[12])
-data[0][3] = float(exper[18])/float(exper[12])
+data[0][0] = round(float(exper[24])/float(exper[12]),2) 
+data[0][1] = round(float(exper[5])/float(exper[12]),2) 
+data[0][2] = round(float(exper[6])/float(exper[12]),2) 
+data[0][3] = round(float(exper[18])/float(exper[12]),2) 
 # alex: 
-data[1][0] = float(exper[19])/float(exper[7])    
-data[1][1] = float(exper[0])/float(exper[7])
+data[1][0] = round(float(exper[19])/float(exper[7]) ,2)   
+data[1][1] = round(float(exper[0])/float(exper[7]) ,2)   
 data[1][2] = 0
-data[1][3] = float(exper[13])/float(exper[7])
+data[1][3] = round(float(exper[13])/float(exper[7]) ,2)   
 # res: 
-data[2][0] = float(exper[22])/float(exper[10])
-data[2][1] = float(exper[3])/float(exper[10])
+data[2][0] = round(float(exper[22])/float(exper[10]) ,2)   
+data[2][1] = round(float(exper[3])/float(exper[10]) ,2)  
 data[2][2] = 0
-data[2][3] = float(exper[16])/float(exper[10])
+data[2][3] = round(float(exper[16])/float(exper[10]) ,2)  
 # aegisdnn: alex dense mlp res trans vgg 0 - 5
 # ennclave: vgg 6
 # gpu: alex dense mlp res trans vgg 7 - 12
@@ -56,21 +56,22 @@ data[2][3] = float(exper[16])/float(exper[10])
 # soter: alex dense mlp res trans vgg 19 - 24
 
 # dense: 
-data[3][0] = float(exper[20])/float(exper[8])
-data[3][1] = float(exper[1])/float(exper[8])
+data[3][0] = round(float(exper[20])/float(exper[8]) ,2)  
+data[3][1] = round(float(exper[1])/float(exper[8]) ,2) 
 data[3][2] = 0
-data[3][3] = float(exper[14])/float(exper[8])
+data[3][3] = round(float(exper[14])/float(exper[8]) ,2) 
 # mlp: 
-data[4][0] = float(exper[21])/float(exper[9])
-data[4][1] = float(exper[2])/float(exper[9])
+data[4][0] = round(float(exper[21])/float(exper[9]) ,2) 
+data[4][1] = round(float(exper[2])/float(exper[9]) ,2) 
 data[4][2] = 0
-data[4][3] = float(exper[15])/float(exper[9])
+data[4][3] = round(float(exper[15])/float(exper[9]) ,2) 
 # trans: 
-data[5][0] = float(exper[23])/float(exper[11])
-data[5][1] = float(exper[4])/float(exper[11])
+data[5][0] = round(float(exper[23])/float(exper[11]) ,2) 
+data[5][1] = round(float(exper[4])/float(exper[11]) ,2) 
 data[5][2] = 0
-data[5][3] = float(exper[17])/float(exper[11])
+data[5][3] = round(float(exper[17])/float(exper[11]) ,2) 
 
+print (data)
 soter = [round(float(exper[24]),2),round(float(exper[19]),2),round(float(exper[22]),2),round(float(exper[20]),2),round(float(exper[21]),2),round(float(exper[23]),2)]
 
 myticks = [
@@ -90,6 +91,16 @@ myticks_labels = [
     ['0x','1x','2x','6x'],
     ['0x','15x','30x','45x']
 ]
+
+# data = [
+#     [10.54,10.32433875,10.23013209,24.71098875],
+#     [3.21, 2.59,  0, 13.80138875],
+#     [13.26, 12.58,0, 16.04],
+#     [5.64,5.35   ,0, 7.05],
+#     [2.24,2.175524543,0,2.71537693],
+#     [13.58, 11.31, 0, 36.08]
+# ]
+# print (data)
 
 bar_label = ['SOTER','AegisDNN', 'eNNclave', 'MLCapsule' ]
 bar_width = 0.57
