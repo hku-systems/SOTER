@@ -1,8 +1,8 @@
 echo '** This is GPU server script **'
 sed -i 's/1/0/g' signal
-model=("0all" "1all" "02-1" "02-3" "02-6" "04-1" "04-3" "04-6" "06-1" "06-3" "06-6" "08-1" "08-3" "08-6" "scp-sens")
-# model=("0all" "1all")
-# model=($@)
+# model=("0all" "1all" "02-1" "02-3" "02-6" "04-1" "04-3" "04-6" "06-1" "06-3" "06-6" "08-1" "08-3" "08-6" "scp-sens")
+# model=("1all" "02-1")
+model=($@)
 for ((i = 0 ; i < ${#model[@]} ; i++))
 do
     if [ "${model[$i]}" == "0all" ];then
