@@ -176,7 +176,7 @@ bash ./sensitivity_fig6.sh
   performance gain).
 
 
-### Experiment 3: Confidentiality study (xxx mins)
+### Experiment 3: Confidentiality study (25 mins)
 
 This experiment runs SOTER and baseline systems on two models under model stealing
 attacks to show the empirical confidentiality guarantee. The output is the test
@@ -199,7 +199,7 @@ bash ./conf.sh
   comparable confidentiality) as eNNclave
   (match **C6**).
 - When the partition ratio grows, SOTER achieves lower accuracy (i.e., stronger
-  confidentiality) than AegisDNN (match **C7**).
+  confidentiality) than AegisDNN (match **C6&C7**).
 
 ### Experiment 4: The pattern between SOTER's fingerprint protocol and fixed fingerprint baseline (20 mins)
 
