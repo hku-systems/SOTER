@@ -129,7 +129,7 @@ bash ./latency_fig5.sh
 -  Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
   have similar inference latency, which should be lower than MLCapsule. (match **C2**).
 - SOTER incurs slightly higher latency than AegisDNN; eNNclave is not applicable
-  to other models except VGG19 (match **C3**) 
+  to other models except VGG19 (match **C3**).
 
 **Important notes for Experiment 1:**
 
@@ -158,13 +158,13 @@ bash ./sensitivity_fig6.sh
 - A pdf files named `senvgg.pdf` in `~/atc22-artifact/SOTER/figure/`,
   containing the partition sensitivity study of SOTER.
 - You can also find the log files for generating this figure in
-  `/home/xian/atc22-artifact/SOTER/script/sensitivity`
+  `/home/xian/atc22-artifact/SOTER/script/sensitivity`.
 
 **Expected results:**
 
 - SOTER's inference latency grows as the input tensor shape increases (match **C4**).
 - SOTER's inference latency decreases as the partition ratio increases, i.e.,
-  more operators are partitioned to an untrusted GPU for computing inferences (match **C5**).
+  more operators are partitioned to an untrusted GPU for assisting inferences (match **C5**).
 
 ### Experiment 4: The pattern between SOTER's fingerprint protocol and fixed fingerprint baseline (20 mins)
 
