@@ -2,7 +2,6 @@ from config import *
 import matplotlib.pyplot as plt
 import numpy as np
 import os
-
 import matplotlib.lines as mlines
 
 # aegisdnn: alex dense mlp res trans vgg 

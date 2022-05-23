@@ -112,7 +112,8 @@ system's inference latency normalized to insecure GPU inference.
 **Command to run (in the GPU terminal):**
 
 ```shell
-bash ~/atc22-artifact/SOTER/script/latency_fig5.sh
+cd ~/atc22-artifact/SOTER/script/
+bash ./latency_fig5.sh
 ```
 
 **Output:**
@@ -152,7 +153,8 @@ reports the pattern from an attacker's perspective.
 **Command to run (in the GPU terminal):**
 
 ```shell
-bash ~/atc22-artifact/SOTER/script/run-fpcheck.sh
+cd ~/atc22-artifact/SOTER/script/
+bash ./run-fpcheck.sh
 ```
 
 **Output:**
