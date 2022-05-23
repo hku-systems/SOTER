@@ -151,7 +151,7 @@ with different partition ratio, and finally reports SOTER's inference latency.
 ```shell
 cd ~/atc22-artifact/SOTER/script/
 bash ./sensitivity_fig6.sh
-```
+``` 
 
 **Output:**
 
@@ -178,8 +178,10 @@ bash ./sensitivity_fig6.sh
 
 ### Experiment 3: Confidentiality study (xxx mins)
 
-This experiment runs different systems on two models under model stealing
-attacks to show the empirical confidentiality guarantee of different systems.
+This experiment runs SOTER and baseline systems on two models under model stealing
+attacks to show the empirical confidentiality guarantee. The output is the test
+accuracy (or BLEU score) for different systems. A larger accuracy (or BLEU score) indicates more
+confidentiality loss of the serving model.
 
 **Command to run (in the GPU terminal):**
 
@@ -189,7 +191,15 @@ bash ./conf.sh
 ```
 
 **Output:**
-- s
+- Two pdf files named `figure7a-vgg.pdf` and `figure7b-trans.pdf` in `~/atc22-artifact/SOTER/figure/`,
+  containing the stealing attack results of SOTER and baseline systems.
+
+**Expected results:**
+- When the partition ratio grows, SOTER achieves similar accuracy (i.e., 
+  comparable confidentiality) as eNNclave
+  (match **C6**).
+- When the partition ratio grows, SOTER achieves lower accuracy (i.e., stronger
+  confidentiality) than AegisDNN (match **C7**).
 
 ### Experiment 4: The pattern between SOTER's fingerprint protocol and fixed fingerprint baseline (20 mins)
 
