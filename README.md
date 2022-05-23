@@ -199,7 +199,7 @@ bash ./conf.sh
   comparable confidentiality) as eNNclave
   (match **C6**).
 - In figure7a-vgg.pdf and figure7b-trans.pdf, when the partition ratio grows, SOTER achieves lower accuracy (i.e., stronger
-  confidentiality) than AegisDNN (match **C6&C7**).
+  confidentiality) than AegisDNN (match **C7**).
 
 ### Experiment 4: The pattern between SOTER's fingerprint protocol and fixed fingerprint baseline (20 mins)
 
