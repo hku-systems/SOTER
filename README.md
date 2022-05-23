@@ -141,7 +141,30 @@ bash ./latency_fig5.sh
   the running process. If you failed in this step, please make sure
   other evaluators are not running this experiment concurrently.
 
+### Experiment 2: Partition sensitivity (35 mins)
 
+This experiment runs SOTER on VGG19, tests SOTER with different input shape and
+with different partition ratio, and finally reports SOTER's inference latency.
+
+**Command to run (in the GPU terminal):**
+
+```shell
+cd ~/atc22-artifact/SOTER/script/
+bash ./sensitivity_fig6.sh
+```
+
+**Output:**
+
+- A pdf files named `senvgg.pdf` in `~/atc22-artifact/SOTER/figure/`,
+  containing the partition sensitivity study of SOTER.
+- You can also find the log files for generating this figure in
+  `/home/xian/atc22-artifact/SOTER/script/sensitivity`
+
+**Expected results:**
+
+- SOTER's inference latency grows as the input tensor shape increases (match **C4**).
+- SOTER's inference latency decreases as the partition ratio increases, i.e.,
+  more operators are partitioned to an untrusted GPU for computing inferences (match **C5**).
 
 ### Experiment 4: The pattern between SOTER's fingerprint protocol and fixed fingerprint baseline (20 mins)
 
