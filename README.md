@@ -163,8 +163,33 @@ bash ./sensitivity_fig6.sh
 **Expected results:**
 
 - SOTER's inference latency grows as the input tensor shape increases (match **C4**).
-- SOTER's inference latency decreases as the partition ratio increases, i.e.,
-  more operators are partitioned to an untrusted GPU for assisting inferences (match **C5**).
+- SOTER's inference latency decreases as the partition ratio increases in most cases, i.e.,
+  more operators are partitioned to an untrusted GPU for assisting inferences
+  (match **C5**).
+
+**Important notes for Experiment 2:**
+
+- In rare cases, the inference latency belonging to a larger partition ratio can
+  be even lower. This is normal because the partitioned operator is randomly selected
+  to execute on a GPU, and the computational overhead can be larger when such a
+  partition is fragmented (i.e., the context switch overhead dominates the GPU
+  performance gain).
+
+
+### Experiment 3: Confidentiality study (xxx mins)
+
+This experiment runs different systems on two models under model stealing
+attacks to show the empirical confidentiality guarantee of different systems.
+
+**Command to run (in the GPU terminal):**
+
+```shell
+cd ~/atc22-artifact/SOTER/script/
+bash ./conf.sh
+```
+
+**Output:**
+- s
 
 ### Experiment 4: The pattern between SOTER's fingerprint protocol and fixed fingerprint baseline (20 mins)
 
