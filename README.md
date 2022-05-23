@@ -158,7 +158,7 @@ bash ./sensitivity_fig6.sh
 - A pdf files named `senvgg.pdf` in `~/atc22-artifact/SOTER/figure/`,
   containing the partition sensitivity study of SOTER.
 - You can also find the log files for generating this figure in
-  `/home/xian/atc22-artifact/SOTER/script/sensitivity`.
+  `~/atc22-artifact/SOTER/script/sensitivity`.
 
 **Expected results:**
 
@@ -170,8 +170,8 @@ bash ./sensitivity_fig6.sh
 **Important notes for Experiment 2:**
 
 - In rare cases, the inference latency belonging to a larger partition ratio can
-  be even lower. This is normal because the partitioned operator is randomly selected
-  to execute on a GPU, and the computational overhead can be larger when such a
+  be even lower. This is normal because operators are randomly selected
+  to partition and execute on a GPU, and the computational overhead can be larger when such a
   partition is fragmented (i.e., the context switch overhead dominates the GPU
   performance gain).
 
