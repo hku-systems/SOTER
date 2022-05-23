@@ -124,11 +124,11 @@ bash ~/atc22-artifact/SOTER/script/latency_fig5.sh
 
 **Expected results:**
 
-- (**C1**) The TEE-shielding system (i.e., MLCapsule) incurs the highest latency (i.e., highest bar).
-- (**C2**) Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
-  have similar inference latency, which should be lower than MLCapsule.
-- (**C3**) SOTER incurs slightly higher latency than AegisDNN; eNNclave is not applicable
-  to other models except VGG19 (i.e., N/A in the figure).
+- The TEE-shielding system (i.e., MLCapsule) incurs the highest latency (match **C1**).
+-  Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
+  have similar inference latency, which should be lower than MLCapsule. (match **C2**).
+- SOTER incurs slightly higher latency than AegisDNN; eNNclave is not applicable
+  to other models except VGG19 (match **C3**) 
 
 **Important notes for Experiment 1:**
 
@@ -165,8 +165,9 @@ bash ~/atc22-artifact/SOTER/script/run-fpcheck.sh
 
 **Expected results:**
 
-- (**C8**) SOTER's fingerprint l2 distance distribution (i.e., `figure8a-oblifp.pdf`) is close to a
+-  SOTER's fingerprint l2 distance distribution (i.e., `figure8a-oblifp.pdf`) is close to a
   normal distribution. Note that, some fluctuations may occur as SOTER randomly
-  derives fingerprints at runtime for security.
-- (**C9**) Baseline's fingerprint l2 distance distribution (i.e., `figure8b-fixedfp.pdf`)
-  has spikes at a small distance (x-axis) and does not share the form of normal distribution.
+  derives fingerprints at runtime for security (match **C8**).
+- Baseline's fingerprint l2 distance distribution (i.e., `figure8b-fixedfp.pdf`)
+  has spikes at a small distance (x-axis) and does not share the form of normal
+  distribution (match **C9**). 
