@@ -137,10 +137,6 @@ bash ./latency_fig5.sh
 - SOTER's inference latency on six models (i.e., numbers on each red bar) may not
   exactly match the results presented in the paper due to the instability nature
   of model inference. 
-- This experiment is expected to take around 45 mins before producing the final
-  PDF file, as we need to compile and run each program. Please do not interrupt
-  the running process. If you failed in this step, please make sure
-  other evaluators are not running this experiment concurrently.
 
 ### Experiment 2: Partition sensitivity (35 mins)
 
