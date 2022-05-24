@@ -131,7 +131,7 @@ bash ./latency_fig5.sh
 - SOTER incurs slightly higher latency than AegisDNN; eNNclave is not applicable
   to other models except VGG19 (match **C3**).
 
-**Important notes for Experiment 1:**
+**Important notes of Experiment 1:**
 
 - SOTER's inference latency on six models (i.e., numbers on each red bar) may not
   exactly match the results presented in the paper due to the instability nature
@@ -167,7 +167,7 @@ bash ./sensitivity_fig6.sh
   more operators are partitioned to an untrusted GPU for assisting inferences
   (match **C5**).
 
-**Important notes for Experiment 2:**
+**Important notes of Experiment 2:**
 
 - In rare cases, the inference latency belonging to a larger partition ratio can
   be even lower. This is normal because operators are randomly selected
@@ -232,16 +232,17 @@ bash ./run-fpcheck.sh
   has spikes at a small distance (x-axis) and does not share the form of normal
   distribution (match **C9**). 
 
-**Important note for Experiment 4:**
+**Important notes of Experiment 4:**
 
 - The core difference between SOTER's fingerprint and baselines's fingerprint
   is that SOTER's distance distribution shares a similar form as normal
   distribution, while the baseline has an entirely different distribution and has spikes at a small distance.
-- Since SOTER uses random scalars to produce oblivious fingerprints, it is
-  normal that the
-  resultant distribution (i.e., `figure8a-oblifp.pdf`) may occasionally have a
-  trough owing to the randomness. You can either ignore it or reproduce this figure
-  by re-trying the following command several times:
+- Since SOTER uses random scalars to produce oblivious fingerprints, owing to
+  the randomness, the
+  resultant distribution (i.e., `figure8a-oblifp.pdf`)
+  may not exactly match the form of standard normal distribution (but, should be
+  similar). You can ignore it directly, or you can reproduce this figure
+  by re-trying the following command and check the produced figure:
   ```shell
     cd ~/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a
     bash ./runobli.sh
