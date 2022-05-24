@@ -126,8 +126,8 @@ bash ./latency_fig5.sh
 **Expected results:**
 
 - The TEE-shielding system (i.e., MLCapsule) incurs the highest latency (match **C1**).
--  Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
-  have similar inference latency, which should be lower than MLCapsule. (match **C2**).
+- Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
+  have similar inference latency on VGG19, which should be lower than MLCapsule. (match **C2**).
 - SOTER incurs slightly higher latency than AegisDNN; eNNclave is not applicable
   to other models except VGG19 (match **C3**).
 
