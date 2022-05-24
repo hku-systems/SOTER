@@ -93,7 +93,7 @@ perfectly.
   models (Figure 5 in our paper).
 - **(C4)** With a larger input shape, SOTER's inference latency increases (Figure 6 in our paper).
 - **(C5)** With a larger partition ratio, SOTER's inference latency decreases in
- most cases, and the latency can increase in rare cases (Figure 6 in our paper).
+  most cases (Figure 6 in our paper).
 - **(C6)** With a larger partition ratio, SOTER achieves similar confidentiality
  guarantee (i.e., similar accuracy) as eNNclave (Figure 7a in our paper).
 - **(C7)** With a larger partition ratio, SOTER achieves stronger confidentiality
@@ -160,9 +160,8 @@ bash ./sensitivity_fig6.sh
 **Expected results:**
 
 - SOTER's inference latency grows as the input tensor shape increases (match **C4**).
-- SOTER's inference latency decreases as the partition ratio increases in most cases, i.e.,
-  more operators are partitioned to an untrusted GPU for assisting inferences
-  (match **C5**).
+- SOTER's inference latency decreases as the partition ratio increases in most
+  cases (match **C5**).
 
 **Important notes of Experiment 2:**
 
@@ -238,7 +237,7 @@ bash ./run-fpcheck.sh
   baseline uses fixed fingerprints), owing to
   the randomness, `figure8a-oblifp.pdf` may not exactly match the form of standard normal distribution (but should be
   similar). You can ignore it directly, or you can reproduce this figure
-  by re-trying the following command (might need several times) and check the produced figure:
+  by re-trying the following command (might need multiple times) and check the produced figure:
   ```shell
     cd ~/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a
     bash ./runobli.sh
