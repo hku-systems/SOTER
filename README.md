@@ -92,7 +92,8 @@ perfectly.
 - **(C3)** SOTER incurs slightly higher latency than AegisDNN for other five
   models (Figure 5 in our paper).
 - **(C4)** With a larger input shape, SOTER's inference latency increases (Figure 6 in our paper).
-- **(C5)** With a larger partition ratio, SOTER's inference latency decreases (Figure 6 in our paper).
+- **(C5)** With a larger partition ratio, SOTER's inference latency decreases in
+ most cases, and the latency can increase in rare cases (Figure 6 in our paper).
 - **(C6)** With a larger partition ratio, SOTER achieves similar confidentiality
  guarantee (i.e., similar accuracy) as eNNclave (Figure 7a in our paper).
 - **(C7)** With a larger partition ratio, SOTER achieves stronger confidentiality
