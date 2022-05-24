@@ -234,13 +234,12 @@ bash ./run-fpcheck.sh
 
 **Important notes of Experiment 4:**
 
-- The core difference between SOTER's fingerprint and baselines's fingerprint
-  is that SOTER's distance distribution shares a similar form as normal
-  distribution, while the baseline has an entirely different distribution and has spikes at a small distance.
-- Since SOTER uses random scalars to produce oblivious fingerprints, owing to
-  the randomness, the
-  resultant distribution (i.e., `figure8a-oblifp.pdf`)
-  may not exactly match the form of standard normal distribution (but, should be
+- The core difference for verifying this experiment is that SOTER's distance distribution shares a similar form as normal
+  distribution (see next bullet point), while the baseline has an entirely different distribution and
+  has spikes at a small distance.
+- Since SOTER uses random scalars to produce oblivious fingerprints (the
+  baseline uses fixed fingerprints), owing to
+  the randomness, `figure8a-oblifp.pdf` may not exactly match the form of standard normal distribution (but should be
   similar). You can ignore it directly, or you can reproduce this figure
   by re-trying the following command and check the produced figure:
   ```shell
