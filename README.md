@@ -225,9 +225,24 @@ bash ./run-fpcheck.sh
 
 **Expected results:**
 
--  SOTER's fingerprint l2 distance distribution (i.e., `figure8a-oblifp.pdf`) is close to a
+- SOTER's fingerprint l2 distance distribution (i.e., `figure8a-oblifp.pdf`) is close to a
   normal distribution. Note that, some fluctuations may occur as SOTER randomly
   derives fingerprints at runtime for security (match **C8**).
 - Baseline's fingerprint l2 distance distribution (i.e., `figure8b-fixedfp.pdf`)
   has spikes at a small distance (x-axis) and does not share the form of normal
   distribution (match **C9**). 
+
+**Important note for Experiment 4:**
+
+- The core difference between SOTER's fingerprint and baselines's fingerprint
+  is that SOTER's distance distribution shares a similar form as normal
+  distribution, while the baseline has an entirely different distribution and has spikes at a small distance.
+- Since SOTER uses random scalars to produce oblivious fingerprints, it is
+  normal that the
+  resultant distribution (i.e., `figure8a-oblifp.pdf`) may occasionally have a
+  trough owing to the randomness. You can either ignore it or reproduce this figure
+  by re-trying the following command several times:
+  ```shell
+    cd ~/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a
+    bash ./runobli.sh
+  ```
