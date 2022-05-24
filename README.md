@@ -94,15 +94,15 @@ perfectly.
 - **(C4)** With a larger input shape, SOTER's inference latency increases (Figure 6 in our paper).
 - **(C5)** With a larger partition ratio, SOTER's inference latency decreases in
   most cases (Figure 6 in our paper).
-- **(C6)** With a larger partition ratio, SOTER achieves similar confidentiality
- guarantee (i.e., similar accuracy) as eNNclave (Figure 7a in our paper).
-- **(C7)** With a larger partition ratio, SOTER achieves stronger confidentiality
- guarantee (i.e., lower accuracy) than AegisDNN (Figure 7a&7b in our paper).
+- **(C6)** With a larger partition ratio, SOTER achieves similar accuracy (i.e.,
+  similar confidentiality guarantee) as eNNclave (Figure 7a in our paper).
+- **(C7)** With a larger partition ratio, SOTER achieves lower accuracy (i.e., stronger confidentiality
+ guarantee) than AegisDNN (Figure 7a&7b in our paper).
 - **(C8)** When running SOTER's oblivious fingerprint protocol, the l2 distance
-  distribution between randomly sampled fingerprints is close to a normal
+  distribution between randomly sampled fingerprints is similar to a normal
   distribution (Figure 8a in our paper).
 - **(C9)** When running a baseline fixed fingerprint protocol, the distribution
-  has spikes on a small distance, and does not share the form of normal distribution (Figure 8b in our paper).
+  has spikes on a small distance, and does not share a similar form of normal distribution (Figure 8b in our paper).
 
 ### Experiment 1: End-to-end performance (45 mins)
 
