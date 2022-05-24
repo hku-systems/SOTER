@@ -241,7 +241,7 @@ bash ./run-fpcheck.sh
   baseline uses fixed fingerprints), owing to
   the randomness, `figure8a-oblifp.pdf` may not exactly match the form of standard normal distribution (but should be
   similar). You can ignore it directly, or you can reproduce this figure
-  by re-trying the following command and check the produced figure:
+  by re-trying the following command (might need several times) and check the produced figure:
   ```shell
     cd ~/atc22-artifact/SOTER/fingerprint_obliviousness/figure8a
     bash ./runobli.sh
