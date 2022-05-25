@@ -1,0 +1,9 @@
+Please input the token size...
+Transformer - CPU version
+Kernel Switch: 0
+Associative Op: 360
+Outsourced Op: 0
+For 100 inferences...
+Time elapsed: 180638 ms.
+Time consuming: 1806.38 ms per instance.
+completed.
