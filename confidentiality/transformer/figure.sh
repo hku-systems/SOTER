@@ -13,4 +13,5 @@ done
 python3 figure7b-trans.py
 rm -rf /home/xian/atc22-artifact/SOTER/figure/figure7b-trans.pdf
 rm -rf bleu.txt
+rm -rf ./*.log
 mv ./figure7b-trans.pdf /home/xian/atc22-artifact/SOTER/figure/
