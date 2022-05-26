@@ -982,6 +982,7 @@ float l2_dist(torch::Tensor x, torch::Tensor y){
         }
     }
     dist = sqrt(temp)/D4reshape_fact;
+    // return dist;
     return floor(dist);
 }
 
@@ -994,6 +995,7 @@ float l2_dist_smallsize(torch::Tensor x, torch::Tensor y){
         }
     }
     dist = sqrt(temp)/D2reshape_fact;
+    // return dist;
     return floor(dist);
 }
 

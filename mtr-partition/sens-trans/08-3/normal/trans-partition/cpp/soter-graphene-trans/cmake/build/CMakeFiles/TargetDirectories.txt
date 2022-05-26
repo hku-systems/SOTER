@@ -1,0 +1,5 @@
+/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/hw_grpc_proto.dir
+/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/tee_client.dir
+/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/gpu_server.dir
+/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/edit_cache.dir
+/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/rebuild_cache.dir
