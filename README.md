@@ -152,10 +152,10 @@ bash ./sensitivity_fig6.sh
 
 **Output:**
 
-- A pdf files named `senvgg.pdf` in `~/atc22-artifact/SOTER/figure/`,
+- Two pdf files named `senvgg.pdf` and `sentrans.pdf` in `~/atc22-artifact/SOTER/figure/`,
   containing the partition sensitivity study of SOTER.
 - You can also find the log files for generating this figure in
-  `~/atc22-artifact/SOTER/script/sensitivity`.
+  `~/atc22-artifact/SOTER/script/sensitivity` and `~/atc22-artifact/SOTER/script/sensitivity-trans`.
 
 **Expected results:**
 

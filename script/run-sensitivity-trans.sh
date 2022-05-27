@@ -1,6 +1,7 @@
 # clean up old data and old figures
 rm -rf *.pdf
 rm -rf ./sensitivity-trans/tmp
+rm -rf ./sensitivity-trans/CMakeCache.txt
 
 rm -rf ./latency-sen-trans.txt
 touch latency-sen-trans.txt

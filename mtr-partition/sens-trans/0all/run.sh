@@ -2,7 +2,8 @@
 #     rm -rf ./build
 # fi
 # mkdir build
-# cd build
+cd build
+echo "Start!"
 # cmake ..
 # make
 ./main 512 > ./00-1.txt
@@ -24,6 +25,8 @@ echo "Token 512 complete!"
 echo "Token 1024 complete!"
 ./main 2048 > ./00-6.txt
 echo "Token 2048 complete!"
-scp ./00-* xian@202.45.128.185:~/atc22-artifact/SOTER/script/sensitivity-trans/
+scp ./00-1.txt xian@202.45.128.185:~/atc22-artifact/SOTER/script/sensitivity-trans/
+scp ./00-3.txt xian@202.45.128.185:~/atc22-artifact/SOTER/script/sensitivity-trans/
+scp ./00-6.txt xian@202.45.128.185:~/atc22-artifact/SOTER/script/sensitivity-trans/
 ssh xian@202.45.128.185 "cd ~/atc22-artifact/SOTER/script;sed -i 's/0/1/g' signal"
 
