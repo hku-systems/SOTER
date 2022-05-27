@@ -9,3 +9,4 @@ bash sensitivity_trans.sh 02-1-trans 02-3-trans 02-6-trans 04-1-trans 04-3-trans
 echo "Prepare for drawing sensitivity transformer figure ..."
 sleep 5s
 bash run-sensitivity-trans.sh
+echo "Completed!"

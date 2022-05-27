@@ -138,7 +138,7 @@ bash ./latency_fig5.sh
   exactly match the results presented in the paper due to the instability nature
   of model inference. 
 
-### Experiment 2: Partition sensitivity (35 mins)
+### Experiment 2: Partition sensitivity (75 mins)
 
 This experiment runs SOTER on VGG19, tests SOTER with different input shape and
 with different partition ratio, and finally reports SOTER's inference latency.
