@@ -201,6 +201,83 @@ if [ "$1" == "02-1-trans" ];then
     echo '** Transformer-soter inference completed **'
     ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
 fi 
+if [ "$1" == "02-3-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/02-3/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "02-6-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/02-6/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "04-1-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/04-1/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "04-3-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/04-3/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "04-6-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/04-6/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "06-1-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/06-1/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "06-3-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/06-3/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "06-6-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/06-6/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "08-1-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/08-1/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "08-3-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/08-3/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
+if [ "$1" == "08-6-trans" ];then
+    cd ~/atc22-artifact/SOTER/mtr-partition/sens-trans/08-6/normal/trans-partition/graphene-trans-partition
+    echo '** Transformer-soter inference started **'
+    bash runclient.sh
+    echo '** Transformer-soter inference completed **'
+    ssh jianyu@10.22.1.16 "cd ~/atc22-artifact/SOTER/script;bash run-relay-back.sh"
+fi 
 if [ "$1" == "scp-sens-trans" ];then
     cd ~/atc22-artifact/SOTER/script/sensitivity-trans
     scp ./*.txt jianyu@10.22.1.16:/home/jianyu/atc22-artifact/SOTER/script/sensitivity-trans
