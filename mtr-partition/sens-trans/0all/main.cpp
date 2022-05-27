@@ -2844,7 +2844,7 @@ int main(int argc, char* argv[])
     latency = ms_time/count;
     std::cout << "For " << count << " inferences..." << std::endl;
     std::cout << "Time elapsed: " << ms_time << " ms." << std::endl;
-    std::cout << "Fetch here. Time consuming: " << ms_time/count << " ms per inference." << std::endl;
+    std::cout << "Fetch here. Time consuming: " << latency << " ms per inference." << std::endl;
     std::cout << "completed." << std::endl;
     return 0;
 }
