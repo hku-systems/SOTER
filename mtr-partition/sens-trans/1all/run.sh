@@ -11,5 +11,5 @@ echo "Token 512 complete!"
 echo "Token 1024 complete!"
 ./main 2048 > ./1-6.txt
 echo "Token 2048 complete!"
-scp ./*.txt xian@202.45.128.185:~/atc22-artifact/SOTER/script/sensitivity-trans/
+scp ./1-* xian@202.45.128.185:~/atc22-artifact/SOTER/script/sensitivity-trans/
 ssh xian@202.45.128.185 "cd ~/atc22-artifact/SOTER/script;sed -i 's/0/1/g' signal"
