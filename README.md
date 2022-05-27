@@ -166,7 +166,7 @@ bash ./sensitivity_fig6.sh
 **Important notes of Experiment 2:**
 
 - In rare cases, the inference latency belonging to a larger partition ratio can
-  be even lower. This is normal because operators are randomly selected
+  be even higher. This is normal because operators are randomly selected
   to partition and execute on a GPU, and the computational overhead can be larger when such a
   partition is fragmented, i.e., the context switch overhead dominates the GPU
   performance gain (see paper $6.2).
