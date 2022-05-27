@@ -1,4 +1,4 @@
-pushd ../cpp/soter-graphene-trans/soter-graphene-trans/
+pushd ../cpp/soter-graphene-trans/
 sed -i "s/xian/ubuntu/g" ./CMakeLists.txt
 
 rm -rf cmake
