@@ -104,6 +104,25 @@ perfectly.
 - **(C9)** When running a baseline fixed fingerprint protocol, the distribution
   has spikes on a small distance, and does not share a similar form of normal distribution (Figure 8b in our paper).
 
+### One Step to Run All Experiments!
+
+To further ease the evaluation, we make a script that automatically
+runs all four experiments! You just need two commands below:
+
+**Step 1: Run all experiments**
+
+```shell
+cd ~/atc22-artifact/SOTER/script/
+bash ./oneforall.sh
+```
+
+**Step 2: Fetch figrues to your computer**
+
+```shell
+cd ~/atc22-artifact/SOTER/script/
+bash ./fetch.sh
+```
+
 ### Experiment 1: End-to-end performance (45 mins)
 
 This experiment runs SOTER and three baseline systems (i.e., AegisDNN,
