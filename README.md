@@ -109,18 +109,18 @@ perfectly.
 To further ease the evaluation, we make a script that automatically
 runs all four experiments! You just need two steps:
 
-**Step 1: Run all experiments (~3.5 hour)**
+**Step 1: Run all experiments (~3.5 hours)**
 
 ```shell
 cd ~/atc22-artifact/SOTER/script/
 bash ./oneforall.sh
 ```
 
-**Step 2: Fetch figures to your computer**
+**Step 2: Email figures to your computer**
 
 ```shell
-cd ~/atc22-artifact/SOTER/script/
-bash ./fetch.sh
+cd ~/atc22-artifact/SOTER/script/ 
+bash ./fetch.sh (remember to set your email address in fetch.sh)
 ```
 
 After fetching all these figures, you can verify the abovementioned **Major
