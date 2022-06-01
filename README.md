@@ -109,19 +109,24 @@ perfectly.
 To further ease the evaluation, we make a script that automatically
 runs all four experiments! You just need two commands below:
 
-**Step 1: Run all experiments**
+**Step 1: Run all experiments (~)**
 
 ```shell
 cd ~/atc22-artifact/SOTER/script/
 bash ./oneforall.sh
 ```
 
-**Step 2: Fetch figrues to your computer**
+**Step 2: Fetch figures to your computer**
 
 ```shell
 cd ~/atc22-artifact/SOTER/script/
 bash ./fetch.sh
 ```
+
+After fetching all these figures, you can verify the abovementioned **Major
+Claims** by referring to the **Expected results** and **Important notes** below.
+
+Note that, you can also run each experiment by yourself with the following steps.
 
 ### Experiment 1: End-to-end performance (45 mins)
 
