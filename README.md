@@ -107,9 +107,9 @@ perfectly.
 ### One Step to Run All Experiments!
 
 To further ease the evaluation, we make a script that automatically
-runs all four experiments! You just need two commands below:
+runs all four experiments! You just need two steps:
 
-**Step 1: Run all experiments (~)**
+**Step 1: Run all experiments (~3.5 hour)**
 
 ```shell
 cd ~/atc22-artifact/SOTER/script/
@@ -126,7 +126,8 @@ bash ./fetch.sh
 After fetching all these figures, you can verify the abovementioned **Major
 Claims** by referring to the **Expected results** and **Important notes** below.
 
-Note that, you can also run each experiment by yourself with the following steps.
+Note that, you can also run each experiment by yourself with the steps described
+below.
 
 ### Experiment 1: End-to-end performance (45 mins)
 
