@@ -129,7 +129,7 @@ bash ./latency_fig5.sh
 - The TEE-shielding system (i.e., MLCapsule) incurs the highest latency (match **C1**).
 - Partition-based systems (i.e., SOTER, AegisDNN, and eNNclave)
   have similar inference latency on VGG19, which should be lower than MLCapsule. (match **C2**).
-- SOTER incurs slightly higher latency than AegisDNN; eNNclave is not applicable
+- SOTER could incur slightly higher latency than AegisDNN; eNNclave is not applicable
   to other models except VGG19 (match **C3**).
 
 **Important notes of Experiment 1:**
@@ -165,8 +165,8 @@ bash ./sensitivity_fig6.sh
 
 **Important notes of Experiment 2:**
 
-- In rare cases, the inference latency belonging to a larger partition ratio can
-  be even higher. This is normal because operators are randomly selected
+- The inference latency may fluctuate (i.e., the latency belonging to a larger partition ratio can
+  be even higher). This is normal because operators are randomly selected
   to partition and execute on a GPU, and the computational overhead can be larger when such a
   partition is fragmented, i.e., the context switch overhead dominates the GPU
   performance gain (see paper $6.2).
