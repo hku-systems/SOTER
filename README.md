@@ -120,7 +120,7 @@ bash ./oneforall.sh
 
 ```shell
 cd ~/atc22-artifact/SOTER/script/ 
-bash ./fetch.sh (remember to set your email address in fetch.sh)
+bash ./fetch.sh xxx@gmail.com (e.g., bash ./fetch.sh stx635@connect.hku.hk)
 ```
 
 After fetching all these figures, you can verify the abovementioned **Major

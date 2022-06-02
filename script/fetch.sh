@@ -1,6 +1,5 @@
 cd ~/atc22-artifact/SOTER/figure/
-# Set your email address by replacing xxx@gmail.com
-email=xxx@gmail.com 
+email=$@
 echo "Figure5" | mail -s "end2end latency" $email -A normalized_latency.pdf
 echo "Figure6a" | mail -s "sensitivity 1" $email -A senvgg.pdf
 echo "Figure6b" | mail -s "sensitivity 2" $email -A sentrans.pdf
