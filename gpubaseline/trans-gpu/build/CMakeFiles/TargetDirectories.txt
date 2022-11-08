@@ -1,0 +1,3 @@
+/home/xian/atc22-artifact/SOTER/gpubaseline/trans-gpu/build/CMakeFiles/main.dir
+/home/xian/atc22-artifact/SOTER/gpubaseline/trans-gpu/build/CMakeFiles/edit_cache.dir
+/home/xian/atc22-artifact/SOTER/gpubaseline/trans-gpu/build/CMakeFiles/rebuild_cache.dir

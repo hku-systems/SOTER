@@ -1,0 +1,3 @@
+/home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8b/build/CMakeFiles/main.dir
+/home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8b/build/CMakeFiles/edit_cache.dir
+/home/xian/atc22-artifact/SOTER/fingerprint_obliviousness/figure8b/build/CMakeFiles/rebuild_cache.dir

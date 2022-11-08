@@ -1,0 +1,65 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_27727/fast && /usr/bin/make  -f CMakeFiles/cmTC_27727.dir/build.make CMakeFiles/cmTC_27727.dir/build
+make[1]: Entering directory '/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_27727.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_27727.dir/src.c.o -c /home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_27727
+/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27727.dir/link.txt --verbose=1
+/usr/bin/cc CMakeFiles/cmTC_27727.dir/src.c.o -o cmTC_27727 
+CMakeFiles/cmTC_27727.dir/src.c.o: In function `main':
+src.c:(.text+0x3c): undefined reference to `pthread_create'
+src.c:(.text+0x48): undefined reference to `pthread_detach'
+src.c:(.text+0x54): undefined reference to `pthread_cancel'
+src.c:(.text+0x65): undefined reference to `pthread_join'
+src.c:(.text+0x79): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_27727.dir/build.make:98: recipe for target 'cmTC_27727' failed
+make[1]: *** [cmTC_27727] Error 1
+make[1]: Leaving directory '/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_27727/fast' failed
+make: *** [cmTC_27727/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make -f Makefile cmTC_1c485/fast && /usr/bin/make  -f CMakeFiles/cmTC_1c485.dir/build.make CMakeFiles/cmTC_1c485.dir/build
+make[1]: Entering directory '/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1c485.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_1c485.dir/CheckFunctionExists.c.o -c /snap/cmake/1082/share/cmake-3.23/Modules/CheckFunctionExists.c
+Linking C executable cmTC_1c485
+/snap/cmake/1082/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1c485.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create CMakeFiles/cmTC_1c485.dir/CheckFunctionExists.c.o -o cmTC_1c485  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_1c485.dir/build.make:98: recipe for target 'cmTC_1c485' failed
+make[1]: *** [cmTC_1c485] Error 1
+make[1]: Leaving directory '/home/xian/atc22-artifact/backup/soter-graphene/senstrans/08-3/normal/trans-partition/cpp/soter-graphene-trans/cmake/build/CMakeFiles/CMakeTmp'
+Makefile:127: recipe for target 'cmTC_1c485/fast' failed
+make: *** [cmTC_1c485/fast] Error 2
+
+
+

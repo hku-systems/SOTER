@@ -1,0 +1,67 @@
+# PyTorch manifest template
+
+loader.preload = "file:/usr/local/lib/x86_64-linux-gnu/graphene/libsysdb.so"
+libos.entrypoint = "{{ entrypoint }}"
+loader.log_level = "none"
+loader.pal_internal_mem_size = "1024M"
+
+loader.env.LD_LIBRARY_PATH = "/lib:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu"
+loader.env.PATH = "/usr/bin"
+
+loader.insecure__use_cmdline_argv = true
+
+fs.mount.lib.type = "chroot"
+fs.mount.lib.path = "/lib"
+fs.mount.lib.uri = "file:/usr/local/lib/x86_64-linux-gnu/graphene/runtime/glibc"
+
+fs.mount.lib64.type = "chroot"
+fs.mount.lib64.path = "/lib/x86_64-linux-gnu"
+fs.mount.lib64.uri = "file:/lib/x86_64-linux-gnu"
+
+fs.mount.usr_lib.type = "chroot"
+fs.mount.usr_lib.path = "/usr/lib"
+fs.mount.usr_lib.uri = "file:/usr/lib"
+
+fs.mount.bin.type = "chroot"
+fs.mount.bin.path = "/bin"
+fs.mount.bin.uri = "file:/bin"
+
+fs.mount.torch.type = "chroot"
+fs.mount.torch.path = "{{ torch_file }}"
+fs.mount.torch.uri = "file:{{ torch_file }}"
+
+fs.mount.data.type = "chroot"
+fs.mount.data.path = "{{ torch_data_dir }}"
+fs.mount.data.uri = "file:{{ torch_data_dir }}"
+
+sgx.nonpie_binary = true
+sgx.enclave_size = "4G"
+sgx.thread_num = 16
+
+sgx.trusted_files = [
+  "file:{{ graphene.libos }}",
+  "file:{{ entrypoint }}",
+  "file:{{ graphene.runtimedir() }}/",
+  "file:{{ arch_libdir }}/",
+  "file:/usr/{{ arch_libdir }}/",
+  "file:{{ torch_file }}/libtorch.so",
+  "file:{{ torch_file }}/libc10.so",
+  "file:{{ torch_file }}/libtorch_cpu.so",
+  "file:{{ torch_file }}/libgomp-75eea7e8.so.1",
+#  "file:{{ torch_file }}/libgomp-a34b3233.so.1",
+]
+
+sgx.allowed_files = [
+  "file:/tmp",
+  "file:/etc/apt/apt.conf.d",
+  "file:/etc/apt/apt.conf",
+  "file:/etc/default/apport",
+  "file:/etc/nsswitch.conf",
+  "file:/etc/group",
+  "file:/etc/passwd",
+  "file:/etc/host.conf",
+  "file:/etc/hosts",
+  "file:/etc/gai.conf",
+  "file:/etc/resolv.conf",
+  "file:/etc/fstab"
+]
