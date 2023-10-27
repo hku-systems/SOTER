@@ -24,7 +24,7 @@ machine and a 2080 Ti GPU machine. Each experiment runs 1000 inferences by defau
 
 ### Prepare
 
-1. Please login to our cluster following [this page](https://github.com/hku-systems/SOTER/blob/main/server.md).
+1. Please login to our cluster following [this page]().
 
 2. Please open two terminals (`T1` and `T2`). Use
    `T1` to login to the SGX VM (ubuntu@192.168.122.158) and go to
